@@ -10,13 +10,14 @@
 </head>
 <body>
   <header>
-    <div>
-      <a href="quemsomos.html" target="_self">
+    <a href="quemsomos.html" target="_self">
         <img class="body_header_div_imagemlogonobregamedtech"
              src="assets/Imagem_header_logo_nobregamedtech_sem_slogan.jpg"
              alt="Logo Nobrega Medtech azul sem slogan">
-      </a>
-    </div>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menu de navegação">
+      <i class="fas fa-bars"></i>
+    </button>
     <div class="body_header_div_navegar">
       <nav class="body_header_div_navegarpaginas">
         <a href="quemsomos.html" target="_self" class="active" aria-current="page">Início</a>
@@ -27,7 +28,19 @@
     </div>
   </header>
   <main>
-    <H1>QUEM SOMOS / PAGINA PRINCIPAL</H1>
+    <h1>QUEM SOMOS / PAGINA PRINCIPAL</h1>
   </main>
+
+  <script>
+    // Script para controlar o menu mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('.body_header_div_navegarpaginas');
+      
+      menuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
