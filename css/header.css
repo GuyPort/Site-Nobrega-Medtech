@@ -1,0 +1,224 @@
+
+
+/*MOBILE*/
+/* Estilo do container principal do header */
+header {
+  background-color: #004BAE; /* Seu azul. Idealmente, use uma variável CSS do global.css, ex: var(--cor-primaria) */
+  padding: 30px;             /* Um padding razoável para mobile */
+  display: flex;             /* Essencial para alinhar itens internos */
+  justify-content: space-between; /* Coloca a logo de um lado e o botão hamburger/nav do outro */
+  align-items: center;       /* Alinha verticalmente os itens no centro */
+  width: 100%;               /* Ocupa toda a largura */
+  box-sizing: border-box;    /* Padding e borda não aumentam o tamanho total */
+  min-height: 70px;          /* Uma altura mínima para o header no mobile */
+}
+
+
+.header__imagem {
+  flex-shrink: 0; 
+}
+
+/* O link da logo */
+.header__imagem a {
+  display: inline-block; /* Bom para links com imagens */
+}
+
+/* A imagem da logo em si */
+.header__logo-imagem {
+  display: block; /* Remove qualquer espaço extra abaixo da imagem */
+  height: 100px;   /* Altura menor para mobile. Ajuste conforme sua logo! */
+  width: auto;    /* Mantém a proporção da imagem */
+  max-width: 150px; /* Evita que a logo fique muito grande se a imagem original for maior */
+}
+
+/* --- Botão Hamburger --- */
+/* Vamos estilizar isso no próximo passo, por enquanto ele existe no HTML */
+.header__hamburger-button {
+  /* Estilos virão aqui - por enquanto, ele estará visível se não tivermos JS para escondê-lo */
+  /* Para fins de desenvolvimento inicial sem JS, vamos deixá-lo visível */
+  display: flex; /* Vamos já usar flex para alinhar as barrinhas dentro dele */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header__hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white; /* Cor das barrinhas */
+  border-radius: 3px;
+}
+
+/* --- Navegação Principal (Escondida no Mobile por Padrão) --- */
+.header__navegar {
+  display: none; /* COMEÇAMOS COM A NAVEGAÇÃO ESCONDIDA NO MOBILE */
+}
+
+/* Quando o menu estiver ABERTO no mobile (classe adicionada via JS no futuro)
+   ex: <div class="header__navegar menu-aberto"> 
+   OU ex: <body class="menu-overlay-aberto"> ... <div class="header__navegar"> 
+   Vamos preparar os estilos para quando ele estiver visível.
+*/
+.header__navegar.menu-aberto { /* Exemplo de classe para mostrar */
+  display: block; /* Ou flex, dependendo de como você quer que ele apareça */
+  position: absolute; /* Para sobrepor o conteúdo da página */
+  top: 70px; /* Altura do seu header (ajuste se o min-height mudar) */
+  left: 0;
+  right: 0; /* Para ocupar a largura toda */
+  background-color: #003f8c; /* Um azul um pouco diferente para o menu dropdown */
+  padding: 15px 0;
+  z-index: 1000; /* Para garantir que fique por cima de outros conteúdos */
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Linha sutil no topo */
+}
+
+.header__nav { /* O elemento <nav> em si */
+  width: 100%;
+}
+
+.header__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Links empilhados */
+  align-items: stretch;  /* Faz os itens esticarem na largura */
+}
+
+.header__nav-item {
+  /* Não precisa de muito aqui se o link já for display: block */
+}
+
+.header__nav-link {
+  display: block; /* Para ocupar a largura e ter padding clicável */
+  padding: 12px 20px; /* Padding para os links no menu mobile */
+  color: white;
+  text-decoration: none;
+  font-family: var(--fonte-principal, 'Roboto', sans-serif); /* Use a variável do seu global.css */
+  font-size: 1rem; /* 16px se a fonte base for 16px */
+  font-weight: 500;
+  text-align: center; /* Ou left, se preferir */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil entre links */
+}
+
+.header__nav-item:last-child .header__nav-link {
+  border-bottom: none; /* Remove a borda do último item */
+}
+
+.header__nav-link:hover,
+.header__nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.05); /* Leve destaque no hover */
+}
+
+/* A classe --active é para o link da página atual, o estilo de "ativo" */
+.header__nav-link--active {
+  background-color: rgba(0, 0, 0, 0.1); /* Destaque diferente para o ativo */
+  font-weight: 700; /* Exemplo */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 250px 0 100px;
+  background-color: rgb(0, 75, 174);
+  height: 160px;
+}
+
+.header__logo-imagem {
+  height: 160px;
+  width: 185px;
+}
+
+.header__navegar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__nav a {
+  position: relative;
+  padding-bottom: 4px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.header__nav a:hover {
+  border-bottom-color: white;
+}
+
+.header__nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  display: flex;
+  gap: 2rem;
+}
+.header__nav ul li {
+  white-space: nowrap;
+}
+
+.header__nav a.active,
+.header__nav a[aria-current="page"] {
+  border-bottom-color: white;
+}
+*/
