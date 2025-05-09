@@ -66,7 +66,7 @@ header {
   /* Exemplo de classe para mostrar */
   display: block; /* Ou flex, dependendo de como você quer que ele apareça */
   position: absolute; /* Para sobrepor o conteúdo da página */
-  top: 70px; /* Altura do seu header (ajuste se o min-height mudar) */
+  top: 80px; /* Altura do seu header (ajuste se o min-height mudar) */
   left: 0;
   right: 0; /* Para ocupar a largura toda */
   background-color: #003f8c; /* Um azul um pouco diferente para o menu dropdown */
