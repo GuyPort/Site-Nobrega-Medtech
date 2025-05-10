@@ -1,237 +1,39 @@
-/*Mobile*/
+/* === CSS/HEADER.CSS - MOBILE FIRST           === */
+/* Estilos aplicados a telas pequenas primeiro   */
 
-/* Estilo do container principal do header (<header>) */
+/* --- Estilização do Contêiner Principal do Cabeçalho --- */
+/* Seletor para a tag <header> */
 header {
-  background-color: #004bae;
-  padding: 10px 15px; /* Padding para mobile (10px topo/baixo, 15px laterais) */
-  display: flex;
-  justify-content: space-between; /* Coloca itens flex nos extremos opostos */
-  align-items: center; /* Alinha verticalmente logo e botão hamburger */
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 80px;
-  position: relative; /* Para o menu dropdown .menu-aberto se posicionar em relação ao header */
+  background-color: #004BAE; /* Cor de fundo azul primária */
+  padding: 5px 20px;         /* Espaçamento interno: 5px no topo/baixo, 20px nas laterais */
+  
+  /* Configuração do Flexbox para alinhar itens filhos (logo e botão hamburger) */
+  display: flex;                 /* Ativa o layout flexível */
+  justify-content: space-between; /* Distribui os itens: primeiro à esquerda, último à direita */
+  align-items: center;           /* Alinha verticalmente os itens no centro do header */
+  
+  width: 100%;                   /* Header ocupa toda a largura da tela */
+  box-sizing: border-box;        /* Padding e bordas não aumentam a largura/altura total do elemento */
+  position: relative;            /* Necessário para o posicionamento absoluto do menu dropdown no futuro */
+  /* A altura do header será definida pelo seu conteúdo (logo) + padding vertical (5px + 5px) = 110px */
 }
 
-/* --- Logo --- */
+/* --- Estilização da Seção da Logo --- */
+/* Seletor para a <div class="header__imagem"> */
 .header__imagem {
-  flex-shrink: 0; /* Impede que a div da logo encolha se não houver espaço */
+  /* Impede que a área da logo encolha se o espaço no header for limitado */
+  flex-shrink: 0; 
 }
 
+/* Seletor para o link <a> dentro da div da imagem */
 .header__imagem a {
-  display: inline-block; /* Para o link se comportar bem com a imagem */
+  display: inline-block; /* Garante que o link se comporte bem ao redor da imagem */
 }
 
+/* Seletor para a imagem <img> da logo */
 .header__logo-imagem {
-  display: block; /* Remove espaço extra abaixo da imagem */
-  height: 60px; /* Altura da logo no mobile */
-  width: auto; /* Mantém a proporção */
-  max-width: 100%; /* Garante que a logo não ultrapasse o container em telas muito pequenas */
-}
-
-/* --- Botão Hamburger (Visível apenas no Mobile) --- */
-.header__hamburger-button {
-  display: flex; /* Padrão mobile: visível */
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 24px;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  z-index: 1001; /* Para ficar acima do menu dropdown quando ele estiver posicionado */
-}
-
-.header__hamburger-bar {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background-color: white; /* Cor das barrinhas */
-  border-radius: 3px;
-  transition: all 0.3s ease-in-out; /* Para animação futura do 'X' */
-}
-
-/* Estilos para quando o menu está aberto (classe .menu-ativo no botão) */
-/* Isso é para animar o hamburger para um 'X' - precisará de JS */
-.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg); /* Ajuste os valores 8px e 7px conforme a altura do seu botão e espessura da barra */
-}
-.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(2) {
-  opacity: 0;
-}
-.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* --- Navegação Principal --- */
-/* O container da navegação que será escondido/mostrado */
-.header__navegar {
-  display: none; /* COMEÇA ESCONDIDO NO MOBILE */
-  position: absolute; /* Para sobrepor o conteúdo da página */
-  top: 60px; /* DEVE CORRESPONDER À ALTURA TOTAL DO HEADER NO MOBILE (60px logo + 2*10px padding) */
-  left: 0;
-  right: 0;
-  background-color: #003f8c; /* Um tom de azul um pouco diferente para o menu dropdown */
-  padding-top: 10px;
-  padding-bottom: 10px;
-  z-index: 1000; /* Para garantir que fique por cima de outros conteúdos, mas abaixo do botão se o botão animar */
-  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Linha sutil no topo */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-}
-
-/* Classe para mostrar o menu (será adicionada/removida via JavaScript) */
-.header__navegar.menu-aberto {
-  display: block; /* Ou display: flex; flex-direction: column; se preferir */
-}
-
-/* Elemento <nav> */
-.header__nav {
-  width: 100%;
-}
-
-.header__nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: stretch; /* Faz os itens (li) esticarem na largura */
-}
-
-/* Item da Lista <li> */
-.header__nav-item {
-  /* Não precisa de muito aqui se o link já for display: block e controlar o visual */
-}
-
-/* Link de Navegação <a> */
-.header__nav-link {
-  display: block; /* Para ocupar toda a largura do <li> e ser mais fácil de tocar */
-  padding: 12px 20px; /* Padding para os links no menu mobile */
-  color: white;
-  text-decoration: none;
-  font-family: var(
-    --fonte-principal,
-    "Roboto",
-    sans-serif
-  ); /* Pega do global.css ou usa Roboto */
-  font-size: 1rem; /* 16px (se a fonte base for 16px) */
-  font-weight: 500;
-  text-align: center; /* Ou 'left' com padding-left, se preferir */
-  transition: background-color 0.2s ease-in-out;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: transparent;
-}
-
-.header__nav-link:hover,
-.header__nav-link:focus {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.05
-  ); /* Leve destaque no hover/focus */
-}
-
-/* Link Ativo (página atual) */
-.header__nav-link--active {
-  font-weight: 700;
-  border-bottom-color: white;
-}
-
-/* ========================================================================== */
-/* MEDIA QUERIES - Estilos para Telas Maiores (Tablet e Desktop)              */
-/* ========================================================================== */
-
-/* A partir de tablets (ex: um breakpoint comum é 768px) */
-@media (min-width: 768px) {
-  header {
-    /* A altura pode ser a mesma ou aumentar um pouco. 
-       Se o min-height: 80px do mobile ainda for adequado, não precisa mexer.
-       Ou pode aumentar: height: 90px; por exemplo */
-    padding: 0 40px; /* Ajusta padding horizontal para telas maiores */
-  }
-
-  .header__logo-imagem {
-    height: 60px; /* Pode manter ou aumentar um pouco a logo */
-  }
-
-  .header__hamburger-button {
-    display: none; /* Esconde o botão hamburger em telas maiores */
-  }
-
-  .header__navegar {
-    display: flex !important; /* GARANTE que a navegação apareça e se comporte como flex container */
-    position: static; /* Reseta posicionamento absoluto do mobile */
-    width: auto; /* Largura automática, não 100% */
-    background-color: transparent; /* Remove fundo do dropdown */
-    padding: 0; /* Remove padding do dropdown */
-    z-index: auto; /* Reseta z-index */
-    border-top: none; /* Remove borda do dropdown */
-    box-shadow: none; /* Remove sombra do dropdown */
-    align-items: center; /* Alinha a <nav> verticalmente com a logo */
-  }
-
-  .header__nav {
-    width: auto;
-  }
-
-  .header__nav-list {
-    flex-direction: row; /* Links em linha */
-    align-items: center; /* Alinha os itens da lista verticalmente */
-  }
-
-  .header__nav-item {
-    width: auto; /* Largura automática para cada item */
-    margin-left: 20px; /* Espaçamento entre os itens da lista */
-    border-bottom: none; /* Remove borda do item (estava no link) */
-  }
-  .header__nav-item:first-child {
-    margin-left: 0; /* Remove margem do primeiro item */
-  }
-
-  .header__nav-link {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 8px 0; /* Padding vertical, sem padding lateral (o espaçamento vem do <li>) */
-    border-bottom: 2px solid transparent; /* Borda para efeito hover/ativo */
-  }
-
-  /* Garante que o último item não tenha a borda de separação do mobile */
-  .header__nav-item:last-child .header__nav-link {
-    border-bottom: 2px solid transparent;
-  }
-
-  .header__nav-link:hover,
-  .header__nav-link:focus {
-    background-color: transparent; /* Remove fundo do hover do mobile */
-    border-bottom-color: white; /* Borda branca no hover/focus */
-  }
-
-  .header__nav-link--active {
-    background-color: transparent;
-    border-bottom-color: white;
-    font-weight: 700;
-    border-bottom-color: white;
-  }
-}
-
-/* Opcional: A partir de desktops maiores (ex: 1024px ou 1200px) */
-@media (min-width: 1024px) {
-  header {
-    padding: 0 60px; /* Mais padding nas laterais */
-    /* Se quiser um header um pouco mais alto no desktop */
-    /* min-height: 100px;  */
-  }
-
-  .header__logo-imagem {
-    height: 70px; /* Logo um pouco maior */
-  }
-
-  .header__nav-item {
-    margin-left: 30px; /* Aumenta espaçamento entre links */
-  }
-
-  .header__nav-link {
-    font-size: 1.125rem; /* Equivalente a 18px se a fonte base for 16px */
-  }
+  display: block;   /* Remove qualquer espaço extra que a imagem (como elemento inline) possa ter embaixo */
+  height: 100px;    /* Altura desejada para a logo em telas pequenas */
+  width: auto;      /* Largura ajusta automaticamente para manter a proporção original da imagem */
+  max-width: 100%;  /* Garante que a logo nunca seja mais larga que seu contêiner pai */
 }
