@@ -11,7 +11,6 @@ header {
   display: flex;                 /* Ativa o layout flexível */
   justify-content: space-between; /* Distribui os itens: primeiro à esquerda, último à direita */
   align-items: center;           /* Alinha verticalmente os itens no centro do header */
-  
   width: 100%;                   /* Header ocupa toda a largura da tela */
   box-sizing: border-box;        /* Padding e bordas não aumentam a largura/altura total do elemento */
   position: relative;            /* Necessário para o posicionamento absoluto do menu dropdown no futuro */
@@ -36,4 +35,112 @@ header {
   height: 100px;    /* Altura desejada para a logo em telas pequenas */
   width: auto;      /* Largura ajusta automaticamente para manter a proporção original da imagem */
   max-width: 100%;  /* Garante que a logo nunca seja mais larga que seu contêiner pai */
+}
+
+/* --- Botão Hamburger (Visível apenas no Mobile) --- */
+.header__hamburger-button {
+  display: flex; /* Padrão mobile: visível */
+  flex-direction: column;
+  justify-content: space-around; /* Distribui as barrinhas verticalmente */
+  width: 30px;  /* Largura do botão */
+  height: 24px; /* Altura do botão */
+  background: transparent; /* Sem fundo */
+  border: none;            /* Sem borda */
+  padding: 0;              /* Sem padding interno */
+  cursor: pointer;
+  z-index: 1001; /* Para ficar acima do menu dropdown quando ele estiver posicionado */
+}
+
+.header__hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 3px; /* Espessura de cada barrinha */
+  background-color: white; /* Cor das barrinhas */
+  border-radius: 3px;    /* Cantos arredondados para as barrinhas */
+  transition: all 0.3s ease-in-out; /* Para animação suave ao transformar em 'X' */
+}
+
+/* Estilos para animar o hamburger para um 'X' quando o menu estiver ativo */
+/* A classe .menu-ativo seria adicionada ao BOTÃO via JavaScript */
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg); 
+}
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(2) {
+  opacity: 0; 
+}
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg); 
+}
+
+/* --- Navegação Principal (Menu Dropdown Mobile) --- */
+/* O container da navegação que será escondido/mostrado */
+.header__navegar {
+  display: noe; /* COMEÇA ESCONDIDO NO MOBILE POR PADRÃO */
+  position: absolute; /* Para sobrepor o conteúdo da página */
+  top: 110px;     /* DEVE CORRESPONDER À ALTURA TOTAL DO SEU HEADER ATUAL (logo de 100px + 2*5px de padding) */
+  left: 0;
+  right: 0;       /* Para ocupar a largura toda */
+  background-color: #003f8c; /* Um tom de azul um pouco diferente para o menu dropdown, para se destacar */
+  padding-top: 10px;    /* Espaçamento interno no topo do menu dropdown */
+  padding-bottom: 10px; /* Espaçamento interno embaixo do menu dropdown */
+  z-index: 1000;  /* Para garantir que fique por cima de outros conteúdos, mas abaixo do botão hamburger se ele tiver z-index maior */
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Uma linha sutil no topo do menu */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Uma sombra suave para dar profundidade */
+}
+
+/* Classe para mostrar o menu (será adicionada/removida via JavaScript) */
+.header__navegar.menu-aberto {
+  display: block; /* Torna o menu visível. Poderia ser 'flex' se você quisesse usar flexbox aqui dentro também. */
+}
+
+/* Elemento <nav> dentro do container do menu */
+.header__nav {
+  width: 100%; /* Ocupa toda a largura do .header__navegar */
+}
+
+/* A lista <ul> que contém os links */
+.header__nav-list {
+  list-style: none; /* Remove os marcadores de lista (bolinhas) */
+  margin: 0;
+  padding: 0;
+  display: flex;          /* Ativa flexbox para os itens da lista */
+  align-items: stretch;   /* Faz cada item <li> ocupar toda a largura disponível do menu */
+}
+
+/* O item da lista <li> */
+.header__nav-item {
+  /* Geralmente não precisamos de muitos estilos aqui se o link <a>
+     já for display:block e controlar o padding e o alinhamento do texto. */
+}
+
+/* O link de navegação <a> */
+.header__nav-link {
+  display: block; /* Faz o link ocupar toda a largura do <li>, tornando toda a área clicável */
+  padding: 12px 20px; /* Bom espaçamento interno para toque no mobile */
+  color: white;
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+  font-family: var(--fonte-principal, "Roboto", sans-serif); /* Usa a fonte do global.css ou fallback */
+  font-size: 1rem;    /* Tamanho de fonte padrão (ex: 16px) */
+  font-weight: 500;
+  text-align: center; /* Centraliza o texto dos links. Pode ser 'left' com padding se preferir. */
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out; /* Para hover e borda */
+  
+  /* Configuração da borda inferior para o link ativo */
+  border-bottom-style: solid;
+  border-bottom-width: 2px; /* Espessura da linha */
+  border-bottom-color: transparent; /* Por padrão, a linha é invisível */
+}
+
+/* Efeito de hover/focus para os links (opcional no mobile, mas bom para acessibilidade com teclado) */
+.header__nav-link:hover,
+.header__nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.05); /* Um leve destaque no fundo */
+  /* Se quiser a linha no hover/focus no mobile também: */
+  /* border-bottom-color: white; */
+}
+
+/* Estilo para o Link Ativo (página atual) */
+.header__nav-link--active {
+  font-weight: 700;             /* Deixa o texto em negrito */
+  border-bottom-color: white;    /* Faz a linha branca de 2px aparecer embaixo do item ativo */
 }
