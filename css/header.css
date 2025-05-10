@@ -1,39 +1,37 @@
-/*MOBILE*/
-/* Estilo do container principal do header */
+/*Mobile*/
+
+/* Estilo do container principal do header (<header>) */
 header {
-  background-color: #004bae; 
-  padding: 10px 15px;
-  min-height: 0;
-  display: flex; /
-  justify-content: space-between; 
-  align-items: center; 
-  width: 100%; /* Ocupa toda a largura */
-  box-sizing: border-box; /* Padding e borda não aumentam o tamanho total */
-  min-height: 70px; /* Uma altura mínima para o header no mobile */
+  background-color: #004bae;
+  padding: 10px 15px; /* Padding para mobile (10px topo/baixo, 15px laterais) */
+  display: flex;
+  justify-content: space-between; /* Coloca itens flex nos extremos opostos */
+  align-items: center; /* Alinha verticalmente logo e botão hamburger */
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 80px;
+  position: relative; /* Para o menu dropdown .menu-aberto se posicionar em relação ao header */
 }
 
+/* --- Logo --- */
 .header__imagem {
-  flex-shrink: 0;
+  flex-shrink: 0; /* Impede que a div da logo encolha se não houver espaço */
 }
 
-/* O link da logo */
 .header__imagem a {
-  display: inline-block; /* Bom para links com imagens */
+  display: inline-block; /* Para o link se comportar bem com a imagem */
 }
 
 .header__logo-imagem {
-  display: block;
-  height: 60px; /* Tente com uma logo um pouco menor no mobile */
-  width: auto;
-  max-width: 130px; /* Ajuste se necessário */
+  display: block; /* Remove espaço extra abaixo da imagem */
+  height: 60px; /* Altura da logo no mobile */
+  width: auto; /* Mantém a proporção */
+  max-width: 100%; /* Garante que a logo não ultrapasse o container em telas muito pequenas */
 }
 
-/* --- Botão Hamburger --- */
-/* Vamos estilizar isso no próximo passo, por enquanto ele existe no HTML */
+/* --- Botão Hamburger (Visível apenas no Mobile) --- */
 .header__hamburger-button {
-  /* Estilos virão aqui - por enquanto, ele estará visível se não tivermos JS para escondê-lo */
-  /* Para fins de desenvolvimento inicial sem JS, vamos deixá-lo visível */
-  display: flex; /* Vamos já usar flex para alinhar as barrinhas dentro dele */
+  display: flex; /* Padrão mobile: visível */
   flex-direction: column;
   justify-content: space-around;
   width: 30px;
@@ -42,6 +40,7 @@ header {
   border: none;
   padding: 0;
   cursor: pointer;
+  z-index: 1001; /* Para ficar acima do menu dropdown quando ele estiver posicionado */
 }
 
 .header__hamburger-bar {
@@ -50,33 +49,44 @@ header {
   height: 3px;
   background-color: white; /* Cor das barrinhas */
   border-radius: 3px;
+  transition: all 0.3s ease-in-out; /* Para animação futura do 'X' */
 }
 
-/* --- Navegação Principal (Escondida no Mobile por Padrão) --- */
+/* Estilos para quando o menu está aberto (classe .menu-ativo no botão) */
+/* Isso é para animar o hamburger para um 'X' - precisará de JS */
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg); /* Ajuste os valores 8px e 7px conforme a altura do seu botão e espessura da barra */
+}
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Navegação Principal --- */
+/* O container da navegação que será escondido/mostrado */
 .header__navegar {
-  display: none; /* COMEÇAMOS COM A NAVEGAÇÃO ESCONDIDA NO MOBILE */
-}
-
-/* Quando o menu estiver ABERTO no mobile (classe adicionada via JS no futuro)
-   ex: <div class="header__navegar menu-aberto"> 
-   OU ex: <body class="menu-overlay-aberto"> ... <div class="header__navegar"> 
-   Vamos preparar os estilos para quando ele estiver visível.
-*/
-.header__navegar.menu-aberto {
-  /* Exemplo de classe para mostrar */
-  display: block; /* Ou flex, dependendo de como você quer que ele apareça */
+  display: none; /* COMEÇA ESCONDIDO NO MOBILE */
   position: absolute; /* Para sobrepor o conteúdo da página */
-  top: 80px; /* Altura do seu header (ajuste se o min-height mudar) */
+  top: 60px; /* DEVE CORRESPONDER À ALTURA TOTAL DO HEADER NO MOBILE (60px logo + 2*10px padding) */
   left: 0;
-  right: 0; /* Para ocupar a largura toda */
-  background-color: #003f8c; /* Um azul um pouco diferente para o menu dropdown */
-  padding: 15px 0;
-  z-index: 1000; /* Para garantir que fique por cima de outros conteúdos */
+  right: 0;
+  background-color: #003f8c; /* Um tom de azul um pouco diferente para o menu dropdown */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 1000; /* Para garantir que fique por cima de outros conteúdos, mas abaixo do botão se o botão animar */
   border-top: 1px solid rgba(255, 255, 255, 0.2); /* Linha sutil no topo */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
+/* Classe para mostrar o menu (será adicionada/removida via JavaScript) */
+.header__navegar.menu-aberto {
+  display: block; /* Ou display: flex; flex-direction: column; se preferir */
+}
+
+/* Elemento <nav> */
 .header__nav {
-  /* O elemento <nav> em si */
   width: 100%;
 }
 
@@ -85,16 +95,17 @@ header {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Links empilhados */
-  align-items: stretch; /* Faz os itens esticarem na largura */
+  align-items: stretch; /* Faz os itens (li) esticarem na largura */
 }
 
+/* Item da Lista <li> */
 .header__nav-item {
-  /* Não precisa de muito aqui se o link já for display: block */
+  /* Não precisa de muito aqui se o link já for display: block e controlar o visual */
 }
 
+/* Link de Navegação <a> */
 .header__nav-link {
-  display: block; /* Para ocupar a largura e ter padding clicável */
+  display: block; /* Para ocupar toda a largura do <li> e ser mais fácil de tocar */
   padding: 12px 20px; /* Padding para os links no menu mobile */
   color: white;
   text-decoration: none;
@@ -102,24 +113,125 @@ header {
     --fonte-principal,
     "Roboto",
     sans-serif
-  ); /* Use a variável do seu global.css */
-  font-size: 1rem; /* 16px se a fonte base for 16px */
+  ); /* Pega do global.css ou usa Roboto */
+  font-size: 1rem; /* 16px (se a fonte base for 16px) */
   font-weight: 500;
-  text-align: center; /* Ou left, se preferir */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Linha sutil entre links */
-}
-
-.header__nav-item:last-child .header__nav-link {
-  border-bottom: none; /* Remove a borda do último item */
+  text-align: center; /* Ou 'left' com padding-left, se preferir */
+  transition: background-color 0.2s ease-in-out;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: transparent;
 }
 
 .header__nav-link:hover,
 .header__nav-link:focus {
-  background-color: rgba(255, 255, 255, 0.05); /* Leve destaque no hover */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.05
+  ); /* Leve destaque no hover/focus */
 }
 
-/* A classe --active é para o link da página atual, o estilo de "ativo" */
+/* Link Ativo (página atual) */
 .header__nav-link--active {
-  background-color: rgba(0, 0, 0, 0.1); /* Destaque diferente para o ativo */
-  font-weight: 700; /* Exemplo */
+  font-weight: 700;
+  border-bottom-color: white;
+}
+
+/* ========================================================================== */
+/* MEDIA QUERIES - Estilos para Telas Maiores (Tablet e Desktop)              */
+/* ========================================================================== */
+
+/* A partir de tablets (ex: um breakpoint comum é 768px) */
+@media (min-width: 768px) {
+  header {
+    /* A altura pode ser a mesma ou aumentar um pouco. 
+       Se o min-height: 80px do mobile ainda for adequado, não precisa mexer.
+       Ou pode aumentar: height: 90px; por exemplo */
+    padding: 0 40px; /* Ajusta padding horizontal para telas maiores */
+  }
+
+  .header__logo-imagem {
+    height: 60px; /* Pode manter ou aumentar um pouco a logo */
+  }
+
+  .header__hamburger-button {
+    display: none; /* Esconde o botão hamburger em telas maiores */
+  }
+
+  .header__navegar {
+    display: flex !important; /* GARANTE que a navegação apareça e se comporte como flex container */
+    position: static; /* Reseta posicionamento absoluto do mobile */
+    width: auto; /* Largura automática, não 100% */
+    background-color: transparent; /* Remove fundo do dropdown */
+    padding: 0; /* Remove padding do dropdown */
+    z-index: auto; /* Reseta z-index */
+    border-top: none; /* Remove borda do dropdown */
+    box-shadow: none; /* Remove sombra do dropdown */
+    align-items: center; /* Alinha a <nav> verticalmente com a logo */
+  }
+
+  .header__nav {
+    width: auto;
+  }
+
+  .header__nav-list {
+    flex-direction: row; /* Links em linha */
+    align-items: center; /* Alinha os itens da lista verticalmente */
+  }
+
+  .header__nav-item {
+    width: auto; /* Largura automática para cada item */
+    margin-left: 20px; /* Espaçamento entre os itens da lista */
+    border-bottom: none; /* Remove borda do item (estava no link) */
+  }
+  .header__nav-item:first-child {
+    margin-left: 0; /* Remove margem do primeiro item */
+  }
+
+  .header__nav-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 0; /* Padding vertical, sem padding lateral (o espaçamento vem do <li>) */
+    border-bottom: 2px solid transparent; /* Borda para efeito hover/ativo */
+  }
+
+  /* Garante que o último item não tenha a borda de separação do mobile */
+  .header__nav-item:last-child .header__nav-link {
+    border-bottom: 2px solid transparent;
+  }
+
+  .header__nav-link:hover,
+  .header__nav-link:focus {
+    background-color: transparent; /* Remove fundo do hover do mobile */
+    border-bottom-color: white; /* Borda branca no hover/focus */
+  }
+
+  .header__nav-link--active {
+    background-color: transparent;
+    border-bottom-color: white;
+    font-weight: 700;
+    border-bottom-color: white;
+  }
+}
+
+/* Opcional: A partir de desktops maiores (ex: 1024px ou 1200px) */
+@media (min-width: 1024px) {
+  header {
+    padding: 0 60px; /* Mais padding nas laterais */
+    /* Se quiser um header um pouco mais alto no desktop */
+    /* min-height: 100px;  */
+  }
+
+  .header__logo-imagem {
+    height: 70px; /* Logo um pouco maior */
+  }
+
+  .header__nav-item {
+    margin-left: 30px; /* Aumenta espaçamento entre links */
+  }
+
+  .header__nav-link {
+    font-size: 1.125rem; /* Equivalente a 18px se a fonte base for 16px */
+  }
 }
