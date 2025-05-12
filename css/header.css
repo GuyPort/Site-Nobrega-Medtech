@@ -104,18 +104,21 @@ header {
 .header__nav-list {
   list-style: none;
   margin: 0;
-  padding: 0 5px;
+  padding: 0 0px;
   display: flex;
   flex-direction: row; /* Sua preferência para os links no mobile dropdown */
   flex-wrap: wrap;
-  justify-content: center;
- 
+  justify-content: space-between;
+}
+
+.header__nav-item {
+  margin: 0; /* ALTERADO: Sem margens para maximizar espaço para os links */
 }
 
 /* O link de navegação <a> - Estilos base globais */
 .header__nav-link {
   display: inline-block;
-  padding: 10px 4px;
+  padding: 10px 22px;
   color: white;
   text-decoration: none;
   font-family: var(--fonte-principal, "Roboto", sans-serif);
