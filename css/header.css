@@ -104,7 +104,7 @@ header {
 .header__nav-list {
   list-style: none;
   margin: 0;
-  padding: 0 10px;
+  padding: 0 1px;
   display: flex;
   flex-direction: row; /* Sua preferência para os links no mobile dropdown */
   flex-wrap: wrap;
@@ -114,7 +114,7 @@ header {
 /* O link de navegação <a> - Estilos base globais */
 .header__nav-link {
   display: inline-block;
-  padding: 10px 15px;
+  padding: 10px 8px;
   color: white;
   text-decoration: none;
   font-family: var(--fonte-principal, "Roboto", sans-serif);
