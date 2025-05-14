@@ -253,13 +253,13 @@ header {
     /* Remove a margem vertical de 0.5px se não for mais necessária */
   }
 
-  .header__nav-link:hover {
+  .header__nav-link:hover,
+  .header__nav-link:focus {
     background-color: #004bae;
     text-decoration: underline;
-    font-weight: 700; /* Deixa o texto em negrito */
-    text-decoration-color: white;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 8px;
+    text-decoration-color: rgba(255, 255, 255, 0.7);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
   }
 }
 @media (min-width: 1200px) {

@@ -1,0 +1,100 @@
+/* ==========================================================================
+  MOBILE FIRST
+   (Telas menores que 768px)
+   ========================================================================== */
+
+/* Estilo geral do container <footer> */
+footer {
+  background-color: #004bae; /* SUGESTÃO DE COR AZUL - Qual é a cor hexadecimal exata do azul Nobrega Medtech? */
+  color: #FFFFFF;          /* SUGESTÃO DE COR BRANCA para o texto - Confirma? */
+  padding-top: 30px;       /* Espaçamento interno superior */
+  padding-bottom: 30px;    /* Espaçamento interno inferior */
+  padding-left: 15px;      /* Espaçamento interno lateral */
+  padding-right: 15px;     /* Espaçamento interno lateral */
+  display: flex;
+  flex-direction: column; /* Empilha as seções filhas verticalmente */
+  gap: 25px;              /* Espaço vertical ENTRE as seções (logo, contato, direitos) - Ajuste conforme gosto */
+}
+
+/* 1. Seção Logo e Ícones Sociais (.logo__footer) */
+.logo__footer {
+  display: flex;
+  flex-direction: column;   /* Logo acima, ícones sociais abaixo */
+  align-items: center;      /* Centraliza o logo e a fileira de ícones na horizontal */
+  gap: 20px;                /* Espaço entre o logo e o container dos ícones sociais - Ajuste */
+}
+
+.footer__logo-img {         /* Para a <img> do logo */
+  max-width: 180px;         /* Qual o tamanho ideal para o logo no mobile? */
+  height: auto;             /* Mantém a proporção */
+}
+
+.footer__social-icons {     /* Container dos ícones <a><img></a> */
+  display: flex;
+  flex-wrap: wrap;          /* Permite que os ícones quebrem a linha se necessário */
+  justify-content: center;  /* Centraliza os ícones */
+  gap: 15px;                /* Espaço ENTRE cada ícone social - Ajuste */
+}
+
+.footer__social-icons img { /* Para as <img> dos ícones sociais */
+  width: 32px;              /* Qual o tamanho ideal para os ícones sociais no mobile (ex: 30px, 35px)? */
+  height: 32px;
+  vertical-align: middle;   /* Bom para alinhamento de imagens */
+}
+
+.footer__social-icons a:hover img { /* Efeito simples de feedback visual */
+  opacity: 0.8;
+}
+
+/* 2. Seção de Contato (.footer__contato-info) */
+.footer__contato-info {
+  text-align: center;       /* Centraliza o título "CONTATO" e a lista de contato */
+}
+
+.footer__contato-titulo {   /* Para o <h2> "CONTATO" */
+  font-size: 1.2em;         /* Tamanho da fonte para "CONTATO" - Ajuste */
+  /* font-family: 'SuaFontePrincipal', sans-serif; - Se diferente da global */
+  font-weight: 700;         /* Negrito (bold) - Ajuste (ex: 500 para médio, 700 para bold) */
+  margin-bottom: 15px;      /* Espaço abaixo do título "CONTATO" - Ajuste */
+  text-transform: uppercase;/* Deixa "CONTATO" em maiúsculas? (Sim/Não) */
+}
+
+.footer__contato-lista {    /* Para a <div> que contém o telefone e e-mail */
+  display: flex;
+  flex-direction: column;   /* Telefone acima, e-mail abaixo */
+  gap: 8px;                 /* Espaço entre o parágrafo do telefone e o do e-mail - Ajuste */
+}
+
+.footer__contato-lista p {
+  font-size: 1em;          /* Tamanho da fonte para telefone/e-mail - Ajuste */
+  /* font-family: 'SuaFonteDeTexto', sans-serif; - Se diferente da global */
+  line-height: 1.6;         /* Espaçamento entre linhas para boa legibilidade */
+  margin: 0;                /* Remove margens padrão do <p> se o gap do flex pai for suficiente */
+}
+
+.footer__contato-lista a {
+  color: #FFFFFF;           /* Garante que o link do e-mail seja branco (ou a cor de texto definida no footer) */
+  text-decoration: none;    /* Remove o sublinhado padrão */
+}
+
+.footer__contato-lista a:hover {
+  text-decoration: underline;/* Adiciona sublinhado ao passar o mouse, para indicar que é clicável */
+}
+
+/* 3. Seção de Direitos Autorais (.footer__direitos) */
+.footer__direitos {
+  text-align: center;       /* Centraliza o CNPJ e o copyright */
+  font-size: 0.85em;        /* Tamanho de fonte menor para estas informações - Ajuste */
+  /* font-family: 'SuaFonteDeTextoMenor', sans-serif; - Se diferente da global */
+  line-height: 1.5;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Linha divisória sutil OPCIONAL acima desta seção */
+  padding-top: 20px;        /* Espaçamento acima, se usar a borda - Ajuste */
+}
+
+.footer__direitos p {
+  margin-bottom: 8px;       /* Espaço entre o CNPJ e a linha de copyright - Ajuste */
+}
+
+.footer__direitos p:last-child {
+  margin-bottom: 0;         /* Remove margem inferior do último parágrafo */
+}
