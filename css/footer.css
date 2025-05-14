@@ -7,7 +7,7 @@
 footer {
   background-color: #004bae; /* SUGESTÃO DE COR AZUL - Qual é a cor hexadecimal exata do azul Nobrega Medtech? */
   color: #FFFFFF;          /* SUGESTÃO DE COR BRANCA para o texto - Confirma? */
-  padding-top: 30px;       /* Espaçamento interno superior */
+  padding-top: 10px;       /* Espaçamento interno superior */
   padding-bottom: 30px;    /* Espaçamento interno inferior */
   padding-left: 15px;      /* Espaçamento interno lateral */
   padding-right: 15px;     /* Espaçamento interno lateral */
@@ -21,11 +21,11 @@ footer {
   display: flex;
   flex-direction: column;   /* Logo acima, ícones sociais abaixo */
   align-items: center;      /* Centraliza o logo e a fileira de ícones na horizontal */
-  gap: 20px;                /* Espaço entre o logo e o container dos ícones sociais - Ajuste */
+  gap: 0px;                /* Espaço entre o logo e o container dos ícones sociais - Ajuste */
 }
 
 .footer__logo-img {         /* Para a <img> do logo */
-  max-width: 180px;         /* Qual o tamanho ideal para o logo no mobile? */
+  max-width: 210px;         /* Qual o tamanho ideal para o logo no mobile? */
   height: auto;             /* Mantém a proporção */
 }
 
