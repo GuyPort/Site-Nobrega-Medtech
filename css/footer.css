@@ -13,7 +13,7 @@ footer {
   padding-right: 15px;     /* Espaçamento interno lateral */
   display: flex;
   flex-direction: column; /* Empilha as seções filhas verticalmente */
-  gap: 25px;              /* Espaço vertical ENTRE as seções (logo, contato, direitos) - Ajuste conforme gosto */
+  gap: 20px;              /* Espaço vertical ENTRE as seções (logo, contato, direitos) - Ajuste conforme gosto */
 }
 
 /* 1. Seção Logo e Ícones Sociais (.logo__footer) */
@@ -37,8 +37,8 @@ footer {
 }
 
 .footer__social-icons img { /* Para as <img> dos ícones sociais */
-  width: 32px;              /* Qual o tamanho ideal para os ícones sociais no mobile (ex: 30px, 35px)? */
-  height: 32px;
+  width: auto;              /* Qual o tamanho ideal para os ícones sociais no mobile (ex: 30px, 35px)? */
+  height: 50px;
   vertical-align: middle;   /* Bom para alinhamento de imagens */
 }
 
