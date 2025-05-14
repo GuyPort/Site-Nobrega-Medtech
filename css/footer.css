@@ -33,7 +33,7 @@ footer {
   display: flex;
   flex-wrap: wrap;          /* Permite que os ícones quebrem a linha se necessário */
   justify-content: center;  /* Centraliza os ícones */
-  gap: 15px;                /* Espaço ENTRE cada ícone social - Ajuste */
+  gap: 8px;                /* Espaço ENTRE cada ícone social - Ajuste */
 }
 
 .footer__social-icons img { /* Para as <img> dos ícones sociais */
