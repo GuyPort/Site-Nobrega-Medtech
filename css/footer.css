@@ -38,7 +38,7 @@ footer {
 
 .footer__social-icons img { /* Para as <img> dos ícones sociais */
   width: auto;              /* Qual o tamanho ideal para os ícones sociais no mobile (ex: 30px, 35px)? */
-  height: 50px;
+  height: 35px;
   vertical-align: middle;   /* Bom para alinhamento de imagens */
 }
 
