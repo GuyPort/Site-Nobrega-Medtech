@@ -9,12 +9,12 @@ footer {
   background-color: #004bae; /* Cor de fundo azul padrão para o rodapé. */
   color: #ffffff; /* Cor padrão do texto dentro do rodapé (branco). */
   padding-top: 10px; /* Espaçamento interno superior, ajustado para complementar o design do logo. */
-  padding-bottom: 30px; /* Espaçamento interno inferior */
+  padding-bottom: 10px; /* Espaçamento interno inferior */
   padding-left: 15px; /* Espaçamento interno na lateral esquerda. */
   padding-right: 15px; /* Espaçamento interno na lateral direito. */
   display: flex; /* Habilita o layout Flexbox. */
   flex-direction: column; /* Empilha os filhos diretos verticalmente. */
-  gap: 20px; /* Espaço vertical de 20px entre as seções filhas diretas (logo, contato, direitos). */
+  gap: 10px; /* Espaço vertical de 20px entre as seções filhas diretas (logo, contato, direitos). */
   /* flex-shrink: 0; foi adicionado no global.css para o comportamento de "sticky footer". */
 }
 
@@ -138,7 +138,7 @@ footer {
   }
 
   .logo__footer {
-    width: 30%;
+    width: 35%;
   }
 
   .footer__social-icons {
@@ -146,7 +146,7 @@ footer {
   }
 
   .footer__social-icons img {
-    height: 50px; /* Seu tamanho aumentado para os ícones */
+    height: 47px; /* Seu tamanho aumentado para os ícones */
   }
 
   .footer__contato-info {
@@ -180,6 +180,10 @@ footer {
 
   .footer__logo-img {
     max-width: 160px;
+  }
+
+  .footer__social-icons img {
+    height: 49px; /* Seu tamanho aumentado para os ícones */
   }
 
   .footer__contato-titulo {
