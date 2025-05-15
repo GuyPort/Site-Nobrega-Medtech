@@ -1,33 +1,35 @@
 /* ==========================================================================
-  MOBILE FIRST
+   MOBILE FIRST
    (Telas menores que 768px)
-   ========================================================================== */
+   Define os estilos base do rodapé, otimizados para dispositivos móveis.
+   ========================================================================== *
 
 /* Estilo geral do container <footer> */
 footer {
-  background-color: #004bae; /* SUGESTÃO DE COR AZUL - Qual é a cor hexadecimal exata do azul Nobrega Medtech? */
-  color: #ffffff; /* SUGESTÃO DE COR BRANCA para o texto - Confirma? */
-  padding-top: 10px; /* Espaçamento interno superior */
+  background-color: #004bae; /* Cor de fundo azul padrão para o rodapé. */
+  color: #ffffff; /* Cor padrão do texto dentro do rodapé (branco). */
+  padding-top: 10px; /* Espaçamento interno superior, ajustado para complementar o design do logo. */
   padding-bottom: 30px; /* Espaçamento interno inferior */
-  padding-left: 15px; /* Espaçamento interno lateral */
-  padding-right: 15px; /* Espaçamento interno lateral */
-  display: flex;
-  flex-direction: column; /* Empilha as seções filhas verticalmente */
-  gap: 20px; /* Espaço vertical ENTRE as seções (logo, contato, direitos) - Ajuste conforme gosto */
+  padding-left: 15px; /* Espaçamento interno na lateral esquerda. */
+  padding-right: 15px; /* Espaçamento interno na lateral direito. */
+  display: flex; /* Habilita o layout Flexbox. */
+  flex-direction: column; /* Empilha os filhos diretos verticalmente. */
+  gap: 20px; /* Espaço vertical de 20px entre as seções filhas diretas (logo, contato, direitos). */
+  /* flex-shrink: 0; foi adicionado no global.css para o comportamento de "sticky footer". */
 }
 
 /* 1. Seção Logo e Ícones Sociais (.logo__footer) */
 .logo__footer {
-  display: flex;
-  flex-direction: column; /* Logo acima, ícones sociais abaixo */
-  align-items: center; /* Centraliza o logo e a fileira de ícones na horizontal */
-  gap: 0px; /* Espaço entre o logo e o container dos ícones sociais - Ajuste */
+  display: flex; /* Habilita Flexbox para alinhar logo e ícones internamente. */
+  flex-direction: column; /* Empilha a imagem do logo acima da div dos ícones sociais. */
+  align-items: center;  /* Centraliza horizontalmente o logo e a div dos ícones. */
+  gap: 0px; /* Remove o 'gap' entre logo e ícones, pois o espaçamento visual é dado pelo design das imagens. */
 }
 
+/* Estilos para a imagem <img> do logo */
 .footer__logo-img {
-  /* Para a <img> do logo */
-  max-width: 210px; /* Qual o tamanho ideal para o logo no mobile? */
-  height: auto; /* Mantém a proporção */
+  max-width: 120px; /* Largura máxima para o logo em telas mobile. */
+  height: auto; /* Mantém a proporção da imagem. */
 }
 
 .footer__social-icons {
@@ -126,7 +128,7 @@ footer {
   }
 
   .footer__logo-img {
-    max-width: 215px; /* Seu tamanho aumentado para o logo */
+    max-width: 150px; /* Seu tamanho aumentado para o logo */
   }
 
   .logo__footer,
@@ -177,7 +179,7 @@ footer {
   }
 
   .footer__logo-img {
-    max-width: 230px;
+    max-width: 160px;
   }
 
   .footer__contato-titulo {
