@@ -1,7 +1,32 @@
+;/* No seu arquivo CSS global (ex: global.css ou style.css) */
+
+html {
+  height: 100%; /* Garante que <html> ocupe toda a altura da viewport */
+}
+
 body {
+  display: flex;          /* Ativa o Flexbox para o body */
+  flex-direction: column; /* Organiza os filhos diretos do body (ex: <header>, <main>, <footer>) em coluna */
+  min-height: 100vh;      /* Faz com que o body ocupe no mínimo 100% da altura da viewport (vh = viewport height) */
+  margin: 0;              /* Remove margens padrão do body, se houver */
   padding: 0;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: var(--fonte-principal, "Roboto", sans-serif);
+}
+
+/* Assumindo que o conteúdo principal da sua página está dentro de uma tag <main>
+   ou uma <div class="conteudo-principal">, por exemplo.
+   Ajuste o seletor se necessário. */
+main { /* Ou o seletor do seu container de conteúdo principal */
+  flex-grow: 1; /* Esta é a mágica! Faz esta seção "crescer" e ocupar todo o espaço vertical
+                   disponível, empurrando o <footer> para baixo. */
+}
+
+/* Seus estilos de footer (em css/footer.css) não precisam mudar para esta técnica funcionar,
+   mas você pode adicionar 'flex-shrink: 0;' ao footer se quiser garantir que ele não encolha. */
+footer {
+  /* ...seus estilos atuais do footer... */
+  flex-shrink: 0; /* Opcional: impede que o footer encolha se o conteúdo do main for muito grande e tentar espremê-lo. */
 }

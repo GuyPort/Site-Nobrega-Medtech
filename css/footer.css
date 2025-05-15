@@ -6,95 +6,185 @@
 /* Estilo geral do container <footer> */
 footer {
   background-color: #004bae; /* SUGESTÃO DE COR AZUL - Qual é a cor hexadecimal exata do azul Nobrega Medtech? */
-  color: #FFFFFF;          /* SUGESTÃO DE COR BRANCA para o texto - Confirma? */
-  padding-top: 10px;       /* Espaçamento interno superior */
-  padding-bottom: 30px;    /* Espaçamento interno inferior */
-  padding-left: 15px;      /* Espaçamento interno lateral */
-  padding-right: 15px;     /* Espaçamento interno lateral */
+  color: #ffffff; /* SUGESTÃO DE COR BRANCA para o texto - Confirma? */
+  padding-top: 10px; /* Espaçamento interno superior */
+  padding-bottom: 30px; /* Espaçamento interno inferior */
+  padding-left: 15px; /* Espaçamento interno lateral */
+  padding-right: 15px; /* Espaçamento interno lateral */
   display: flex;
   flex-direction: column; /* Empilha as seções filhas verticalmente */
-  gap: 20px;              /* Espaço vertical ENTRE as seções (logo, contato, direitos) - Ajuste conforme gosto */
+  gap: 20px; /* Espaço vertical ENTRE as seções (logo, contato, direitos) - Ajuste conforme gosto */
 }
 
 /* 1. Seção Logo e Ícones Sociais (.logo__footer) */
 .logo__footer {
   display: flex;
-  flex-direction: column;   /* Logo acima, ícones sociais abaixo */
-  align-items: center;      /* Centraliza o logo e a fileira de ícones na horizontal */
-  gap: 0px;                /* Espaço entre o logo e o container dos ícones sociais - Ajuste */
+  flex-direction: column; /* Logo acima, ícones sociais abaixo */
+  align-items: center; /* Centraliza o logo e a fileira de ícones na horizontal */
+  gap: 0px; /* Espaço entre o logo e o container dos ícones sociais - Ajuste */
 }
 
-.footer__logo-img {         /* Para a <img> do logo */
-  max-width: 210px;         /* Qual o tamanho ideal para o logo no mobile? */
-  height: auto;             /* Mantém a proporção */
+.footer__logo-img {
+  /* Para a <img> do logo */
+  max-width: 210px; /* Qual o tamanho ideal para o logo no mobile? */
+  height: auto; /* Mantém a proporção */
 }
 
-.footer__social-icons {     /* Container dos ícones <a><img></a> */
+.footer__social-icons {
+  /* Container dos ícones <a><img></a> */
   display: flex;
-  flex-wrap: wrap;          /* Permite que os ícones quebrem a linha se necessário */
-  justify-content: center;  /* Centraliza os ícones */
-  gap: 8px;                /* Espaço ENTRE cada ícone social - Ajuste */
+  flex-wrap: wrap; /* Permite que os ícones quebrem a linha se necessário */
+  justify-content: center; /* Centraliza os ícones */
+  gap: 8px; /* Espaço ENTRE cada ícone social - Ajuste */
 }
 
-.footer__social-icons img { /* Para as <img> dos ícones sociais */
-  width: auto;              /* Qual o tamanho ideal para os ícones sociais no mobile (ex: 30px, 35px)? */
+.footer__social-icons img {
+  /* Para as <img> dos ícones sociais */
+  width: auto; /* Qual o tamanho ideal para os ícones sociais no mobile (ex: 30px, 35px)? */
   height: 45px;
-  vertical-align: middle;   /* Bom para alinhamento de imagens */
+  vertical-align: middle; /* Bom para alinhamento de imagens */
 }
 
-.footer__social-icons a:hover img { /* Efeito simples de feedback visual */
+.footer__social-icons a:hover img {
+  /* Efeito simples de feedback visual */
   opacity: 0.8;
 }
 
 /* 2. Seção de Contato (.footer__contato-info) */
 .footer__contato-info {
-  text-align: center;       /* Centraliza o título "CONTATO" e a lista de contato */
+  text-align: center; /* Centraliza o título "CONTATO" e a lista de contato */
 }
 
-.footer__contato-titulo {   /* Para o <h2> "CONTATO" */
-  font-size: 1.2em;         /* Tamanho da fonte para "CONTATO" - Ajuste */
+.footer__contato-titulo {
+  /* Para o <h2> "CONTATO" */
+  font-size: 1.2em; /* Tamanho da fonte para "CONTATO" - Ajuste */
   /* font-family: 'SuaFontePrincipal', sans-serif; - Se diferente da global */
-  font-weight: 700;         /* Negrito (bold) - Ajuste (ex: 500 para médio, 700 para bold) */
-  margin-bottom: 15px;      /* Espaço abaixo do título "CONTATO" - Ajuste */
-  text-transform: uppercase;/* Deixa "CONTATO" em maiúsculas? (Sim/Não) */
+  font-weight: 700; /* Negrito (bold) - Ajuste (ex: 500 para médio, 700 para bold) */
+  margin-bottom: 15px; /* Espaço abaixo do título "CONTATO" - Ajuste */
+  text-transform: uppercase; /* Deixa "CONTATO" em maiúsculas? (Sim/Não) */
 }
 
-.footer__contato-lista {    /* Para a <div> que contém o telefone e e-mail */
+.footer__contato-lista {
+  /* Para a <div> que contém o telefone e e-mail */
   display: flex;
-  flex-direction: column;   /* Telefone acima, e-mail abaixo */
-  gap: 8px;                 /* Espaço entre o parágrafo do telefone e o do e-mail - Ajuste */
+  flex-direction: column; /* Telefone acima, e-mail abaixo */
+  gap: 8px; /* Espaço entre o parágrafo do telefone e o do e-mail - Ajuste */
 }
 
 .footer__contato-lista p {
-  font-size: 1em;          /* Tamanho da fonte para telefone/e-mail - Ajuste */
+  font-size: 1em; /* Tamanho da fonte para telefone/e-mail - Ajuste */
   /* font-family: 'SuaFonteDeTexto', sans-serif; - Se diferente da global */
-  line-height: 1.6;         /* Espaçamento entre linhas para boa legibilidade */
-  margin: 0;                /* Remove margens padrão do <p> se o gap do flex pai for suficiente */
+  line-height: 1.6; /* Espaçamento entre linhas para boa legibilidade */
+  margin: 0; /* Remove margens padrão do <p> se o gap do flex pai for suficiente */
 }
 
 .footer__contato-lista a {
-  color: #FFFFFF;           /* Garante que o link do e-mail seja branco (ou a cor de texto definida no footer) */
-  text-decoration: none;    /* Remove o sublinhado padrão */
+  color: #ffffff; /* Garante que o link do e-mail seja branco (ou a cor de texto definida no footer) */
+  text-decoration: none; /* Remove o sublinhado padrão */
 }
 
 .footer__contato-lista a:hover {
-  text-decoration: underline;/* Adiciona sublinhado ao passar o mouse, para indicar que é clicável */
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse, para indicar que é clicável */
 }
 
 /* 3. Seção de Direitos Autorais (.footer__direitos) */
 .footer__direitos {
-  text-align: center;       /* Centraliza o CNPJ e o copyright */
-  font-size: 0.85em;        /* Tamanho de fonte menor para estas informações - Ajuste */
+  text-align: center; /* Centraliza o CNPJ e o copyright */
+  font-size: 0.85em; /* Tamanho de fonte menor para estas informações - Ajuste */
   /* font-family: 'SuaFonteDeTextoMenor', sans-serif; - Se diferente da global */
   line-height: 1.5;
   border-top: 1px solid rgba(255, 255, 255, 0.2); /* Linha divisória sutil OPCIONAL acima desta seção */
-  padding-top: 20px;        /* Espaçamento acima, se usar a borda - Ajuste */
+  padding-top: 20px; /* Espaçamento acima, se usar a borda - Ajuste */
 }
 
 .footer__direitos p {
-  margin-bottom: 8px;       /* Espaço entre o CNPJ e a linha de copyright - Ajuste */
+  margin-bottom: 8px; /* Espaço entre o CNPJ e a linha de copyright - Ajuste */
 }
 
 .footer__direitos p:last-child {
-  margin-bottom: 0;         /* Remove margem inferior do último parágrafo */
+  margin-bottom: 0; /* Remove margem inferior do último parágrafo */
+}
+
+/* ==========================================================================
+   TABLET E TELAS MAIORES - AJUSTES FINAIS DE ESPAÇAMENTO
+   (A partir de 768px)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 0px; /* Ex: Reduzido para 20px. Ajuste este valor! */
+    padding-right: 30px;
+    padding-bottom: 15px; /* Mantendo um bom espaço abaixo */
+    padding-left: 30px;
+
+    gap: 0;
+  }
+
+  .footer__logo-img {
+    max-width: 215px; /* Seu tamanho aumentado para o logo */
+  }
+
+  .logo__footer,
+  .footer__contato-info,
+  .footer__direitos {
+    box-sizing: border-box;
+  }
+
+  .logo__footer {
+    width: 30%;
+  }
+
+  .footer__social-icons {
+    justify-content: flex-start;
+  }
+
+  .footer__social-icons img {
+    height: 50px; /* Seu tamanho aumentado para os ícones */
+  }
+
+  .footer__contato-info {
+    width: 40%;
+    padding-top: 60px; /* Mantido para o alinhamento vertical do conteúdo de contato */
+  }
+
+  .footer__direitos {
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1px;
+  }
+}
+
+/* ==========================================================================
+   TELAS MUITO LARGAS (EX: DESKTOPS GRANDES)
+   (A partir de 1200px)
+   ========================================================================== */
+
+@media (min-width: 1200px) {
+  footer {
+    /* Mantemos os paddings verticais que você definiu para 768px,
+       mas aumentamos os paddings laterais para conter o conteúdo. */
+    padding-top: 0px; /* Herdado ou igual ao de 768px */
+    padding-bottom: 15px; /* Herdado ou igual ao de 768px */
+
+    padding-left: 80px; /* Exemplo: de 30px para 80px. Ajuste este valor! */
+    padding-right: 80px; /* Exemplo: de 30px para 80px. Ajuste este valor! */
+  }
+
+  .footer__logo-img {
+    max-width: 230px;
+  }
+
+  .footer__contato-titulo {
+    font-size: 1.25em;
+  }
+
+  .footer__contato-lista p {
+    font-size: 1.05em;
+  }
 }
