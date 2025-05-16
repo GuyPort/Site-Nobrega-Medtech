@@ -3,64 +3,68 @@
    ========================================================================== */
 
 .hero-banner {
-    background: linear-gradient(to right, #FFFFFF, #5D9CEC);  /*Fundo com o degradê escolhido: Branco (esquerda) para Azul Nobrega (direita) */ 
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #5d9cec
+  ); /*Fundo com o degradê escolhido: Branco (esquerda) para Azul Nobrega (direita) */
 
-    /* Layout Flexbox para organizar o conteúdo internamente */
-    display: flex;
-    flex-direction: column; /* Empilha os itens (logo, título, médico) verticalmente no mobile */
-    align-items: center;   /* Centraliza os itens filhos horizontalmente */
-    
-    /* Alinhamento do texto para os filhos diretos (pode ser sobrescrito em elementos específicos) */
-    text-align: center;    
+  /* Layout Flexbox para organizar o conteúdo internamente */
+  display: flex;
+  flex-direction: column; /* Empilha os itens (logo, título, médico) verticalmente no mobile */
+  align-items: center; /* Centraliza os itens filhos horizontalmente */
 
-    /* Espaçamento interno para o conteúdo não colar nas bordas */
-    padding-top: 55px;    /* Exemplo: padding-top: var(--padding-hero-vertical-mobile); */
-    padding-left: 20px;   /* Exemplo: padding-left: var(--padding-hero-horizontal-mobile); */
-    padding-right: 20px;  /* Exemplo: padding-right: var(--padding-hero-horizontal-mobile); */
-    
-    /* Altura mínima para garantir impacto visual */
-    min-height: 50vh;     /* Exemplo: min-height: var(--min-height-hero-mobile); */
-    
-    /* Propriedades importantes para um container principal */
-    position: relative; /* Permite posicionamento absoluto de elementos filhos (ex: detalhes gráficos) */
-    overflow: hidden;   /* Evita que conteúdo interno "vaze" e crie barras de rolagem desnecessárias */
-    box-sizing: border-box; /* Garante que padding e border não aumentem as dimensões totais do elemento */
+  /* Alinhamento do texto para os filhos diretos (pode ser sobrescrito em elementos específicos) */
+  text-align: center;
+
+  /* Espaçamento interno para o conteúdo não colar nas bordas */
+  padding-top: 55px; /* Exemplo: padding-top: var(--padding-hero-vertical-mobile); */
+  padding-left: 10px; /* Exemplo: padding-left: var(--padding-hero-horizontal-mobile); */
+  padding-right: 10px; /* Exemplo: padding-right: var(--padding-hero-horizontal-mobile); */
+
+  /* Altura mínima para garantir impacto visual */
+  min-height: 50vh; /* Exemplo: min-height: var(--min-height-hero-mobile); */
+
+  /* Propriedades importantes para um container principal */
+  position: relative; /* Permite posicionamento absoluto de elementos filhos (ex: detalhes gráficos) */
+  overflow: hidden; /* Evita que conteúdo interno "vaze" e crie barras de rolagem desnecessárias */
+  box-sizing: border-box; /* Garante que padding e border não aumentem as dimensões totais do elemento */
 }
 
 .hero-banner__title {
-    /* Cor do texto definida para mobile (cinza azulado escuro) */
-    color: #34495e; 
-    /* Usando variáveis (se definidas globalmente): */
-    /* color: var(--cor-cinza-azulado-escuro); */
-    
-    font-family: "Roboto", sans-serif; /* Idealmente usar var(--fonte-principal) */
-    font-size: 2rem;   /* Tamanho de fonte impactante para o título no mobile */
-                         /* Exemplo: font-size: var(--font-size-hero-title-mobile); */
-    font-weight: 700;    /* Títulos principais geralmente são em negrito */
-    line-height: 1.3;    /* Altura da linha para boa legibilidade */
-                         /* Exemplo: line-height: var(--line-height-hero-title-mobile); */
-    
-    margin: 0; /* Remove margens padrão do h1 para controle preciso */
-    margin-bottom: 37px; /* Espaçamento abaixo do título, antes do próximo elemento (logo ou médico) */
-                         /* Exemplo: margin-bottom: var(--margin-bottom-hero-title-mobile); */
-    
-    max-width: 95%; /* Evita que o título comprido toque as bordas em telas muito estreitas, melhora a leitura */
-                    /* Pode ajustar este valor conforme necessário */
+  /* Cor do texto definida para mobile (cinza azulado escuro) */
+  color: #34495e;
+  /* Usando variáveis (se definidas globalmente): */
+  /* color: var(--cor-cinza-azulado-escuro); */
+
+  font-family: "Roboto", sans-serif; /* Idealmente usar var(--fonte-principal) */
+  font-size: 2rem; /* Tamanho de fonte impactante para o título no mobile */
+  /* Exemplo: font-size: var(--font-size-hero-title-mobile); */
+  font-weight: 700; /* Títulos principais geralmente são em negrito */
+  line-height: 1.3; /* Altura da linha para boa legibilidade */
+  /* Exemplo: line-height: var(--line-height-hero-title-mobile); */
+
+  margin: 0; /* Remove margens padrão do h1 para controle preciso */
+  margin-bottom: 10px; /* Espaçamento abaixo do título, antes do próximo elemento (logo ou médico) */
+  /* Exemplo: margin-bottom: var(--margin-bottom-hero-title-mobile); */
+
+  max-width: 100%; /* Evita que o título comprido toque as bordas em telas muito estreitas, melhora a leitura */
+  /* Pode ajustar este valor conforme necessário */
 }
 
 /* No .hero-banner__logo */
 .hero-banner__logo {
-    display: block;
-    max-width: 170px;
-    height: auto;
-    margin-bottom: 0;
-    transform: translateX(-60px);
+  display: block;
+  max-width: 170px;
+  height: auto;
+  margin-bottom: 0;
+  transform: translateX(-60px);
 }
 
 .hero-banner__doctor-image {
-    display: block;
-    max-width: 200px;
-    height: auto;
-    margin-top: -100px;
-    transform: translateX(60px);
+  display: block;
+  max-width: 200px;
+  height: auto;
+  margin-top: -100px;
+  transform: translateX(60px);
 }
