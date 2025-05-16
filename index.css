@@ -36,7 +36,7 @@
   color: #003f8c; 
 
 
-  font-family: "Roboto", sans-serif; /* Idealmente usar var(--fonte-principal) */
+  font-family: 'Montserrat', sans-serif;
   font-size: 2rem; /* Tamanho de fonte impactante para o título no mobile */
   /* Exemplo: font-size: var(--font-size-hero-title-mobile); */
   font-weight: 700; /* Títulos principais geralmente são em negrito */
@@ -54,7 +54,7 @@
 /* No .hero-banner__logo */
 .hero-banner__logo {
   display: block;
-  max-width: 160px;
+  max-width: 120px;
   height: auto;
   margin-bottom: 0;
   transform: translateX(-60px);
@@ -68,8 +68,8 @@
     /* REMOVA bottom: 0; */
     /* REMOVA right: 30px; (ou left: 50% e o transform complexo) */
     /* O margin-top: -100px; pode ou não ser necessário agora. Comece sem ele. */
-    margin-top: -100px; /* Comece com 0 para ver onde ele se posiciona naturalmente */
-    transform: translateX(70px); /* Mantenha seu deslocamento horizontal */
+    margin-top: -60px; /* Comece com 0 para ver onde ele se posiciona naturalmente */
+    transform: translateX(20px); /* Mantenha seu deslocamento horizontal */
 }
 
 .hero-banner__title--linebreak {
