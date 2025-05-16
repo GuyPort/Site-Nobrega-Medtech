@@ -62,11 +62,12 @@
 
 .hero-banner__doctor-image {
     display: block;
-    max-width: 180px;
+    max-width: 180px; /* Seu valor atual */
     height: auto;
-    position: absolute;
-    bottom: 0;
-    right: 30px; /* Exemplo: 20px da borda direita. Ajuste este valor! */
-    /* transform: translateX(0); */ /* Resetar qualquer transform anterior se necessário */
-    /* Não precisa de 'left' nem de 'transform: translateX()' para centralizar neste caso */
+    /* REMOVA position: absolute; */
+    /* REMOVA bottom: 0; */
+    /* REMOVA right: 30px; (ou left: 50% e o transform complexo) */
+    /* O margin-top: -100px; pode ou não ser necessário agora. Comece sem ele. */
+    margin-top: 0; /* Comece com 0 para ver onde ele se posiciona naturalmente */
+    transform: translateX(100px); /* Mantenha seu deslocamento horizontal */
 }
