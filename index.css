@@ -68,6 +68,10 @@
     /* REMOVA bottom: 0; */
     /* REMOVA right: 30px; (ou left: 50% e o transform complexo) */
     /* O margin-top: -100px; pode ou não ser necessário agora. Comece sem ele. */
-    margin-top: 0; /* Comece com 0 para ver onde ele se posiciona naturalmente */
-    transform: translateX(100px); /* Mantenha seu deslocamento horizontal */
+    margin-top: -100px; /* Comece com 0 para ver onde ele se posiciona naturalmente */
+    transform: translateX(70px); /* Mantenha seu deslocamento horizontal */
+}
+
+.hero-banner__title--linebreak {
+    display: block;
 }
