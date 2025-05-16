@@ -41,7 +41,7 @@
                          /* Exemplo: line-height: var(--line-height-hero-title-mobile); */
     
     margin: 0; /* Remove margens padrão do h1 para controle preciso */
-    margin-bottom: 30px; /* Espaçamento abaixo do título, antes do próximo elemento (logo ou médico) */
+    margin-bottom: 37px; /* Espaçamento abaixo do título, antes do próximo elemento (logo ou médico) */
                          /* Exemplo: margin-bottom: var(--margin-bottom-hero-title-mobile); */
     
     max-width: 95%; /* Evita que o título comprido toque as bordas em telas muito estreitas, melhora a leitura */
