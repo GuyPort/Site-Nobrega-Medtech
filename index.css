@@ -33,9 +33,8 @@
 
 .hero-banner__title {
   /* Cor do texto definida para mobile (cinza azulado escuro) */
-  color: #34495e;
-  /* Usando variáveis (se definidas globalmente): */
-  /* color: var(--cor-cinza-azulado-escuro); */
+  color: #003f8c; 
+
 
   font-family: "Roboto", sans-serif; /* Idealmente usar var(--fonte-principal) */
   font-size: 2rem; /* Tamanho de fonte impactante para o título no mobile */
@@ -65,6 +64,8 @@
   display: block;
   max-width: 180px;
   height: auto;
-  margin-top: -100px;
-  transform: translateX(60px);
+  position: absolute;
+  left: 50%;
+  transform: translateX(calc(-50% + 60px));
+  bottom: 0;
 }
