@@ -22,9 +22,6 @@
   padding-left: 10px; /* Exemplo: padding-left: var(--padding-hero-horizontal-mobile); */
   padding-right: 10px; /* Exemplo: padding-right: var(--padding-hero-horizontal-mobile); */
 
-  /* Altura mínima para garantir impacto visual */
-  min-height: 45vh; /* Exemplo: min-height: var(--min-height-hero-mobile); */
-
   /* Propriedades importantes para um container principal */
   position: relative; /* Permite posicionamento absoluto de elementos filhos (ex: detalhes gráficos) */
   overflow: hidden; /* Evita que conteúdo interno "vaze" e crie barras de rolagem desnecessárias */
@@ -33,10 +30,9 @@
 
 .hero-banner__title {
   /* Cor do texto definida para mobile (cinza azulado escuro) */
-  color: #003f8c; 
+  color: #003f8c;
 
-
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 2rem; /* Tamanho de fonte impactante para o título no mobile */
   /* Exemplo: font-size: var(--font-size-hero-title-mobile); */
   font-weight: 700; /* Títulos principais geralmente são em negrito */
@@ -49,6 +45,10 @@
 
   max-width: 100%; /* Evita que o título comprido toque as bordas em telas muito estreitas, melhora a leitura */
   /* Pode ajustar este valor conforme necessário */
+
+  opacity: 0;
+  transform: translateY(20px); /* Começa 20px abaixo da sua posição final */
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
 /* No .hero-banner__logo */
@@ -58,20 +58,42 @@
   height: auto;
   margin-bottom: 0;
   transform: translateX(-60px);
+
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
 }
 
 .hero-banner__doctor-image {
-    display: block;
-    max-width: 180px; /* Seu valor atual */
-    height: auto;
-    /* REMOVA position: absolute; */
-    /* REMOVA bottom: 0; */
-    /* REMOVA right: 30px; (ou left: 50% e o transform complexo) */
-    /* O margin-top: -100px; pode ou não ser necessário agora. Comece sem ele. */
-    margin-top: -60px; /* Comece com 0 para ver onde ele se posiciona naturalmente */
-    transform: translateX(20px); /* Mantenha seu deslocamento horizontal */
+  display: block;
+  max-width: 180px; /* Seu valor atual */
+  height: auto;
+  /* REMOVA position: absolute; */
+  /* REMOVA bottom: 0; */
+  /* REMOVA right: 30px; (ou left: 50% e o transform complexo) */
+  /* O margin-top: -100px; pode ou não ser necessário agora. Comece sem ele. */
+  margin-top: -60px; /* Comece com 0 para ver onde ele se posiciona naturalmente */
+  transform: translateX(20px); /* Mantenha seu deslocamento horizontal */
+
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
 }
 
 .hero-banner__title--linebreak {
-    display: block;
+  display: block;
+}
+
+/* Estado final dos elementos (ativado quando a classe .is-visible é adicionada ao .hero-banner) */
+.hero-banner.is-visible .hero-banner__title {
+  opacity: 1;
+  transform: translateY(0); /* Volta para a posição vertical original */
+}
+
+.hero-banner.is-visible .hero-banner__logo {
+  opacity: 1;
+  transition-delay: 0.2s; /* Logo aparece 0.2s depois do início da animação do título */
+}
+
+.hero-banner.is-visible .hero-banner__doctor-image {
+  opacity: 1;
+  transition-delay: 0.4s; /* Médico aparece 0.4s depois do início da animação do título */
 }
