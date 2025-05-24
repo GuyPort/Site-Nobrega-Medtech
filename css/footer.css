@@ -110,6 +110,18 @@ footer {
   margin-bottom: 0;
 }
 
+@media (max-width: 399px) { 
+  .footer__social-icons img {
+    height: 38px; 
+  }
+  .footer__social-icons {
+    gap: 6px;     
+  }
+  .footer__direitos {
+    font-size: 0.69em; 
+  }
+}
+
 /* ==========================================================================
    TABLET E TELAS MAIORES
    (A partir de 768px)
@@ -147,26 +159,26 @@ footer {
 
   /* --- Coluna da Esquerda: Logo e Ícones Sociais --- */
   .logo__footer {
-    width: 35%; /* Define a largura da coluna do logo (ex: 35% da largura do footer). */
+    width: 40%; /* Define a largura da coluna do logo e ícones sociais. */
     /* gap: 0px; (Herdado do mobile, mantendo a proximidade visual entre logo e ícones devido ao design das imagens) */
   }
 
   /* Alinhamento dos ícones sociais dentro da coluna do logo */
   .footer__social-icons {
     justify-content: flex-start; /* Alinha os ícones à esquerda dentro desta coluna. */
+    gap: 2px; 
   }
 
   /* Ajuste de tamanho para as imagens dos ícones sociais em telas de tablet/médias */
   .footer__social-icons img {
-    height: 47px; /* Altura dos ícones sociais ajustada para este breakpoint. */
-    /* width: auto; (Herdado do mobile) */
+    height: 42px; /* Altura dos ícones sociais ajustada para este breakpoint. */
+    
   }
 
   /* --- Coluna da Direita: Informações de Contato --- */
   .footer__contato-info {
     width: 40%; /* Define a largura da coluna de contato. */
-    /* Com .logo__footer a 35% e .footer__contato-info a 40%,
-                                   o justify-content: space-between no footer cria um vão central de aprox. 25%. */
+    /* Com .logo__footer e .footer__contato-info a 40% cada, o justify-content no footer cria um vão central de aprox. 20%. */
     padding-top: 60px; /* Desloca o conteúdo de contato para baixo para um alinhamento vertical específico com a coluna do logo. */
     /* text-align: left; (Para alinhar o conteúdo à esquerda nesta coluna. Se não especificado, herda text-align:center do mobile) */
     /* Se o conteúdo de contato precisar ser alinhado à esquerda: Adicionar 'text-align: left;' aqui. */
@@ -193,7 +205,6 @@ footer {
   /* Ajustes no container principal <footer> para telas muito largas */
   footer {
     /* padding-top: 0px; (Herdado do breakpoint de 768px) */
-    /* padding-bottom: 15px; (Herdado do breakpoint de 768px) */
     /* padding-bottom: 15px; (Herdado do breakpoint de 768px) */
     padding-left: 80px; /* Padding lateral esquerdo significativamente aumentado. */
     padding-right: 80px; /* Padding lateral direito significativamente aumentado. */
