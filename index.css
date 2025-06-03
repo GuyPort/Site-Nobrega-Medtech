@@ -25,14 +25,15 @@
   display: flex;
   flex-direction: column; /* Empilha content-left e content-right */
   align-items: center; /* Centraliza os blocos content-left e content-right */
-  min-height: 75vh;
-  justify-content: flex-start;
+  min-height: 60vh; /* Garante que o banner ocupe uma altura mínima significativa na viewport. */
+  justify-content: flex-start; /* Alinha o conteúdo ao topo, permitindo que 'margin-top: auto' no último filho o empurre para baixo. */
   text-align: center; /* Centraliza o texto dentro dos blocos, se não sobrescrito */
-  padding-top: 0.625rem;
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
+  padding-top: 0.625rem; /* Espaçamento interno superior (10px). */
+  padding-left: 0.625rem; /* Espaçamento interno esquerdo (10px). */
+  padding-right: 0.625rem; /* Espaçamento interno direito (10px). */
+  /* padding-bottom é omitido intencionalmente para que o médico fique visualmente "colado" à base do conteúdo do banner. */
   position: relative;
-  overflow: hidden; /* Para o caso de algum transform sair dos limites */
+  overflow: hidden; /* Evita que elementos transbordem e quebrem o layout (ex: animações ou título muito largo). */
   box-sizing: border-box;
 }
 
@@ -49,12 +50,12 @@
 .hero-banner__title {
   color: #003f8c; /* Sua cor escolhida */
   font-family: "Montserrat", sans-serif;
-  font-size: 2.1rem;
+  font-size: 2.1rem; /* Tamanho ajustado para caber em linha única em telas estreitas (ex: 320px) com 'white-space: nowrap'. */
   font-weight: 700;
   line-height: 1.3;
-  margin: 0;
   margin-bottom: 0.9375rem; /* Espaço até a animação ECG abaixo. */
   max-width: 100%;
+  white-space: nowrap; /* Força o título a ficar em uma única linha. */
 
   /* Animação */
   opacity: 0;
@@ -63,62 +64,50 @@
 }
 
 .hero-banner__title--linebreak {
-  display: block; /* Para a quebra de linha */
+  display: block; /* Cria a quebra de linha visual no título no layout mobile. */
 }
 
 /* CSS para o novo wrapper e seus filhos (mobile) */
 .hero-banner__pointing-interaction {
-  position: relative; /* Essencial para posicionar o logo e o médico absolutamente DENTRO dele */
-  width: 220px; /* Largura definida (220px) para acomodar logo e médico no layout mobile. */
-  height: 260px; /* Altura definida (260px) para visualização completa do médico abaixo do logo no layout mobile. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  perspective: 800px;
 }
 
-/* --- Logo --- */
+/* No seu CSS Mobile-First */
 .hero-banner__logo {
   display: block;
-  max-width: 135px; /* Seu tamanho */
+  max-width: 190px; /* << AUMENTADO (era 150px). Experimente 170px, 180px, etc. */
   height: auto;
+ 
+  /* Efeito 3D Refinado: */
+  transform: translateZ(40px) rotateX(-6deg); /* Um pouco mais para frente e levemente inclinado */
+  /* Você pode experimentar com rotateX(6deg) para ver se prefere a inclinação para o outro lado,
+     ou aumentar/diminuir o ângulo de -6deg para mais ou menos inclinação. */
+  
+  box-shadow: 0px 10px 25px rgba(0, 63, 140, 0.12), /* Sombra principal mais difusa */
+              0px 4px 8px rgba(0, 63, 140, 0.08);   /* Sombra secundária mais próxima */
 
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  z-index: 1;
-
-  /* Animação */
-  opacity: 0;
-  transition: opacity 0.7s ease-out;
-}
-
-/* --- Imagem do Médico --- */
-.hero-banner__doctor-image {
-  display: block;
-  max-width: 180px; /* Seu tamanho */
-  height: auto;
-
-  /* Este valor precisa ser testado para o seu visual desejado de "proximidade" */
-  position: absolute;
-  top: 75px; /* Posicionamento ajustado para interação visual com o logo no layout mobile. */
-  left: 30px; /* Posicionamento ajustado para interação visual com o logo no layout mobile. */
-
-  /* Animação */
-  opacity: 0;
-  transition: opacity 0.7s ease-out;
+  transition: opacity 0.7s ease-out, transform 0.5s ease-out, box-shadow 0.5s ease-out; /* Adicionada transição para box-shadow */
+  opacity: 0; /* Para a animação de entrada */
 }
 
 .ecg-line-animation {
   width: 60%; /* Sugestão: um pouco menor que no desktop */
-  max-width: 180px; /* Sugestão: um limite menor para mobile */
-  height: 30px; /* Sugestão: altura menor para ser mais delicado */
-  margin-top: 15px; /* Espaço abaixo do título. Ajuste a gosto. */
-  /* Como o pai .hero-banner__content-left (no mobile) tem align-items: center,
-       esta div .ecg-line-animation já será centralizada horizontalmente por ele.
-       Não precisamos de margin-left específico aqui para centralizar. */
-  margin-bottom: 10px;
+  max-width: 160px; /* Limite de largura da animação ECG no mobile. */
+  height: 35px; /* Altura da animação ECG no mobile. */
+  margin-top: 15px; /* Espaço acima do ECG, abaixo do título. */
+  /* O pai .hero-banner__content-left já centraliza este elemento horizontalmente via 'align-items: center'. */
+  margin-bottom: 5px;
+  /* O pai .hero-banner__content-left já centraliza este elemento horizontalmente. */
 
   /* SVG Data URI ajustado para a nova altura de 30px e com stroke-width='2' */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 15 L20 15 L25 5 L35 25 L40 15 L60 15 L65 5 L75 25 L80 15 L100 15' fill='none' stroke='%23004bae' stroke-width='2'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 15 L20 15 L25 5 L35 25 L40 15 L60 15 L65 5 L75 25 L80 15 L100 15' fill='none' stroke='%23004bae' stroke-width='2.5'/%3E%3C/svg%3E"); /* SVG Data URI (proporção intrínseca 100:30, stroke-width='2.5'). */
   background-repeat: repeat-x;
-  background-size: auto 100%; /* Altura do SVG preenche os 30px da div */
+  background-size: 100px auto; /* Largura do padrão SVG definida em 100px para loop perfeito da animação; altura automática. */
 
   animation: scrollEcg 3s linear infinite; /* Animação aplicada! Pode ajustar a duração (ex: 2s ou 2.5s para mobile) */
 
@@ -131,41 +120,36 @@
 .hero-banner.is-visible .hero-banner__title {
   opacity: 1;
   transform: translateY(0);
-  /* O título não tem delay explícito, então ele começa em 0s em relação ao .is-visible */
+  /* O título inicia sua animação imediatamente (delay 0s). */
 }
 
 /* NOVA REGRA PARA O ECG NO MOBILE (E DESKTOP, JÁ QUE ESTÁ FORA DA MEDIA QUERY) */
 .hero-banner.is-visible .ecg-line-animation {
+  /* Animação do ECG para mobile e desktop (herdada se não sobrescrita). */
+  /* ECG aparece 0.1s após o início da visibilidade. */
   opacity: 1;
   transition-delay: 0.1s; /* ECG aparece 0.1s depois do título */
 }
 
 .hero-banner.is-visible .hero-banner__logo {
+  /* Logo aparece 0.3s após o início (0.2s após o ECG). */
   opacity: 1;
   transition-delay: 0.3s; /* Logo aparece 0.2s depois do ECG */
 }
 
-.hero-banner.is-visible .hero-banner__doctor-image {
-  opacity: 1;
-  transition-delay: 0.5s; /* Médico aparece 0.2s depois da Logo */
-}
-
 /* NOVO PSEUDO-ELEMENTO PARA O PADRÃO DE FUNDO SUTIL */
 .hero-banner::before {
-  content: ""; /* Obrigatório para pseudo-elementos */
+  content: ""; /* Obrigatório para gerar o pseudo-elemento. */
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; /* Cobre toda a área do .hero-banner. */
+  left: 0; /* Cobre toda a área do .hero-banner. */
+  right: 0; /* Cobre toda a área do .hero-banner. */
+  bottom: 0; /* Cobre toda a área do .hero-banner. */
   /* Exemplo com o padrão de pontos sutis: */
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23FFFFFF' fill-opacity='0.3'/%3E%3C/svg%3E");
-  background-repeat: repeat; /* Repete em ambas as direções para cobrir */
-  z-index: 0; /* Para ficar atrás do conteúdo principal mas acima do degradê de fundo do .hero-banner */
-  /* Se o degradê está no .hero-banner, z-index:0 no ::before pode cobri-lo.
-                   Se isso acontecer, uma alternativa é colocar o degradê no ::after
-                   e o padrão no ::before, ou o padrão com z-index -1.
-                   Vamos testar z-index: 0 primeiro. */
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23FFFFFF' fill-opacity='1'/%3E%3C/svg%3E"); /* Padrão de pontos sutis como background. */
+  background-repeat: repeat; /* Repete o padrão para preencher o espaço. */
+  z-index: 0; /* Posiciona o padrão atrás do conteúdo principal, mas acima do degradê do .hero-banner. */
+  /* O comentário longo sobre alternativas de z-index que você tinha pode ser mantido abaixo deste se achar útil para referência futura. */
   pointer-events: none; /* Garante que o padrão não interfira com cliques no conteúdo */
 }
 
@@ -175,49 +159,151 @@
 }
 
 .hero-banner__content-right {
-  position: relative;
-  z-index: 1; /* Garante que este bloco de conteúdo fique sobre o padrão ::before. */
-  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Mantido para z-index e caso precise no futuro */
+  z-index: 1;
+  /* margin-top: auto; */ /* << REMOVA ou COMENTE ESTA LINHA */
+  margin-top: 1.5rem;   /* << ADICIONE UM NOVO MARGIN-TOP (ex: 24px). Ajuste este valor! */
+                           /* Este valor controlará a distância do bloco do título/ECG. */
 }
-
-/* ==========================================================================
-   Estilos para Telas a Partir de 600px de Largura
-   ========================================================================== */
 
 @media (min-width: 600px) {
   .hero-banner {
-    min-height: 65vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: flex-start;
-    padding-top: 0.625rem; 
+    min-height: 65vh;
+  }
+
+  .hero-banner__content-left {
+    flex-basis: 55%;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-banner__content-right {
+    flex-basis: 45%;
+    margin-top: 0;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-banner__title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .ecg-line-animation {
+    width: 70%;
+    max-width: 250px;
+  }
+
+  .hero-banner__pointing-interaction {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 380px;
+  }
+
+  .hero-banner__logo {
+    position: absolute;
+    max-width: 145px;
+    top: 1px;
+    left: 25%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .hero-banner__doctor-image {
+    max-width: 230px;
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-45%);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-banner {
+    min-height: 70vh;
   }
 
   .hero-banner__title {
     font-size: 2.8rem;
   }
 
+  .ecg-line-animation {
+    max-width: 300px;
+  }
+
   .hero-banner__pointing-interaction {
-    width: 300px;  /* SUGESTÃO */
-    height: 290px; /* SUGESTÃO (baseada em estimativas, recalcule e ajuste!) */
+    max-width: 370px;
+    height: 430px;
   }
 
   .hero-banner__logo {
-    max-width: 180px;   /* SUGESTÃO */
-    top: 5px;          /* SUGESTÃO INICIAL, ajuste fino necessário */
-    left: 20px;         /* SUGESTÃO INICIAL, ajuste fino necessário */
+    max-width: 190px;
   }
 
   .hero-banner__doctor-image {
-    max-width: 300px;   /* SUGESTÃO */
-    /* Lembre-se: Calcule este 'top' com base no top do logo + altura REAL do logo + gap desejado! */
-    top: 100px;          /* SUGESTÃO INICIAL (Ex: 10px + ~70px de altura do logo + 10px de gap). AJUSTE! */
-    left: 35px;         /* SUGESTÃO INICIAL, ajuste para o dedo apontar certo */
+    max-width: 300px;
+    top: 100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-banner {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero-banner__title {
+    font-size: 3.5rem;
   }
 
   .ecg-line-animation {
-    max-width: 200px; /* SUGESTÃO */
-    height: 35px;    /* SUGESTÃO */
-    /* margin-top e margin-bottom provavelmente herdam bem do mobile (15px e 10px).
-       O ECG é centralizado pelo align-items:center do .hero-banner__content-left.
-       Não precisa de margin-left para centralizar aqui. */
+    max-width: 360px;
   }
+
+  .hero-banner__pointing-interaction {
+    max-width: 410px;
+    height: 470px;
+  }
+
+  .hero-banner__logo {
+    max-width: 250px;
+    left: 20%;
+    transform: translateX(-50%);
+  }
+
+  .hero-banner__doctor-image {
+    max-width: 380px;
+    top: 120px;
+  }
+
+  .ecg-line-animation {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 15 L20 15 L25 5 L35 25 L40 15 L60 15 L65 5 L75 25 L80 15 L100 15' fill='none' stroke='%23004bae' stroke-width='4'/%3E%3C/svg%3E");
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero-banner__title {
+    font-size: 4.8rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .ecg-line-animation {
+  max-width: 400px; /* Exemplo de pequeno aumento */
+}
 }
