@@ -91,6 +91,8 @@
   box-shadow: 0px 10px 25px rgba(0, 63, 140, 0.12), /* Sombra principal mais difusa */
               0px 4px 8px rgba(0, 63, 140, 0.08);   /* Sombra secundária mais próxima */
 
+  border-radius: 16px;
+
   transition: opacity 0.7s ease-out, transform 0.5s ease-out, box-shadow 0.5s ease-out; /* Adicionada transição para box-shadow */
   opacity: 0; /* Para a animação de entrada */
 }
@@ -146,7 +148,7 @@
   right: 0; /* Cobre toda a área do .hero-banner. */
   bottom: 0; /* Cobre toda a área do .hero-banner. */
   /* Exemplo com o padrão de pontos sutis: */
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23FFFFFF' fill-opacity='1'/%3E%3C/svg%3E"); /* Padrão de pontos sutis como background. */
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23FFFFFF' fill-opacity='0.2'/%3E%3C/svg%3E"); /* Padrão de pontos sutis como background. */
   background-repeat: repeat; /* Repete o padrão para preencher o espaço. */
   z-index: 0; /* Posiciona o padrão atrás do conteúdo principal, mas acima do degradê do .hero-banner. */
   /* O comentário longo sobre alternativas de z-index que você tinha pode ser mantido abaixo deste se achar útil para referência futura. */
