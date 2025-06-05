@@ -29,7 +29,7 @@
   display: flex; /* Ativa o layout Flexbox para este container */
   flex-direction: column; /* Organiza os filhos diretos em coluna (um abaixo do outro) */
   align-items: center; /* Centraliza os filhos diretos horizontalmente no container */
-  min-height: 60vh; /* Altura mínima de 60% da altura da viewport (janela do navegador) */
+  min-height: 80vh; /* Altura mínima de 60% da altura da viewport (janela do navegador) */
   justify-content: flex-start; /* Alinha os filhos diretos no início do eixo principal (topo, neste caso) */
   text-align: center; /* Centraliza o texto dentro deste container e seus filhos (pode ser sobrescrito) */
   padding-top: 0.625rem; /* Espaçamento interno superior (10px). */
@@ -362,6 +362,12 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
 }
 
 .quem-somos__container {
+    background: linear-gradient(
+    /* Define um fundo com degradê de cores */ to right,
+    /* Direção do degradê: da esquerda para a direita */ #ffffff,
+    /* Cor inicial do degradê (branco) */ #a0dfff
+      /* Cor final do degradê (azul claro) */
+  );
   display: flex;
   flex-direction: column;
   align-items: center;
