@@ -20,12 +20,7 @@
 
 /* --- Container Principal do Hero Banner --- */
 .hero-banner {
-  background: linear-gradient(
-    /* Define um fundo com degradê de cores */ to right,
-    /* Direção do degradê: da esquerda para a direita */ #ffffff,
-    /* Cor inicial do degradê (branco) */ #a0dfff
-      /* Cor final do degradê (azul claro) */
-  );
+  background-color: white;
   display: flex; /* Ativa o layout Flexbox para este container */
   flex-direction: column; /* Organiza os filhos diretos em coluna (um abaixo do outro) */
   align-items: center; /* Centraliza os filhos diretos horizontalmente no container */
@@ -362,12 +357,7 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
 }
 
 .quem-somos__container {
-    background: linear-gradient(
-    /* Define um fundo com degradê de cores */ to right,
-    /* Direção do degradê: da esquerda para a direita */ #ffffff,
-    /* Cor inicial do degradê (branco) */ #a0dfff
-      /* Cor final do degradê (azul claro) */
-  );
+  background-color: #004bae;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -385,7 +375,7 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
 
 .quem-somos__titulo {
   font-size: 2rem;
-  color: #003f8c;
+  color: #ffffff;
   font-weight: 700;
   margin-bottom: 1.25rem;
 }
@@ -393,7 +383,7 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
 .quem-somos__paragrafo {
   font-size: 1rem;
   line-height: 1.6;
-  color: #454545;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1rem;
 }
 
