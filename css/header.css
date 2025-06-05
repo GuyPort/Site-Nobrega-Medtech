@@ -119,12 +119,17 @@ header {
   padding: 12px 20px; /* AUMENTE O PADDING VERTICAL PARA MELHOR ÁREA DE TOQUE, e talvez o horizontal também */
   color: white;
   text-decoration: none;
-  font-family: var(--fonte-principal, "Roboto", sans-serif);
-  font-size: 1rem;
+  font-family: var(
+    --fonte-principal,
+    "Roboto",
+    sans-serif
+  ); /* Define a família da fonte, utilizando uma variável CSS (--fonte-principal) com fallbacks. */
+  font-size: 0.9rem;
   font-weight: 500;
   text-align: center; /* O TEXTO DENTRO DO LINK FICA CENTRALIZADO */
   transition: background-color 0.2s ease-in-out;
-  /* O opacity e transform para animação de entrada já são tratados por outra regra, ótimo! */
+  /* A animação de entrada individual dos links (opacity e transform) é definida
+   em '.header__navegar .header__nav-link' e ativada com '.menu-aberto'. */
 }
 
 /* --- Animação de Entrada dos Itens do Menu Dropdown Mobile --- */
@@ -208,6 +213,8 @@ header {
 
   /* Ajustes no container da navegação .header__navegar para layout horizontal. */
   .header__navegar {
+    /* Transforma o menu dropdown mobile em um menu horizontal em linha para telas maiores. */
+    /* Reseta estilos de posicionamento absoluto e visuais do mobile. */
     display: flex; /* Torna o container de navegação visível e flexível. */
     position: static; /* Remove o posicionamento absoluto do modo mobile. */
     flex-grow: 1; /* Permite que o container da navegação ocupe o espaço horizontal restante no header. */
@@ -263,16 +270,21 @@ header {
 
   /* Estilos de HOVER para links de navegação em telas maiores. */
   .header__nav-link:hover {
-    background-color: #004bae;
-    text-decoration: underline; /* Aplica sublinhado ao passar o mouse. */
-    text-decoration-color: rgba(255, 255, 255, 0.7); /* Cor do sublinhado. */
-    text-decoration-thickness: 1px; /* Espessura do sublinhado. */
-    text-underline-offset: 6px; /* Distância do sublinhado ao texto. */
+    background-color: #004bae; /* Fundo do link no hover (pode ser o mesmo do header ou um destaque) */
+    text-decoration: underline; /* Adiciona sublinhado no hover (diferente do mobile) */
+    text-decoration-color: rgba(
+      255,
+      255,
+      255,
+      0.7
+    ); /* Cor sutil para o sublinhado */
+    text-decoration-thickness: 1px; /* Espessura do sublinhado */
+    text-underline-offset: 6px; /* Distância do sublinhado ao texto */
   }
 
- .header__nav-link:focus {
-  text-decoration: none; /* Remove o sublinhado, como você quer */
-}
+  .header__nav-link:focus {
+    text-decoration: none; /* Remove o sublinhado, como você quer */
+  }
 }
 
 /* ==========================================================================
