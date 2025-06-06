@@ -399,4 +399,42 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 20px;
+}
+
+/*
+ * ==========================================================================
+ * Breakpoint: @media (min-width: 600px) (Faixa: 600px - 767px)
+ * Mantém o layout de coluna do mobile (texto em cima, foto abaixo), mas
+ * aumenta o tamanho dos elementos e espaçamentos para melhor
+ * aproveitamento do espaço em telas de tablets pequenos (vertical).
+ * ==========================================================================
+ */
+
+@media (min-width: 600px) {
+  /* --- Container da Seção --- */
+  .quem-somos__container {
+    /* O layout (display: flex; flex-direction: column; etc.) é herdado do mobile. */
+    gap: 2.6rem; /* Aumenta o espaçamento vertical entre o bloco de texto e o da imagem 
+                   (era 2rem no mobile) para um respiro maior. */
+  }
+
+  /* --- Título da Seção --- */
+  .quem-somos__titulo {
+    font-size: 2.6rem; /* Aumenta o tamanho da fonte do título (era 2.1rem no mobile) 
+                         para maior hierarquia visual. */
+  }
+
+  /* --- Parágrafos da Seção --- */
+  .quem-somos__paragrafo {
+    font-size: 1.3rem; /* Aumenta o tamanho da fonte dos parágrafos (era 1rem no mobile)
+                         para garantir excelente legibilidade em telas um pouco maiores. */
+  }
+
+
+  /* --- Container da Imagem --- */
+  .quem-somos__imagem-wrapper {
+    max-width: 450px; /* Permite que a imagem dos fundadores fique um pouco maior
+                         (era max-width de 380px no mobile). */
+  }
 }
