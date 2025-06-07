@@ -49,7 +49,6 @@
   </head>
   <body>
     <header>
-      <!--Começo Imagem logo-->
       <div class="header__imagem">
         <a href="../index.html">
           <img
@@ -59,9 +58,6 @@
           />
         </a>
       </div>
-      <!--Final Imagem logo-->
-
-      <!-- Começo do Estilo Hamburger para mobile-->
       <button
         class="header__hamburger-button"
         aria-label="Abrir menu de navegação"
@@ -72,9 +68,6 @@
         <span class="header__hamburger-bar"></span>
         <span class="header__hamburger-bar"></span>
       </button>
-      <!--Final do Estilo Hamburger para mobile-->
-
-      <!-- Começo do Menu de navegação-->
       <div class="header__navegar">
         <nav
           class="header__nav"
@@ -87,14 +80,28 @@
                 >Nobrega Medtech</a
               >
             </li>
-            <li class="header__nav-item">
-              <a
-                class="header__nav-link"
-                href="https://cadastro.nobra.app.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Nobra</a
-              >
+
+            <li
+              class="header__nav-item header__nav-item--has-dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <a href="#" class="header__nav-link">
+                Nossas soluções
+                <span class="dropdown-arrow">▼</span>
+              </a>
+
+              <ul class="header__sub-nav">
+                <li class="header__sub-nav-item">
+                  <a
+                    class="header__sub-nav-link"
+                    href="https://cadastro.nobra.app.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Nobra</a
+                  >
+                </li>
+              </ul>
             </li>
             <li class="header__nav-item">
               <a class="header__nav-link" href="../educacao/educacao.html"
@@ -112,7 +119,6 @@
           </ul>
         </nav>
       </div>
-      <!-- Final do Menu de navegação-->
     </header>
     <main>
       <h1>Main</h1>

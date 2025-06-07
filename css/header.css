@@ -3,7 +3,7 @@
 
 /* --- Estilização do Contêiner Principal do Cabeçalho (<header>) --- */
 header {
-  background-color: #004bae; /* Cor de fundo azul primária do cabeçalho. */
+  background-color: #ffffff; /* Cor de fundo azul primária do cabeçalho. */
   padding: 5px 20px; /* Espaçamento interno: 5px (topo/base) e 20px (laterais). */
   display: flex; /* Ativa o layout Flexbox. */
   justify-content: space-between; /* Distribui os itens filhos: logo à esquerda, botão/menu à direita. */
@@ -11,6 +11,7 @@ header {
   width: 100%; /* Faz o header ocupar toda a largura da tela. */
   box-sizing: border-box; /* Garante que padding e bordas não aumentem as dimensões totais do elemento. */
   position: relative; /* Necessário para o posicionamento absoluto do menu dropdown mobile. */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* --- Estilização da Seção da Logo --- */
@@ -48,7 +49,7 @@ header {
   display: block;
   width: 100%; /* Barras ocupam toda a largura do botão. */
   height: 3px; /* Espessura de cada barra. */
-  background-color: white; /* Cor das barras. */
+  background-color: #004bae; /* Cor das barras. */
   border-radius: 3px; /* Cantos levemente arredondados. */
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Animação suave para a transformação em 'X'. */
 }
@@ -64,34 +65,43 @@ header {
   transform: translateY(-8px) rotate(-45deg); /* Move e rotaciona a terceira barra. */
 }
 
-/* --- Navegação Principal (Menu Dropdown Mobile) --- */
-/* Container da navegação (.header__navegar) que funciona como dropdown no mobile. */
+/* --- Navegação Principal (Menu Overlay Mobile) --- */
 .header__navegar {
-  opacity: 0; /* Começa totalmente transparente para efeito de fade-in. */
-  visibility: hidden; /* Começa escondido e não interativo. */
-  transform: translateY(
-    -20px
-  ); /* Começa 20px acima da posição final para efeito de deslizar de cima. */
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out,
-    visibility 0s linear 0.3s; /* Transições para abrir/fechar.
-                                                                                            O delay na 'visibility' ao fechar garante que o menu
-                                                                                            só se torne não interativo após a animação visual. */
-  position: absolute; /* Posicionamento absoluto em relação ao <header>. */
-  top: 110px; /* Distância do topo do <header>. Ajustar conforme a altura real do header. */
+  /* --- MUDANÇAS DE POSICIONAMENTO E TAMANHO --- */
+  position: fixed;
+  /* ALTERADO: O topo agora começa exatamente abaixo do header (cuja altura é 110px) */
+  top: 110px;
   left: 0;
-  right: 0; /* Ocupa toda a largura disponível abaixo do header. */
-  background-color: #003f8c; /* Cor de fundo para o menu dropdown. */
-  padding-top: 10px;
-  padding-bottom: 10px; /* Espaçamentos internos do menu dropdown. */
-  z-index: 1000; /* Garante que o menu fique sobre outros conteúdos, mas abaixo do botão hamburger. */
+  width: 100vw;
+  /* ALTERADO: A altura é 100% da tela MENOS a altura do header */
+  height: calc(100vh - 110px);
+
+  /* --- MUDANÇAS VISUAIS E DE LAYOUT --- */
+  background-color: #ffffff; /* ALTERADO: Fundo branco, conforme solicitado */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  /* ALTERADO: Padding superior reduzido para um espaçamento mais natural */
+  padding: 40px 40px 40px 40px;
+  box-sizing: border-box;
+  /* ADICIONADO: Sombra sutil no topo para separar do header branco */
+  box-shadow: inset 0 6px 8px -8px rgba(0, 0, 0, 0.1);
+
+  /* --- ANIMAÇÃO E ESTADO INICIAL (sem alterações) --- */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease, visibility 0s linear 0.4s;
+  z-index: 1000;
 }
 
-/* Classe '.menu-aberto' (adicionada/removida via JavaScript) para controlar a exibição do menu mobile. */
+/* Classe '.menu-aberto' para controlar a exibição do menu mobile. */
 .header__navegar.menu-aberto {
-  opacity: 1; /* Torna o menu totalmente visível. */
-  visibility: visible; /* Torna o menu visível e interativo. */
-  transform: translateY(0); /* Move o menu para sua posição vertical final. */
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Transição de abertura. */
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0); /* ALTERADO: Posição final da animação */
+  /* ALTERADO: Transição de abertura correspondente */
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
 }
 
 /* Elemento <nav> dentro do .header__navegar */
@@ -101,12 +111,12 @@ header {
 
 /*Lista <ul> que contém os links de navegação */
 .header__nav-list {
-  list-style: none; /* Remove marcadores de lista. */
-  margin: 0; /* Remove margens padrão. */
-  padding: 0; /* Remove paddings padrão (0 0px é o mesmo que 0). */
-  display: flex; /* Habilita Flexbox. */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
   flex-direction: column;
-  align-items: stretch; /* Faz os itens <li> (e os <a> dentro, se forem display:block) ocuparem a largura disponível. */
+  /* align-items: stretch; -- REMOVIDO */
 }
 
 /* Itens da lista <li> */
@@ -115,29 +125,23 @@ header {
 }
 
 .header__nav-link {
-  display: block; /* FAZ O LINK OCUPAR A LARGURA TOTAL DO 'li' */
-  padding: 12px 20px; /* AUMENTE O PADDING VERTICAL PARA MELHOR ÁREA DE TOQUE, e talvez o horizontal também */
-  color: white;
+  display: block;
+  padding: 20px 0;
+  color: #004bae; /* ALTERADO: Links azuis para contraste com o fundo branco */
   text-decoration: none;
-  font-family: var(
-    --fonte-principal,
-    "Roboto",
-    sans-serif
-  ); /* Define a família da fonte, utilizando uma variável CSS (--fonte-principal) com fallbacks. */
-  font-size: 0.9rem;
+  font-family: var(--fonte-principal, "Roboto", sans-serif);
+  font-size: 1.8rem;
   font-weight: 500;
-  text-align: center; /* O TEXTO DENTRO DO LINK FICA CENTRALIZADO */
-  transition: background-color 0.2s ease-in-out;
-  /* A animação de entrada individual dos links (opacity e transform) é definida
-   em '.header__navegar .header__nav-link' e ativada com '.menu-aberto'. */
+  text-align: right;
+  transition: color 0.2s ease-in-out;
 }
 
-/* --- Animação de Entrada dos Itens do Menu Dropdown Mobile --- */
 /* Estado inicial dos links dentro do menu dropdown ANTES da animação. */
 .header__navegar .header__nav-link {
-  opacity: 0; /* Começam invisíveis. */
-  transform: translateX(-20px); /* Começam deslocados para a esquerda. */
-  transition: opacity 0.25s ease-out, transform 0.25s ease-out; /* Transição para "deslizar e aparecer". */
+  opacity: 0;
+  /* ALTERADO: Os links agora vêm da direita também, de forma sutil */
+  transform: translateX(-15px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 /* QUANDO O MENU ESTIVER ABERTO, OS LINKS FICAM VISÍVEIS E NA POSIÇÃO CORRETA */
@@ -166,9 +170,9 @@ header {
 .header__nav-link:hover,
 .header__nav-link:focus {
   background-color: rgba(
-    255,
-    255,
-    255,
+    0,
+    75,
+    174,
     0.05
   ); /* Leve destaque translúcido no fundo. */
 }
@@ -177,9 +181,54 @@ header {
 .header__nav-link--active {
   font-weight: 700; /* Texto em negrito. */
   text-decoration: underline; /* Sublinhado. */
-  text-decoration-color: white; /* Cor do sublinhado. */
+  text-decoration-color: #004bae; /* Cor do sublinhado. */
   text-decoration-thickness: 2px; /* Espessura do sublinhado. */
   text-underline-offset: 8px; /* Distância do sublinhado ao texto. */
+}
+
+/* --- Dropdown Styles --- */
+
+/* Estilo para a seta indicadora do dropdown */
+.dropdown-arrow {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.8em; /* Um pouco menor para não roubar a atenção */
+  transition: transform 0.3s ease-out; /* Animação suave de rotação */
+}
+
+/* Container do submenu (dropdown) */
+.header__sub-nav {
+  list-style: none;
+  padding-left: 20px; /* Indentação para indicar hierarquia */
+  margin: 0;
+  overflow: hidden; /* Necessário para a animação de altura */
+  max-height: 0;    /* Começa "fechado" (com altura 0) por padrão */
+  transition: max-height 0.4s ease-in-out;
+}
+
+/* Links dentro do submenu */
+.header__sub-nav-link {
+  display: block;
+  padding: 12px 0;
+  color: #0056d9; /* Um tom de azul sutilmente diferente para diferenciar */
+  text-decoration: none;
+  font-size: 1.5rem; /* Levemente menor que os links principais */
+  text-align: right; /* Mantendo o alinhamento que definimos */
+  transition: color 0.2s ease-in-out;
+}
+.header__sub-nav-link:hover {
+  color: #003f8c; /* Escurece no hover */
+}
+
+/* A MÁGICA ACONTECE AQUI: Estilo para quando o dropdown estiver aberto */
+/* A classe '.dropdown-aberto' será adicionada ao <li> via JavaScript */
+.header__nav-item--has-dropdown.dropdown-aberto > .header__sub-nav {
+  max-height: 200px; /* Altura suficiente para mostrar os itens. Ajuste se precisar. */
+  margin-top: 10px;  /* Cria um respiro entre o link principal e o submenu */
+}
+
+.header__nav-item--has-dropdown.dropdown-aberto .dropdown-arrow {
+  transform: rotate(180deg); /* Gira a seta para indicar que está aberto */
 }
 
 /* FIM DOS ESTILOS MOBILE-FIRST */
@@ -236,13 +285,14 @@ header {
     visibility: visible;
     transform: none;
     transition: none; /* Remove transições de animação do mobile. */
+    border-bottom: none; /* Remove a borda do dropdown mobile */
   }
 
   /* Garante que os links estejam visíveis e sem transformações/transições do mobile. */
   .header__navegar .header__nav-link {
     opacity: 1;
     transform: none;
-    transition: none;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
 
   /* Garante que a classe .menu-aberto (do JS) não interfira no display em telas grandes. */
@@ -270,16 +320,12 @@ header {
 
   /* Estilos de HOVER para links de navegação em telas maiores. */
   .header__nav-link:hover {
-    background-color: #004bae; /* Fundo do link no hover (pode ser o mesmo do header ou um destaque) */
-    text-decoration: underline; /* Adiciona sublinhado no hover (diferente do mobile) */
-    text-decoration-color: rgba(
-      255,
-      255,
-      255,
-      0.7
-    ); /* Cor sutil para o sublinhado */
-    text-decoration-thickness: 1px; /* Espessura do sublinhado */
-    text-underline-offset: 6px; /* Distância do sublinhado ao texto */
+    background-color: transparent; /* ALTERADO */
+    color: #003f8c; /* ADICIONADO: Escurece o tom do azul para o feedback */
+    text-decoration: underline;
+    text-decoration-color: #004bae; /* ALTERADO */
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
   }
 
   .header__nav-link:focus {
