@@ -20,7 +20,7 @@
 
 /* --- Container Principal do Hero Banner --- */
 .hero-banner {
-  background-color: white;
+  background-color: black;
   display: flex; /* Ativa o layout Flexbox para este container */
   flex-direction: column; /* Organiza os filhos diretos em coluna (um abaixo do outro) */
   align-items: center; /* Centraliza os filhos diretos horizontalmente no container */

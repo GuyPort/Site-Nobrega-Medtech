@@ -1,45 +1,60 @@
-/* Estilos Globais para HTML e Body - Inclui a técnica do "Sticky Footer" */
+/* ==========================================================================
+   CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
+   ========================================================================== */
 
-/* Garante que o elemento <html> ocupe toda a altura da janela do navegador (viewport).
-   Isso é um pré-requisito para que o 'min-height: 100vh;' no <body> funcione corretamente
-   em alguns cenários ou para técnicas de altura mais antigas. */
+:root {
+  --fonte-principal: "Roboto", sans-serif;
+  --fonte-secundaria: "Montserrat", sans-serif;
+
+  --cor-primaria: #004bae;
+  --cor-texto: #333333;
+  --header-height: 80px;
+}
+
+/* ==========================================================================
+   ESTILOS GLOBAIS (Reset e Sticky Footer)
+   ========================================================================== */
+
+/*
+  Melhorias de box-sizing para um layout mais intuitivo.
+  Todos os elementos passarão a incluir padding e border no seu tamanho total.
+*/
 html {
-  height: 100%;
+  box-sizing: border-box;
+  height: 100%; /* Pré-requisito para o sticky footer em alguns cenários */
 }
 
-/* Estilos aplicados ao <body> de todas as páginas. */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Configuração do Sticky Footer e padrões do body.
+*/
 body {
-  display: flex;            /* Ativa o Flexbox para o body. */
-  flex-direction: column;   /* Organiza os filhos diretos do body (ex: <header>, <main>, <footer>) em uma coluna vertical. */
-  min-height: 100vh;        /* Faz com que o body ocupe no mínimo 100% da altura da viewport (vh = viewport height).
-                               Isso é crucial para o "sticky footer": se o conteúdo for curto, o body ainda se estica,
-                               empurrando o footer para baixo. */
-  margin: 0;                /* Remove as margens padrão que os navegadores aplicam ao body. */
-  padding: 0;               /* Remove paddings padrão que os navegadores podem aplicar ao body. */
-  -webkit-font-smoothing: antialiased; /* Melhora a renderização de fontes em navegadores WebKit (Chrome, Safari) em alguns sistemas. */
-  -moz-osx-font-smoothing: grayscale;  /* Melhora a renderização de fontes no Firefox em macOS. */
-  font-family: var(--fonte-principal, "Roboto", sans-serif); /* Define a família de fontes principal para todo o site.
-                                                                Utiliza uma variável CSS (--fonte-principal) como primeira opção,
-                                                                com "Roboto" e uma fonte sans-serif genérica como fallbacks. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0; /* O margin: 0; já vem do normalize */
+  font-family: var(--fonte-principal);
+  color: var(--cor-texto);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Estilo para o container principal de conteúdo da página (ex: <main>).
-   Este seletor deve corresponder ao elemento que envolve o conteúdo principal
-   entre o <header> e o <footer>. */
-main { /* Se você usar uma classe ou ID, ajuste o seletor (ex: .conteudo-principal). */
-  flex-grow: 1;             /* Esta propriedade faz com que o elemento <main> (ou o container principal)
-                               expanda e ocupe todo o espaço vertical disponível dentro do <body>
-                               que não é ocupado pelo <header> ou <footer>. Isso efetivamente empurra
-                               o <footer> para a parte inferior da tela quando o conteúdo é curto. */
+/* Garante que o conteúdo principal ocupe o espaço vazio, empurrando o footer.
+*/
+main {
+  flex-grow: 1;
 }
 
-/* Estilo base para o <footer>, complementando as regras em footer.css.
-   Esta regra deve estar no seu CSS global ou ser adicionada à regra principal do footer
-   no seu arquivo footer.css (fora de qualquer @media query). */
+/* Impede que o footer encolha.
+*/
 footer {
-  /* ...outros estilos base do footer como background-color, padding, etc.,
-     geralmente definidos em css/footer.css ... */
-  flex-shrink: 0;           /* Impede que o footer encolha caso o conteúdo do <main>
-                               seja muito grande e tente "espremer" o footer. Garante que o footer
-                               mantenha sua altura definida. */
+  flex-shrink: 0;
 }
+
+  .body-no-scroll {
+    overflow: hidden;
+  }
