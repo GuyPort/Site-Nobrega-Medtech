@@ -1,9 +1,8 @@
-/* === CSS/HEADER.CSS - VERSÃO FINAL POLIDA === */
+/* ==========================================================================
+   HEADER COMPONENT
+   ========================================================================== */
 
-/* --- CLASSES AJUDANTES GLOBAIS --- */
-/* Usada via JavaScript para travar a rolagem da página quando um menu ou modal está aberto. */
-
-/* --- ESTILOS DE BASE (APLICADOS A TODAS AS TELAS) --- */
+/* --- Configuração Base do Header --- */
 header {
   background-color: #ffffff;
   display: flex;
@@ -11,30 +10,34 @@ header {
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 1002;
+  /* Garante que o header fique acima da maioria dos outros conteúdos da página. */
+  z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   height: var(--header-height);
   padding: 0 20px;
 }
 
+/* --- Seção do Logo --- */
 .header__imagem {
-  height: 100%;
+  /* Garante que o container do logo não encolha em layouts flex. */
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .header__imagem a {
-  height: 100%; /* Agora herda os 80px do pai */
+  height: inherit; /* Agora herda os 80px do pai */
   display: inline-block;
 }
 
 .header__logo-imagem {
-  height: 100%; /* E finalmente, a imagem herda os 80px */
+  height: 100%; 
   display: block;
   width: auto;
 }
 
+/* --- Botão Hamburger (Mobile) --- */
 .header__hamburger-button {
   display: flex;
   flex-direction: column;
@@ -45,15 +48,65 @@ header {
   border: none;
   padding: 0;
   cursor: pointer;
+  /* Garante que o botão não seja "tabulável" quando não estiver visível */
+  visibility: visible;
 }
 
 .header__hamburger-bar {
   display: block;
   width: 100%;
   height: 3px;
-  background-color: #004bae;
+  background-color: var(--cor-primaria);
   border-radius: 3px;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* --- Animação do Hamburger para 'X' --- */
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Navegação (Padrão Mobile: Overlay) --- */
+.header__navegar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - var(--header-height));
+  background-color: #ffffff;
+  padding: 40px;
+  box-sizing: border-box;
+  box-shadow: inset 0 6px 8px -8px rgba(0, 0, 0, 0.1);
+
+  /* Escondido por padrão fora da tela e invisível */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  /* A transição da visibilidade é atrasada para evitar que o menu desapareça antes de sair da tela. */
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease,
+    visibility 0s linear 0.4s;
+
+  /* Organização interna do overlay */
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Estado aberto do menu mobile via JS */
+.header__navegar.menu-aberto {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition-delay: 0s; /* Garante que a transição de visibilidade seja imediata ao abrir */
+}
+
+.header__nav {
+  width: 100%;
 }
 
 .header__nav-list {
@@ -64,75 +117,23 @@ header {
   flex-direction: column;
 }
 
+/* Estilos base para os links de navegação */
 .header__nav-link {
-  display: block;
   text-decoration: none;
-  font-family: var(--fonte-principal, "Roboto", sans-serif);
+  font-family: var(--fonte-principal);
   font-weight: 500;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  text-align: left;
 }
 
-.header__nav-link--active {
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: #004bae;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 8px;
-}
-
-.dropdown-arrow {
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 0.8em;
-  transition: transform 0.3s ease-out;
-}
-
-.header__navegar {
-  position: fixed;
-  top: var(--header-height);
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - var(--header-height));
-  background-color: #ffffff;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: 40px;
-  box-sizing: border-box;
-  box-shadow: inset 0 6px 8px -8px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease,
-    visibility 0s linear 0.4s;
-  z-index: 1000;
-}
-
-.header__navegar.menu-aberto {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
-}
-
-.header__nav {
-  width: 100%;
-}
-
-.header__nav-link {
-  padding: 20px 0;
-  color: #004bae;
-  font-size: 1.8rem;
-  text-align: right;
-}
-
-.header__nav-link:hover,
-.header__nav-link:focus {
-  background-color: rgba(0, 75, 174, 0.05);
-}
-
+/* Estilos específicos para os links DENTRO do overlay mobile */
 .header__navegar .header__nav-link {
-  opacity: 0;
+  display: block;
+  padding: 20px 0;
+  color: var(--cor-primaria);
+  font-size: 1.8rem;
+  text-align: left;
+  opacity: 0; /* Começa invisível para a animação de stagger */
   transform: translateX(-15px);
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
@@ -155,6 +156,17 @@ header {
   transition-delay: 0.25s;
 }
 
+.dropdown-arrow {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.8em;
+  transition: transform 0.3s ease-out;
+}
+
+.header__nav-item--has-dropdown.dropdown-aberto .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
 .header__sub-nav {
   list-style: none;
   padding-left: 20px;
@@ -169,137 +181,196 @@ header {
   margin-top: 10px;
 }
 
-.header__nav-item--has-dropdown.dropdown-aberto .dropdown-arrow {
-  transform: rotate(180deg);
-}
-
 .header__sub-nav-link {
   display: block;
   padding: 12px 0;
   color: #0056d9;
   text-decoration: none;
   font-size: 1.5rem;
-  text-align: right;
+  text-align: left;
 }
 
 .header__sub-nav-link:hover {
   color: #003f8c;
 }
 
-/* Animação do 'X' do botão hamburger. */
-.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(2) {
-  opacity: 0;
-}
-.header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* --- TABLET E TELAS MAIORES (A PARTIR DE 768px) --- */
+/* --- TABLET (768px - 991px) --- */
 @media (min-width: 768px) {
   header {
-    justify-content: flex-start;
-    padding: 10px 35px;
+    padding: 0 30px;
+    height: 95px;
   }
 
+  .header__hamburger-button {
+    width: 36px;
+    height: 30px;
+  }
+
+  .header__hamburger-bar {
+    height: 4px;
+  }
+
+  /* Animação do X precisa de um ajuste fino para o novo tamanho */
+  .header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  .header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  /* Aumenta a fonte DENTRO do menu overlay para melhor leitura em tablet */
+  .header__navegar .header__nav-link {
+    font-size: 2.2rem;
+  }
+
+  .header__sub-nav-link {
+    font-size: 1.8rem;
+  }
+}
+
+/* ==========================================================================
+   LAYOUT DESKTOP DEFINITIVO (1200px+)
+   ========================================================================== */
+
+@media (min-width: 1200px) {
+  header {
+    display: flex;
+    align-items: center;
+    padding: 0 60px; /* Mais espaçamento lateral */
+    height: 140px; /* Altura confortável para a logo */
+  }
+
+  /* --- Elementos da Navegação Principal --- */
   .header__hamburger-button {
     display: none;
   }
 
   .header__navegar {
-    display: flex;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    width: auto;
+    height: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    transition: none;
+    flex-grow: 1; /* Faz o container do menu ocupar o espaço restante */
   }
 
   .header__nav {
-    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
+  /* Altera a direção dos itens da lista para horizontal */
   .header__nav-list {
     flex-direction: row;
+    height: 100%;
   }
 
   .header__nav-item {
-    margin: 0 15px;
+    margin: 0 22px; /* Espaçamento generoso entre os links */
+    display: flex;
+    align-items: center;
   }
 
   .header__nav-link {
     color: #004bae;
-    font-size: 1rem;
-  }
-
-  .header__nav-link:hover {
-    background-color: transparent;
-    color: #003f8c;
-    text-decoration: underline;
-    text-decoration-color: #004bae;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 6px;
-  }
-
-  .header__nav-link:focus {
+    padding: 0;
+    text-align: left;
     text-decoration: none;
   }
 
+  /* Garante que os links estejam visíveis */
+  .header__navegar .header__nav-link {
+    opacity: 1;
+    transform: none;
+    transition: color 0.2s ease-in-out;
+    font-size: 1.5rem;
+  }
+
+.header__nav-link:hover:not(.header__nav-link--active),
+.header__nav-item--has-dropdown:hover > .header__nav-link:not(.header__nav-link--active) {
+  font-weight: 500; /* Garante que o peso da fonte seja o normal, não negrito */
+  color: #003f8c;
+  background-color: transparent;
+  text-decoration: underline;
+  text-decoration-color: var(--cor-primaria);
+  text-decoration-thickness: 1.4px; /* A linha mais fina, como solicitado */
+  text-underline-offset: 8px;
+}
+
+  .header__nav-link--active {
+    font-weight: 700; /* Negrito */
+    text-decoration: underline;
+    text-decoration-color: var(--cor-primaria);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+  }
+
+  /* Estilos do dropdown para desktop (hover) */
   .dropdown-arrow {
     display: none;
   }
 
-  .header__nav-item--has-dropdown {
-    position: relative;
+  /* Adiciona o indicador de dropdown via pseudo-elemento */
+  .header__nav-item--has-dropdown > .header__nav-link::after {
+    content: "▾";
+    font-size: 0.8em;
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease-out;
+  }
+
+  /* Ajuste fino na aparição para um efeito mais suave */
+  /* Anima o indicador no hover */
+  .header__nav-item--has-dropdown:hover > .header__nav-link::after {
+    transform: rotate(180deg);
   }
 
   .header__sub-nav {
+    max-height: none;
+    overflow: visible;
+    padding-left: 0;
     position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 10px);
     background-color: #ffffff;
+    border-radius: 10px;
+    top: 65%;
+    left: 55%;
     min-width: 220px;
     padding: 10px 0;
-    margin-top: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s ease-out, transform 0.2s ease-out,
-      margin-top 0.2s ease-out;
-  }
+    pointer-events: none;
 
-  .header__sub-nav-link {
-    font-size: 1rem;
-    text-align: left;
-    color: #004bae;
-    padding: 12px 20px;
-  }
+    margin-top: 0;
 
-  .header__sub-nav-link:hover {
-    background-color: rgba(0, 75, 174, 0.05);
+    transition: opacity 0.2s ease-out;
+    transform: translateX(-50%);
+
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.18);
   }
 
   .header__nav-item--has-dropdown:hover > .header__sub-nav {
     opacity: 1;
     visibility: visible;
-    margin-top: 5px;
+    pointer-events: auto;
     transform: translateX(-50%);
   }
-}
 
-/* --- TELAS MUITO LARGAS (A PARTIR DE 1200px) --- */
-@media (min-width: 1200px) {
-  header {
-    padding: 15px 60px;
+  .header__sub-nav-link {
+    font-size: 1.3rem; /* Fonte do submenu, mantendo hierarquia */
+    text-align: left;
+    color: #004bae;
+    font-weight: 500;
+    padding: 12px 20px;
   }
 
-  .header__nav-link {
-    font-size: 1.1rem;
-  }
-
-  .header__nav-item {
-    margin: 0 20px;
+  .header__sub-nav-link:hover {
+    background-color: rgba(0, 75, 174, 0.05);
   }
 }

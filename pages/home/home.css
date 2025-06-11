@@ -14,13 +14,141 @@
   }
 }
 
+/* 
+==========================================================================
+Mobile First: BANNER 
+==========================================================================
+*/
+
+/* Container principal com o gradiente e a estrutura flex.
+*/
+.banner {
+  background: linear-gradient(90deg, #05050c 0%, #16135d 100%);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 24px;
+  text-align: center;
+}
+
+/* Título de destaque.
+*/
+.banner__titulo {
+  font-family: var(--fonte-secundaria);
+  font-size: 2.5rem; /* 40px */
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+/* Parágrafo de suporte.
+*/
+.banner__texto {
+  font-family: var(--fonte-principal);
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  max-width: 55ch; /* Limite de largura para leitura ideal. */
+  margin: 0 0 32px 0;
+}
+
+/* Botão de Call-to-Action (CTA).
+*/
+.banner__botao {
+  display: inline-block;
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  font-family: var(--fonte-secundaria);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+  margin: 0 0 40px 0;
+}
+
+.banner__botao:hover {
+  background-color: #005fdb;
+  transform: scale(1.05);
+}
+
+/* Logo.
+*/
+.banner__logo {
+  display: block;
+  max-width: 180px;
+  height: auto;
+}
+
+/* ==========================================================================
+Breakpoint: BANNER (768px - 1199px)
+==========================================================================
+*/
+
+@media (min-width: 768px) {
+  /* 1. Transforma o banner em um layout de duas colunas. */
+  .banner {
+    flex-direction: row;
+    justify-content: space-between; /* Empurra o conteúdo e a logo para as extremidades. */
+    padding: 100px 60px; /* Mais respiro em telas maiores. */
+  }
+
+  /* 2. O wrapper do conteúdo agora alinha seus próprios itens à esquerda. */
+  .banner__conteudo {
+    text-align: left;
+    max-width: 55%; /* Limita a largura do bloco de texto. */
+    margin-right: 40px; /* Garante um espaço até a logo. */
+  }
+
+  /* 3. O botão não precisa mais de margem inferior e se alinha com o resto. */
+  .banner__botao {
+    margin-bottom: 0;
+  }
+
+  /* 4. A logo pode ser um pouco maior. */
+  .banner__logo {
+    max-width: 280px;
+  }
+}
+
+/* ==========================================================================
+   Breakpoint: BANNEr 1200px+ 
+   ========================================================================== */
+
+@media (min-width: 1200px) {
+  .banner {
+    /* Mais respiro geral na seção. */
+    padding: 40px 100px;
+  }
+
+  .banner__titulo {
+    font-size: 3.2rem; /* 56px */
+  }
+
+  .banner__texto {
+    font-size: 1.2rem; 
+  }
+
+  .banner__botao {
+    font-size: 1.125rem;
+    padding: 16px 40px;
+  }
+
+  .banner__logo {
+    max-width: 370px;
+  }
+}
+
 /* ==========================================================================
    Estilos da Seção Hero Banner (hero-banner) - MOBILE FIRST 
    ========================================================================== */
 
 /* --- Container Principal do Hero Banner --- */
 .hero-banner {
-  background-color: black;
+  background-color: white;
   display: flex; /* Ativa o layout Flexbox para este container */
   flex-direction: column; /* Organiza os filhos diretos em coluna (um abaixo do outro) */
   align-items: center; /* Centraliza os filhos diretos horizontalmente no container */
@@ -94,8 +222,6 @@
 
   border-radius: 16px; /* Arredonda os cantos do logo */
 
-  border: 1px solid #003f8c; /* Adiciona uma borda sólida de 1px com a cor azul principal */
-
   transition: opacity 0.7s ease-out, transform 0.5s ease-out,
     box-shadow 0.5s ease-out; /* Define a suavidade da animação para opacidade, transformações 3D e sombra */
   opacity: 0; /* Começa invisível para o efeito de fade-in na animação de entrada */
@@ -165,7 +291,7 @@
 
 /* 
 ==========================================================================
-Breakpoint: @media (min-width: 600px) (Faixa: 600px - 767px)
+Breakpoint: @media (min-width: 600px) (hero-banner) (Faixa: 600px - 767px)
 ==========================================================================
 */
 
@@ -230,7 +356,7 @@ Breakpoint: @media (min-width: 600px) (Faixa: 600px - 767px)
 
 /* 
 ==========================================================================
-Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
+Breakpoint: @media (min-width: 768px) (hero-banner) (Faixa: 768px - 991px)
 ==========================================================================
 */
 
@@ -272,14 +398,11 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
   }
 }
 
-/*
- * ==========================================================================
- * Breakpoint: @media (min-width: 992px) (Faixa: 992px - 1599px)
- * Foco em escalonar elementos para desktops menores/padrão,
- * mantendo a nova estrutura de logo 3D único.
- * Estilos de layout e visuais são herdados dos breakpoints anteriores.
- * ==========================================================================
- */
+/* 
+==========================================================================
+Breakpoint: @media (min-width: 992px) (hero-banner) (Faixa: 992px - 1599px)
+==========================================================================
+*/
 
 @media (min-width: 992px) {
   .hero-banner {
@@ -319,16 +442,11 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
   }
 }
 
-/*
- * ==========================================================================
- * Breakpoint: @media (min-width: 1600px) (Faixa: 1600px+)
- * Ajustes finais para telas MUITO LARGAS, focando em máximo impacto visual
- * para o título e escalonamento proporcional dos elementos associados,
- * incluindo o logo para manter o equilíbrio geral.
- * A maioria dos estilos de layout e tamanho dos demais elementos são herdados
- * do breakpoint de 992px.
- * ==========================================================================
- */
+/* 
+==========================================================================
+Breakpoint: @media (min-width: 1600px) (hero-banner) (Faixa: 1600+px)
+==========================================================================
+*/
 
 @media (min-width: 1600px) {
   /* --- Título --- */
@@ -355,6 +473,12 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
        display: block e height: auto são herdados dos breakpoints anteriores / mobile-first. */
   }
 }
+
+/* 
+==========================================================================
+Mobile First: QUEM SOMOS
+==========================================================================
+*/
 
 .quem-somos__container {
   background-color: #004bae;
@@ -402,14 +526,11 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
   border-radius: 20px;
 }
 
-/*
- * ==========================================================================
- * Breakpoint: @media (min-width: 600px) (Faixa: 600px - 767px)
- * Mantém o layout de coluna do mobile (texto em cima, foto abaixo), mas
- * aumenta o tamanho dos elementos e espaçamentos para melhor
- * aproveitamento do espaço em telas de tablets pequenos (vertical).
- * ==========================================================================
- */
+/* 
+==========================================================================
+Mobile First: QUEM SOMOS (Faixa 600px - 767px)
+==========================================================================
+*/
 
 @media (min-width: 600px) {
   /* --- Container da Seção --- */
@@ -431,13 +552,18 @@ Breakpoint: @media (min-width: 768px) (Faixa: 768px - 991px)
                          para garantir excelente legibilidade em telas um pouco maiores. */
   }
 
-
   /* --- Container da Imagem --- */
   .quem-somos__imagem-wrapper {
     max-width: 450px; /* Permite que a imagem dos fundadores fique um pouco maior
                          (era max-width de 380px no mobile). */
   }
 }
+
+/* 
+==========================================================================
+Mobile First: QUEM SOMOS (Faixa 768px)
+==========================================================================
+*/
 
 @media (min-width: 768px) {
   .quem-somos__container {

@@ -1,225 +1,205 @@
 /* ==========================================================================
-   MOBILE FIRST
-   (Telas menores que 768px)
-   Define os estilos base do rodapé, otimizados para dispositivos móveis.
-   ========================================================================== *
+   RODAPÉ | Arquitetura Base
+   ========================================================================== */
 
-/* Estilo geral do container <footer> */
+:root {
+  /* Paleta de Cores e Estilos Globais do Rodapé */
+  --footer-bg-color: #ffffff;
+  --footer-text-color: #004bae;
+  --footer-border-color: rgba(0, 0, 0, 0.1); /* Borda sutil preta/cinza */
+
+  /* Unidades de Espaçamento Consistentes */
+  --spacing-xs: 8px;
+  /* --spacing-sm: 10px; */
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+
+  /* Escala Tipográfica */
+  --font-size-sm: 0.85em;
+  --font-size-md: 1em;
+  --font-size-lg: 1.2em;
+}
+
+/* ==========================================================================
+   ESTILOS MOBILE FIRST (< 768px)
+   ========================================================================== */
+
 footer {
-  background-color: #004bae; /* Cor de fundo azul padrão para o rodapé. */
-  color: #ffffff; /* Cor padrão do texto dentro do rodapé (branco). */
-  padding: 10px 15px; /* (topo/base e laterais) */
-  display: flex; /* Habilita o layout Flexbox. */
-  flex-direction: column; /* Empilha as seções filhas (.logo__footer, .footer__contato-info, .footer__direitos) verticalmente. */
-  gap: 10px; /* Espaço vertical de 10px entre as seções filhas diretas, para um visual mobile mais compacto. */
-  /* A propriedade 'flex-shrink: 0;' foi adicionada ao 'footer' no arquivo global.css
-     para garantir o comportamento correto do "sticky footer" em páginas com pouco conteúdo. */
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  flex-direction: column; /* Layout empilhado como padrão */
+  gap: var(--spacing-sm);
+  flex-shrink: 0; /* Justificativa: Essencial para o sticky footer em 'global.css'. */
 }
 
-/* 1. Seção Logo e Ícones Sociais (.logo__footer) */
+/* --- Blocos de Conteúdo --- */
 .logo__footer {
-  display: flex; /* Habilita Flexbox para alinhar logo e ícones internamente. */
-  flex-direction: column; /* Empilha a imagem do logo acima da div dos ícones sociais. */
-  align-items: center; /* Centraliza horizontalmente o logo e a div dos ícones. */
-  gap: 0px; /* Remove o 'gap' entre logo e ícones, pois o espaçamento visual é dado pelo design das imagens (que contêm espaçamento azul). */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0; /* Justificativa: Espaçamento visual provido pelos assets da logo/ícones. */
 }
 
-/* Estilos para a imagem <img> do logo */
-.footer__logo-img {
-  max-width: 120px; /* Largura máxima para o logo em telas mobile, conforme decisão de design. */
-  height: auto; /* Mantém a proporção da imagem. */
-}
-
-/* Container dos ícones sociais */
 .footer__social-icons {
-  display: flex; /* Alinha os ícones lado a lado. */
-  flex-wrap: wrap; /* Permite que os ícones quebrem para a próxima linha se não couberem. */
-  justify-content: center; /* Centraliza os ícones na linha, útil se houver quebra de linha. */
-  gap: 8px; /* Espaço de 8px entre cada ícone social. */
+  list-style-type: none; /* Reset: Remove marcadores de lista padrão do navegador. */
+  padding-left: 0; /* Reset: Remove recuo padrão de lista. */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  width: 100%;
 }
 
-/* Estilos para as imagens <img> dos ícones sociais */
-.footer__social-icons img {
-  width: auto; /* Largura da imagem do ícone ajustada automaticamente pela altura para manter proporção. */
-  height: 45px; /* Altura definida para os ícones sociais no mobile. */
-  vertical-align: middle; /* Melhora o alinhamento vertical de imagens dentro de links ou outros contextos inline. */
-}
-
-/* Efeito visual para os ícones sociais ao passar o mouse */
-.footer__social-icons a:hover img {
-  opacity: 0.8; /* Leve transparência no hover para feedback visual. */
-}
-
-/* 2. Seção de Contato (.footer__contato-info) */
-.footer__contato-info {
-  text-align: center; /* Centraliza o título "CONTATO" e a lista de contato (telefone/e-mail). */
-}
-
-/* Estilos para o título <h2> "CONTATO" */
-.footer__contato-titulo {
-  font-size: 1.2em; /* Tamanho da fonte para o título "CONTATO". */
-  font-weight: 700; /* Peso da fonte (negrito). */
-  margin-bottom: 15px; /* Espaço abaixo do título "CONTATO". */
-  text-transform: uppercase; /* Transforma o texto do título para maiúsculas. */
-}
-
-/* Container da lista de contatos (telefone e e-mail) */
 .footer__contato-lista {
-  display: flex; /* Habilita Flexbox. */
-  flex-direction: column; /* Empilha telefone acima do e-mail. */
-  gap: 8px; /* Espaço de 8px entre os itens de contato. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-md);
+  line-height: 1.6;
 }
 
-/* Estilos para os parágrafos <p> dentro da lista de contato */
-.footer__contato-lista p {
-  font-size: 1em; /* Tamanho da fonte para o texto de telefone e e-mail. */
-  line-height: 1.6; /* Altura da linha para melhor legibilidade. */
-  margin: 0; /* Remove margens padrão do <p>, pois 'gap' no elemento pai já controla o espaçamento. */
-}
-
-/* Estilos para os links <a> na lista de contato */
-.footer__contato-lista a {
-  color: #ffffff; /* Cor do texto do link (branco), para garantir contraste com o fundo azul. */
-  text-decoration: none; /* Remove o sublinhado padrão dos links. */
-}
-
-/* Efeito visual para o link de e-mail ao passar o mouse */
-.footer__contato-lista a:hover {
-  text-decoration: underline; /* Adiciona sublinhado no hover para indicar interatividade. */
-}
-
-/* 3. Seção de Direitos Autorais (.footer__direitos) */
+/* --- 3. Seção de Direitos --- */
 .footer__direitos {
-  text-align: center; /* Centraliza o texto do CNPJ e copyright. */
-  font-size: 0.85em; /* Tamanho de fonte menor para estas informações secundárias. */
-  line-height: 1.5; /* Altura da linha para boa legibilidade. */
-  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Linha divisória sutil acima desta seção. */
-  padding-top: 20px; /* Espaçamento interno entre a borda e o texto dos direitos. */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs); /* Padrão consistente para espaçamento interno. */
+  text-align: center;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  border-top: 1px solid var(--footer-border-color);
+  padding-top: var(--spacing-lg);
 }
 
-/* Estilos para os parágrafos <p> dentro da seção de direitos */
-.footer__direitos p {
-  margin-bottom: 8px; /* Espaço entre o parágrafo do CNPJ e o do copyright. */
+/* --- Elementos de Texto e Mídia --- */
+.footer__logo-img {
+  max-width: 120px;
+  height: auto;
 }
 
-/* Remove a margem inferior do último parágrafo para evitar espaço extra no final do rodapé */
-.footer__direitos p:last-child {
-  margin-bottom: 0;
+.footer__social-icons img {
+  height: 45px;
 }
 
+.footer__social-icons a:hover {
+  opacity: 0.8;
+}
+
+/* --- 2. Seção de Contato --- */
+.footer__contato-info {
+  text-align: center;
+}
+
+.footer__contato-titulo {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer__contato-lista a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer__contato-lista a:hover {
+  text-decoration: underline;
+}
+
+/* --- Ajustes Finos para Telas Mínimas --- */
 @media (max-width: 399px) {
   .footer__social-icons img {
     height: 38px;
   }
+
   .footer__social-icons {
-    gap: 6px;
+    gap: 6px; 
   }
+
   .footer__direitos {
-    font-size: 0.69em;
+    font-size: 0.69em; 
   }
 }
 
 /* ==========================================================================
-   TABLET E TELAS MAIORES
-   (A partir de 768px)
-   Adapta o layout do rodapé para um formato de colunas em telas maiores.
+   LAYOUT TABLET E DESKTOP (>= 768px)
    ========================================================================== */
 
 @media (min-width: 768px) {
-  /* --- Ajustes no container principal <footer> --- */
+
+   /* --- Reestruturação do Container Principal --- */
   footer {
-    /* display: flex; (Já definido no mobile, herdado) */
-    flex-direction: row; /* Altera para layout em linha (horizontal) para as colunas principais. */
-    flex-wrap: wrap; /* Permite que a seção .footer__direitos quebre para a próxima linha se necessário. */
-    align-items: flex-start; /* Alinha o topo das caixas das colunas (.logo__footer, .footer__contato-info). */
-    justify-content: space-between; /* Distribui o espaço: .logo__footer à esquerda, .footer__contato-info à direita, com um vão central. */
-
-    padding: 0 30px 15px; /* (topo, laterais, base) */
-
-    gap: 0; /* Remove o 'gap' geral do mobile; espaçamentos entre colunas/linhas são controlados por margens ou pela distribuição do flex. */
+    flex-direction: row; /* Altera a direção para colunas lado a lado. */
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Distribui as colunas com espaço igual nas bordas e no centro. */
+    align-items: center; /* Garante o balanço vertical entre a coluna do logo e a de contato. */
+    padding: var(--spacing-lg) 30px; 
+    gap: 0; /
   }
 
-  /* Ajuste de tamanho para a imagem do logo em telas de tablet/médias */
-  .footer__logo-img {
-    max-width: 150px; /* Logo com tamanho ajustado para este breakpoint. */
-  }
-
-  /* Garante que padding e border sejam incluídos na largura/altura definida para os elementos filhos diretos do footer */
-  .logo__footer,
-  .footer__contato-info,
-  .footer__direitos {
-    box-sizing: border-box;
-  }
-
-  /* --- Coluna da Esquerda: Logo e Ícones Sociais --- */
+  /* --- Coluna da Esquerda: Logo e Sociais --- */
   .logo__footer {
-    width: 40%; /* Define a largura da coluna do logo e ícones sociais. */
-    /* gap: 0px; (Herdado do mobile, mantendo a proximidade visual entre logo e ícones devido ao design das imagens) */
+    align-items: center; /* Alinha o conteúdo da coluna à esquerda */
+    flex: 1; /* Permite que a coluna cresça */
+    max-width: 45%; /* Garante um espaço mínimo no centro */
   }
 
-  /* Alinhamento dos ícones sociais dentro da coluna do logo */
+  /* Alinha os ícones à esquerda, abaixo da logo */
   .footer__social-icons {
-    justify-content: flex-start; /* Alinha os ícones à esquerda dentro desta coluna. */
     gap: 2px;
   }
 
-  /* Ajuste de tamanho para as imagens dos ícones sociais em telas de tablet/médias */
   .footer__social-icons img {
-    height: 42px; /* Altura dos ícones sociais ajustada para este breakpoint. */
+    height: 47px;
   }
 
-  /* --- Coluna da Direita: Informações de Contato --- */
+  .footer__logo-img {
+    max-width: 180px;
+  }
+
+  /* --- Coluna da Direita: Contato --- */
   .footer__contato-info {
-    width: 40%; /* Define a largura da coluna de contato. */
-    /* Com .logo__footer e .footer__contato-info a 40% cada, o justify-content no footer cria um vão central de aprox. 20%. */
-    padding-top: 60px; /* Desloca o conteúdo de contato para baixo para um alinhamento vertical específico com a coluna do logo. */
-    /* text-align: left; (Para alinhar o conteúdo à esquerda nesta coluna. Se não especificado, herda text-align:center do mobile) */
-    /* Se o conteúdo de contato precisar ser alinhado à esquerda: Adicionar 'text-align: left;' aqui. */
+    flex: 1;
+    max-width: 45%;
+    align-items: center; /* Alinha o conteúdo da coluna à direita */
+    text-align: center; /* Alinha o texto dentro dos elementos à direita */
   }
 
-  /* --- Seção Inferior: Direitos Autorais --- */
+  /* --- Linha Inferior: Direitos Autorais --- */
   .footer__direitos {
-    width: 100%; /* Ocupa toda a largura, formando uma nova "linha" abaixo das colunas. */
-    /* margin-top não foi definido, resultando em margem mínima acima da borda (conforme preferência). */
-    text-align: center; /* Mantém o texto centralizado. */
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Borda superior. */
-    padding-top: 1px; /* Padding superior interno mínimo após a borda (conforme preferência). */
+    flex-basis: 100%; /* Força a quebra de linha, criando a fileira inferior. */
+    margin-top: var(--spacing-lg); 
   }
 }
 
 /* ==========================================================================
-   TELAS MUITO LARGAS (EX: DESKTOPS GRANDES)
-   (A partir de 1200px)
-   Define ajustes finos para telas muito largas, principalmente para conter 
-   o conteúdo do rodapé e evitar que se estique excessivamente.
+   LAYOUT DESKTOPS LARGOS (>= 1200px)
    ========================================================================== */
 
 @media (min-width: 1200px) {
-  /* Ajustes no container principal <footer> para telas muito largas */
+
+  /* --- Aumenta o 'respiro' lateral --- */
   footer {
-    /* padding-top: 0px; (Herdado do breakpoint de 768px) */
-    /* padding-bottom: 15px; (Herdado do breakpoint de 768px) */
-    padding-left: 80px; /* Padding lateral esquerdo significativamente aumentado. */
-    padding-right: 80px; /* Padding lateral direito significativamente aumentado. */
+    padding-left: 80px;
+    padding-right: 80px;
   }
 
-  /* Aumento adicional para o logo em telas muito largas */
+  /* --- Ajustes de Escala para Visibilidade --- */
   .footer__logo-img {
-    max-width: 160px;
+    max-width: 200px;
   }
 
-  /* Aumento adicional para os ícones sociais em telas muito largas */
   .footer__social-icons img {
-    height: 49px;
+    height: 50px;
   }
 
-  /* Aumento sutil na fonte do título de contato */
+  /* Ajuste na fonte usando as variáveis já existentes */
   .footer__contato-titulo {
-    font-size: 1.25em;
+    font-size: 1.5em; 
   }
 
-  /* Aumento sutil na fonte da lista de contato */
-  .footer__contato-lista p {
-    font-size: 1.05em;
+  .footer__contato-lista {
+    font-size: 1.2em; 
   }
 }
