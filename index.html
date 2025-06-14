@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/footer.css" />
   <script src="js/header.js" defer></script>
   <script src="js/index.js" defer></script>
-  <!--Final CSS/js Links-->d
+  <!--Final CSS/js Links-->
 
   <!--Começo Favicon e ícons-->
   <link rel="icon" href="assets/favicons/favicon.svg" type="image/svg+xml" />
@@ -75,41 +75,61 @@
     </div>
   </header>
   <main>
-    <section class="banner" aria-labelledby="banner-titulo">
-      <div class="banner__conteudo">
-        <h1 id="banner-titulo" class="banner__titulo">
-          Respostas rápidas e confiáveis para profissionais da saúde.
-        </h1>
-        <p class="banner__texto">
-          A Nobra é uma inteligência artificial treinada com milhões de publicações médicas de alto impacto, projetada
-          para auxiliar profissionais da saúde com respostas rápidas, confiáveis e baseadas em evidências.
-        </p>
-        <a target="_blank" rel="noopener noreferrer" href="https://nobregamedtech.com" class="banner__botao">
-          Saiba mais
-        </a>
+    <section class="banner" aria-roledescription="carousel" aria-label="Destaques da Nobrega Medtech">
+      <div class="banner__slides-container">
+        <div class="banner__slide is-active" role="group" aria-label="Slide 1 de 2: Inteligência Artificial">
+          <div class="banner__conteudo">
+            <h2 class="banner__titulo">
+              Respostas rápidas e confiáveis para profissionais da saúde.
+            </h2>
+            <p class="banner__texto">
+              A Nobra é uma inteligência artificial treinada com milhões de publicações médicas de alto impacto,
+              projetada para auxiliar profissionais da saúde com respostas rápidas, confiáveis e baseadas em evidências.
+            </p>
+            <a target="_blank" rel="noopener noreferrer" href="https://nobregamedtech.com" class="banner__botao">
+              Saiba mais
+            </a>
+          </div>
+          <img class="banner__logo" src="assets/imagens/logo-nobra.svg" alt="Logotipo da Nobra Medtech">
+        </div>
+        <div class="banner__slide" role="group" aria-label="Slide 2 de 2: Nobracast">
+          <div class="banner__conteudo">
+            <h2 class="banner__titulo">
+              Nobracast: Sua dose semanal de inovação em saúde.
+            </h2>
+            <p class="banner__texto">
+              Ouça especialistas discutindo o futuro da medicina, tecnologia e IA. Disponível nas principais plataformas
+              de podcast.
+            </p>
+            <a target="_blank" rel="noopener noreferrer"
+              href="https://open.spotify.com/show/0ybuk2mnM2mQREZPFyk8sN?si=9cab5da9486f4c5b" class="banner__botao">
+              Ouvir agora
+            </a>
+          </div>
+          <img class="banner__logo" src="assets/imagens/nobracast.png" alt="Logotipo do Nobracast">
+        </div>
       </div>
-      <img class="banner__logo" src="assets/imagens/logo-nobra.svg" alt="Logotipo da Nobra Medtech">
+      <div class="banner__nav-dots">
+        <button class="banner__dot is-active" data-slide="0" aria-label="Ir para o slide 1"></button>
+        <button class="banner__dot" data-slide="1" aria-label="Ir para o slide 2"></button>
+      </div>
     </section>
-    <section class="hero-banner">
-      <div class="hero-banner__content-left">
-        <h2 class="hero-banner__title">
+    <section class="hero">
+      <div class="hero__content-left">
+        <h2 class="hero__title">
           A Nova
-          <span class="hero-banner__title--linebreak">Era da Medicina</span>
+          <span class="hero__title--linebreak">Era da Medicina</span>
         </h2>
         <div class="ecg-line-animation" aria-hidden="true"></div>
       </div>
-      <div class="hero-banner__content-right">
-        <div class="hero-banner__pointing-interaction">
-          <img class="hero-banner__logo" src="assets/imagens/logo-nobrega-medtech.svg" alt="Logo Nobrega Medtech" />
+      <div class="hero__content-right">
+        <div class="hero__pointing-interaction">
+          <img class="hero__logo" src="assets/imagens/logo-nobrega-medtech.svg" alt="Logo Nobrega Medtech" />
         </div>
       </div>
     </section>
     <section class="quem-somos">
       <div class="quem-somos__container">
-        <div class="quem-somos__imagem-wrapper">
-          <img src="assets/imagens/fundadores/fundadores.jpg" alt="Fundadores Nobrega Medtech"
-            class="quem-somos__foto" />
-        </div>
         <div class="quem-somos__conteudo-texto">
           <h2 class="quem-somos__titulo">Quem Somos</h2>
           <p class="quem-somos__paragrafo">
@@ -125,6 +145,10 @@
             eficiente, acessível e humanizado. Fazemos parte da nova
             era da medicina.
           </p>
+        </div>
+        <div class="quem-somos__imagem-wrapper">
+          <img src="assets/imagens/fundadores/fundadores.jpg" alt="Fundadores Nobrega Medtech"
+            class="quem-somos__foto" />
         </div>
       </div>
     </section>
@@ -178,6 +202,7 @@
       <small>© 2025 Nobrega Medtech. Todos os direitos reservados.</small>
     </div>
   </footer>
+  <script src="path/para/seu/animacoes.js"></script>
 </body>
 
 </html>

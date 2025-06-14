@@ -14,14 +14,14 @@
   }
 }
 
-/* 
-==========================================================================
-Mobile First: BANNER 
-==========================================================================
-*/
+/* ==========================================================================
+   Mobile First: BANNER 
+   ========================================================================== */
 
-/* Container principal com o gradiente e a estrutura flex.
-*/
+/* ==========================================================================
+   BANNER - GERAL E CARROSSEL
+   ========================================================================== */
+
 .banner {
   background: linear-gradient(90deg, #05050c 0%, #16135d 100%);
   color: #ffffff;
@@ -30,31 +30,66 @@ Mobile First: BANNER
   align-items: center;
   justify-content: center;
   padding: 50px 24px;
-  text-align: center;
+  position: relative;
 }
 
-/* Título de destaque.
-*/
+.banner__slides-container {
+  display: grid;
+  width: 100%; /* Garante que o container ocupe todo o espaço */
+}
+
+/* Regra UNIFICADA para .banner__slide */
+.banner__slide {
+  /* Mecânica do carrossel */
+  grid-area: 1 / 1 / 2 / 2;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  pointer-events: none;
+
+  /* Layout interno do slide (mobile-first) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+/* A classe .is-active torna o slide visível e interativo. */
+.banner__slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   CONTEÚDO INTERNO DO BANNER
+   ========================================================================== */
+
 .banner__titulo {
   font-family: var(--fonte-secundaria);
-  font-size: 2.5rem; /* 40px */
+  font-size: 2.2rem;
   font-weight: 700;
   margin: 0 0 16px 0;
 }
 
-/* Parágrafo de suporte.
-*/
 .banner__texto {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+
   font-family: var(--fonte-principal);
-  font-size: 1rem; /* 16px */
+  font-size: 0.9rem;
   line-height: 1.6;
-  max-width: 55ch; /* Limite de largura para leitura ideal. */
+  max-width: 55ch;
   margin: 0 0 32px 0;
 }
 
-/* Botão de Call-to-Action (CTA).
-*/
 .banner__botao {
+  opacity: 0; /* Estado inicial para animação */
+  transform: translateX(-40px);
+  /* Transição UNIFICADA E CORRETA */
+  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out,
+    background-color 0.2s ease-out;
+
   display: inline-block;
   background-color: var(--cor-primaria);
   color: #ffffff;
@@ -66,17 +101,20 @@ Mobile First: BANNER
   border-radius: 50px;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease-out, background-color 0.2s ease-out;
   margin: 0 0 40px 0;
+}
+
+/* Estado final da animação de conteúdo */
+.banner__texto.is-visible,
+.banner__botao.is-visible {
+  opacity: 1;
+  transform: none; /* Reseta para a posição original */
 }
 
 .banner__botao:hover {
   background-color: #005fdb;
-  transform: scale(1.05);
 }
 
-/* Logo.
-*/
 .banner__logo {
   display: block;
   max-width: 180px;
@@ -84,56 +122,85 @@ Mobile First: BANNER
 }
 
 /* ==========================================================================
-Breakpoint: BANNER (768px - 1199px)
-==========================================================================
-*/
+   NAVEGAÇÃO E BREAKPOINTS
+   ========================================================================== */
+
+.banner__nav-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.banner__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.banner__dot:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.banner__dot.is-active {
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   Breakpoint: 768px+
+   ========================================================================== */
 
 @media (min-width: 768px) {
-  /* 1. Transforma o banner em um layout de duas colunas. */
   .banner {
+    padding: 25px 60px;
+  }
+
+  .banner__slide {
     flex-direction: row;
-    justify-content: space-between; /* Empurra o conteúdo e a logo para as extremidades. */
-    padding: 100px 60px; /* Mais respiro em telas maiores. */
-  }
-
-  /* 2. O wrapper do conteúdo agora alinha seus próprios itens à esquerda. */
-  .banner__conteudo {
+    justify-content: space-between;
+    align-items: center;
     text-align: left;
-    max-width: 55%; /* Limita a largura do bloco de texto. */
-    margin-right: 40px; /* Garante um espaço até a logo. */
   }
 
-  /* 3. O botão não precisa mais de margem inferior e se alinha com o resto. */
+  .banner__conteudo {
+    max-width: 55%;
+    margin-right: 40px;
+  }
+
   .banner__botao {
     margin-bottom: 0;
   }
 
-  /* 4. A logo pode ser um pouco maior. */
   .banner__logo {
     max-width: 280px;
   }
 }
-
 /* ==========================================================================
-   Breakpoint: BANNEr 1200px+ 
+   Breakpoint: 1200px+
    ========================================================================== */
 
 @media (min-width: 1200px) {
   .banner {
-    /* Mais respiro geral na seção. */
-    padding: 40px 100px;
+    padding: 25px 100px;
   }
 
   .banner__titulo {
-    font-size: 3.2rem; /* 56px */
+    font-size: 2.8rem;
   }
 
-  .banner__texto {
-    font-size: 1.2rem; 
+  .banner__texto,
+  .banner__botao {
+    font-size: 0.9rem;
   }
 
   .banner__botao {
-    font-size: 1.125rem;
     padding: 16px 40px;
   }
 
@@ -143,356 +210,256 @@ Breakpoint: BANNER (768px - 1199px)
 }
 
 /* ==========================================================================
-   Estilos da Seção Hero Banner (hero-banner) - MOBILE FIRST 
+   Estilos da Seção Hero - MOBILE FIRST
    ========================================================================== */
 
-/* --- Container Principal do Hero Banner --- */
-.hero-banner {
+/* --- Container Principal do Hero --- */
+.hero {
   background-color: white;
-  display: flex; /* Ativa o layout Flexbox para este container */
-  flex-direction: column; /* Organiza os filhos diretos em coluna (um abaixo do outro) */
-  align-items: center; /* Centraliza os filhos diretos horizontalmente no container */
-  min-height: 77vh; /* Altura mínima de 60% da altura da viewport (janela do navegador) */
-  justify-content: flex-start; /* Alinha os filhos diretos no início do eixo principal (topo, neste caso) */
-  text-align: center; /* Centraliza o texto dentro deste container e seus filhos (pode ser sobrescrito) */
-  padding-top: 0.625rem; /* Espaçamento interno superior (10px). */
-  padding-left: 0.625rem; /* Espaçamento interno esquerdo (10px). */
-  padding-right: 0.625rem; /* Espaçamento interno direito (10px). */
-  /* padding-bottom é omitido intencionalmente (comentário original preservado) */
-  position: relative; /* Necessário para posicionar elementos filhos 'absolute' (como o ::before) em relação a este */
-  overflow: hidden; /* Esconde qualquer conteúdo que transborde as dimensões do banner */
-  box-sizing: border-box; /* Garante que padding e border não aumentem a largura/altura total do elemento */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 77vh; /* Altura mínima de 77% da altura da viewport */
+  justify-content: flex-start;
+  text-align: center;
+  padding: 0.625rem 0.625rem 0; /* 10px topo, 10px laterais, 0 fundo */
+  /* padding-bottom é omitido intencionalmente */
+  position: relative; /* Necessário para o posicionamento de elementos filhos com 'position: absolute' */
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* --- Containers de Conteúdo (Esquerda e Direita) --- */
-.hero-banner__content-left,
-.hero-banner__content-right {
-  width: 100%; /* Fazem os containers ocuparem toda a largura disponível do pai (.hero-banner) */
-  display: flex; /* Ativa Flexbox para estes containers também */
-  flex-direction: column; /* Organiza seus filhos em coluna */
-  align-items: center; /* Centraliza seus filhos horizontalmente */
+.hero__content-left,
+.hero__content-right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* --- Título --- */
-.hero-banner__title {
-  color: #003f8c; /* Define a cor do texto do título */
-  font-family: "Montserrat", sans-serif; /* Define a família da fonte e uma alternativa genérica */
-  font-size: 2.1rem; /* Define o tamanho da fonte */
-  font-weight: 700; /* Define o peso da fonte (700 = bold) */
-  line-height: 1.3; /* Define a altura da linha, afetando o espaçamento vertical entre linhas de texto */
-  margin-bottom: 0.9375rem; /* Espaçamento externo inferior de 15px (distância para o ECG) */
-  max-width: 100%; /* Garante que o título não ultrapasse a largura do seu container pai */
-  white-space: nowrap; /* Impede que o texto do título quebre em múltiplas linhas automaticamente */
+.hero__title {
+  color: #003f8c;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.9375rem;
+  max-width: 100%;
+  white-space: nowrap;
 
   /* Animação de entrada */
-  opacity: 0; /* Começa invisível para o efeito de fade-in */
-  transform: translateY(
-    20px
-  ); /* Começa 20px abaixo para o efeito de slide-up */
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out; /* Define a suavidade da animação de opacidade e transformação */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
 
-.hero-banner__title--linebreak {
-  display: block; /*Faz o <span> ocupar uma linha inteira, fornçando a quebra de linha do título*/
+.hero__title--linebreak {
+  display: block; /* Faz o <span> ocupar uma linha inteira, forçando a quebra de linha do título */
 }
 
-/* CSS para o container do logo (anteriormente .hero-banner__pointing-interaction) */
-.hero-banner__pointing-interaction {
-  display: flex; /* Ativa Flexbox para centralizar o logo */
-  align-items: center; /* Centraliza o logo verticalmente */
-  justify-content: center; /* Centraliza o logo horizontalmente */
-  width: 100%; /* Ocupa toda a largura do seu pai (.hero-banner__content-right) */
-  min-height: 220px; /* Altura mínima para este container, dando espaço ao logo */
-  perspective: 800px; /* Define a perspectiva para o efeito 3D do logo filho. Quanto menor, mais "exagerado" o 3D. */
+/* --- Container do logo, define a perspectiva para o efeito 3D --- */
+.hero__pointing-interaction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  perspective: 800px;
 }
 
-/* Estilos para o Logo */
-.hero-banner__logo {
-  display: block; /* Garante que o <img> se comporte como um bloco (ocupa largura total disponível, permite margens etc.) */
-  max-width: 190px; /* Largura máxima para o logo, mantendo a proporção no mobile */
-  height: auto; /* Altura se ajusta automaticamente para manter a proporção da imagem */
+/* --- Logo --- */
+.hero__logo {
+  display: block;
+  max-width: 190px;
+  height: auto;
 
-  /* Efeito 3D Refinado: */
-  transform: translateZ(40px) rotateX(-6deg); /* Move o logo 40px "para frente" no eixo Z e o inclina levemente no eixo X */
-  /* Comentário original sobre experimentação com rotateX preservado */
-
+  /* Efeito 3D */
+  transform: translateZ(40px) rotateX(-6deg);
   box-shadow: 0px 10px 25px rgba(0, 63, 140, 0.12),
-    /* Adiciona uma sombra projetada principal (mais difusa) */ 0px 4px 8px
-      rgba(0, 63, 140, 0.08); /* Adiciona uma sombra projetada secundária (mais próxima e definida) */
-
-  border-radius: 16px; /* Arredonda os cantos do logo */
-
-  transition: opacity 0.7s ease-out, transform 0.5s ease-out,
-    box-shadow 0.5s ease-out; /* Define a suavidade da animação para opacidade, transformações 3D e sombra */
-  opacity: 0; /* Começa invisível para o efeito de fade-in na animação de entrada */
+              0px 4px 8px rgba(0, 63, 140, 0.08);
+  border-radius: 16px;
+  transition: opacity 0.7s ease-out, transform 0.5s ease-out, box-shadow 0.5s ease-out;
+  opacity: 0;
 }
 
 .ecg-line-animation {
-  width: 60%; /* Largura relativa ao container pai */
-  max-width: 160px; /* Largura máxima absoluta para a animação no mobile */
-  height: 35px; /* Altura fixa para a animação */
-  margin-top: 15px; /* Espaçamento externo superior (distância do título) */
-  margin-bottom: 5px; /* Espaçamento externo inferior */
-  /* Comentários originais sobre centralização pelo pai preservados */
+  width: 60%;
+  max-width: 160px;
+  height: 35px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 15 L20 15 L25 5 L35 25 L40 15 L60 15 L65 5 L75 25 L80 15 L100 15' fill='none' stroke='%23004bae' stroke-width='2.5'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 100px auto;
+  animation: scrollEcg 3s linear infinite; /* Aplica a animação de rolagem ao fundo */
 
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 15 L20 15 L25 5 L35 25 L40 15 L60 15 L65 5 L75 25 L80 15 L100 15' fill='none' stroke='%23004bae' stroke-width='2.5'/%3E%3C/svg%3E"); /* Imagem de fundo SVG embutida (Data URI) */
-  background-repeat: repeat-x; /* Repete a imagem de fundo horizontalmente */
-  background-size: 100px auto; /* Define o tamanho do padrão da imagem de fundo para a animação */
-  animation: scrollEcg 3s linear infinite; /* Define o tamanho do padrão da imagem de fundo para a animação */
-
-  /*Animação de entrada*/
-  opacity: 0; /* Começa invisível */
-  transition: opacity 0.7s ease-out; /* Suavidade para o fade-in */
+  /* Animação de entrada */
+  opacity: 0;
+  transition: opacity 0.7s ease-out;
 }
 
-/* --- Estados Finais da Animação de Entrada (quando .is-visible é adicionado ao .hero-banner) --- */
-.hero-banner.is-visible .hero-banner__title {
-  opacity: 1; /* Torna o título visível */
-  transform: translateY(
-    0
-  ); /* Move o título para sua posição final (0px de deslocamento Y) */
+/* --- Estados Finais da Animação de Entrada --- */
+.hero.is-visible .hero__title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.hero-banner.is-visible .ecg-line-animation {
-  opacity: 1; /* Torna a animação ECG visível */
-  transition-delay: 0.1s; /* A animação do ECG começa 0.1s após a classe .is-visible ser adicionada */
+.hero.is-visible .ecg-line-animation {
+  opacity: 1;
+  transition-delay: 0.1s;
 }
 
-.hero-banner.is-visible .hero-banner__logo {
-  opacity: 1; /* Torna o logo visível */
-  transition-delay: 0.3s; /* A animação do logo começa 0.3s após a classe .is-visible ser adicionada */
+.hero.is-visible .hero__logo {
+  opacity: 1;
+  transition-delay: 0.3s;
 }
 
-/* --- Padrão de Fundo Sutil com Pseudo-elemento --- */
-.hero-banner::before {
-  content: ""; /* Necessário para que o pseudo-elemento seja gerado */
-  position: absolute; /* Posiciona em relação ao .hero-banner (que é position: relative) */
-  top: 0; /* Estica até o topo do .hero-banner */
-  left: 0; /* Estica até a esquerda do .hero-banner */
-  right: 0; /* Estica até a direita do .hero-banner */
-  bottom: 0; /* Estica até a base do .hero-banner */
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23FFFFFF' fill-opacity='0.2'/%3E%3C/svg%3E"); /* Imagem de fundo SVG de pontinhos (com opacidade reduzida para sutileza) */
-  background-repeat: repeat; /* Repete o padrão de pontinhos para preencher o fundo */
-  z-index: 0; /* Coloca o padrão de fundo atrás do conteúdo principal (que tem z-index: 1) */
-  pointer-events: none; /* Faz com que o pseudo-elemento não interfira com cliques do mouse no conteúdo */
+.hero__content-right {
+  margin-top: 1.5rem;
 }
 
-/* --- Ajustes de Contexto de Empilhamento (z-index) --- */
-.hero-banner__content-left {
-  position: relative; /* Necessário para que z-index tenha efeito em um item flex */
-  z-index: 1; /* Garante que o conteúdo da esquerda fique sobre o .hero-banner::before */
-}
-
-.hero-banner__content-right {
-  position: relative; /* Necessário para que z-index tenha efeito */
-  z-index: 1; /* Garante que o conteúdo da direita fique sobre o .hero-banner::before */
-  margin-top: 1.5rem; /* Espaçamento entre o content-left e o content-right no mobile */
-}
-
-/* 
-==========================================================================
-Breakpoint: @media (min-width: 600px) (hero-banner) (Faixa: 600px - 767px)
-==========================================================================
-*/
-
+/* ==========================================================================
+   Breakpoint: @media (min-width: 600px)
+   ========================================================================== */
 @media (min-width: 600px) {
-  /* --- Container Principal do Hero Banner --- */
-  .hero-banner {
-    flex-direction: row; /* Altera o layout para colunas lado a lado (mobile era 'column') */
-    min-height: 65vh; /* Ajusta a altura mínima do banner para esta faixa (mobile era '60vh') */
-    /* display: flex, align-items: center, justify-content: flex-start 
-       são herdados do mobile-first e continuam adequados. */
+  .hero {
+    flex-direction: row;
+    min-height: 65vh;
   }
 
-  /* --- Coluna da Esquerda --- */
-  .hero-banner__content-left {
-    flex-basis: 55%; /* Define a largura base da coluna esquerda como 55% do espaço flexível */
-    padding-right: 1rem; /* Adiciona espaçamento à direita para separação da coluna vizinha */
-    justify-content: center; /* Centraliza verticalmente o conteúdo (título, ECG) dentro desta coluna */
-    /* display: flex, flex-direction: column, e align-items: center (para os filhos) 
-       são herdados do seletor agrupado no mobile-first. */
+  .hero__content-left {
+    flex-basis: 55%;
+    padding-right: 1rem;
+    justify-content: center;
   }
 
-  /* --- Coluna da Direita --- */
-  .hero-banner__content-right {
-    flex-basis: 45%; /* Define a largura base da coluna direita como 45% */
-    margin-top: 0; /* Remove o margin-top: 1.5rem (do mobile) para alinhar colunas no topo */
-    padding-left: 1rem; /* Adiciona espaçamento à esquerda para separação */
-    justify-content: center; /* Centraliza verticalmente o .hero-banner__pointing-interaction */
-    /* display: flex, flex-direction: column, e align-items: center (para os filhos) 
-       são herdados do seletor agrupado no mobile-first. */
+  .hero__content-right {
+    flex-basis: 45%;
+    margin-top: 0;
+    padding-left: 1rem;
+    justify-content: center;
   }
 
-  /* --- Título --- */
-  .hero-banner__title {
-    font-size: 2.4rem; /* Aumenta o tamanho da fonte do título (mobile era 2.1rem) */
-    /* line-height: 1.3 e text-align: center são herdados e adequados. */
-    /* white-space: nowrap também é herdado, mantendo o título em poucas linhas controladas. */
+  .hero__title {
+    font-size: 2.4rem;
   }
 
-  /* --- Animação ECG --- */
   .ecg-line-animation {
-    width: 70%; /* Ajusta a largura da animação ECG (mobile era 60%) */
-    max-width: 250px; /* Define uma largura máxima maior para o ECG (mobile era 160px) */
+    width: 70%;
+    max-width: 250px;
   }
 
-  /* --- Container do Logo --- */
-  .hero-banner__pointing-interaction {
-    position: relative; /* Mantido para consistência e potenciais usos futuros (ex: pseudo-elementos) */
-    max-width: 280px; /* Define a largura máxima do container do logo para este breakpoint */
-    height: 250px; /* Define uma altura fixa para o container do logo (mobile usava min-height) */
-    /* width: 100% é herdado do mobile-first. */
-    /* display: flex, align-items: center, justify-content: center, e perspective: 800px 
-       são herdados do mobile-first, centralizando o logo e ativando o 3D. */
+  .hero__pointing-interaction {
+    position: relative;
+    max-width: 280px;
+    height: 250px;
   }
 
-  /* --- Logo --- */
-  .hero-banner__logo {
-    max-width: 220px; /* Aumenta o tamanho máximo do logo (mobile era 190px) */
-    /* Todas as propriedades de estilo 3D (transform, box-shadow, border, border-radius),
-       display: block e height: auto são herdadas do mobile-first e se aplicam aqui. */
+  .hero__logo {
+    max-width: 220px;
   }
 }
 
-/* 
-==========================================================================
-Breakpoint: @media (min-width: 768px) (hero-banner) (Faixa: 768px - 991px)
-==========================================================================
-*/
-
+/* ==========================================================================
+   Breakpoint: @media (min-width: 768px)
+   ========================================================================== */
 @media (min-width: 768px) {
-  /* --- Container Principal do Hero Banner --- */
-  .hero-banner {
-    min-height: 70vh; /* Aumenta a altura mínima do banner (era 65vh no breakpoint de 600px) */
-    /* para ocupar mais espaço vertical em telas maiores. */
+  .hero {
+    min-height: 70vh;
   }
 
-  /* --- Título --- */
-  .hero-banner__title {
-    font-size: 2.8rem; /* Aumenta o tamanho da fonte do título (era 2.4rem no breakpoint de 600px) */
-    /* para maior destaque e legibilidade. */
+  .hero__title {
+    font-size: 2.8rem;
   }
 
-  /* --- Animação ECG --- */
   .ecg-line-animation {
-    max-width: 300px; /* Aumenta a largura máxima da animação ECG (era 250px no breakpoint de 600px) */
-    /* para manter a proporção com o título maior. */
-    /* A propriedade 'width: 70%;' é herdada do breakpoint de 600px. */
+    max-width: 300px;
   }
 
-  /* --- Container do Logo --- */
-  .hero-banner__pointing-interaction {
-    max-width: 320px; /* Aumenta a largura máxima do container do logo (era 280px no breakpoint de 600px) */
-    height: 280px; /* Aumenta a altura fixa do container do logo (era 250px no breakpoint de 600px) */
-    /* para acomodar o logo que também será escalonado. */
-    /* Propriedades como position:relative, display:flex, align-items, justify-content,
-       e perspective são herdadas dos estilos mobile-first e/ou do breakpoint de 600px. */
+  .hero__pointing-interaction {
+    max-width: 320px;
+    height: 280px;
   }
 
-  /* --- Logo --- */
-  .hero-banner__logo {
-    max-width: 290px; /* Aumenta significativamente o tamanho máximo do logo (era 220px no breakpoint de 600px) */
-    /* para maior proeminência nesta faixa de tela. */
-    /* Todos os estilos 3D (transform, box-shadow, border, border-radius),
-       display: block e height: auto são herdados do mobile-first. */
+  .hero__logo {
+    max-width: 290px;
   }
 }
 
-/* 
-==========================================================================
-Breakpoint: @media (min-width: 992px) (hero-banner) (Faixa: 992px - 1599px)
-==========================================================================
-*/
-
+/* ==========================================================================
+   Breakpoint: @media (min-width: 992px)
+   ========================================================================== */
 @media (min-width: 992px) {
-  .hero-banner {
-    min-height: 75vh; /* Aumenta a altura mínima do banner (era 70vh no BP de 768px) para maior impacto visual. */
-    padding-top: 1rem; /* Define/Ajusta o espaçamento interno superior do banner. */
-    padding-bottom: 1rem; /* Define/Ajusta o espaçamento interno inferior do banner. */
-    /* Outras propriedades de layout (flex-direction: row, etc.) são herdadas. */
+  .hero {
+    min-height: 75vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
-  /* --- Título --- */
-  .hero-banner__title {
-    font-size: 4rem; /* Aumenta significativamente o tamanho da fonte do título (era 2.8rem no BP de 768px) para desktops. */
+  .hero__title {
+    font-size: 4rem;
   }
 
-  /* --- Animação ECG --- */
   .ecg-line-animation {
-    max-width: 360px; /* Aumenta a largura máxima da animação ECG (era 300px no BP de 768px). */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 15 L20 15 L25 5 L35 25 L40 15 L60 15 L65 5 L75 25 L80 15 L100 15' fill='none' stroke='%23004bae' stroke-width='4'/%3E%3C/svg%3E"); /* Altera o SVG para ter um stroke-width='4', tornando a linha do ECG mais espessa e visível em telas maiores. */
-    /* A propriedade 'width: 70%;' é herdada do BP de 600px. */
+    max-width: 360px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='30' viewBox='0 0 100 30'%3E%3Cpath d='M0 15 L20 15 L25 5 L35 25 L40 15 L60 15 L65 5 L75 25 L80 15 L100 15' fill='none' stroke='%23004bae' stroke-width='4'/%3E%3C/svg%3E"); /* Linha do ECG mais espessa para telas maiores */
   }
 
-  /* --- Container do Logo --- */
-  .hero-banner__pointing-interaction {
-    max-width: 410px; /* Aumenta a largura máxima do container do logo (era 320px no BP de 768px). */
-    height: 470px; /* Aumenta a altura fixa do container do logo (era 280px no BP de 768px) para acomodar o logo maior. */
-    /* Propriedades como position:relative, display:flex, align-items, justify-content,
-       e perspective são herdadas dos estilos dos breakpoints anteriores/mobile-first. */
+  .hero__pointing-interaction {
+    max-width: 410px;
+    height: 470px;
   }
 
-  /* --- Logo --- */
-  .hero-banner__logo {
-    max-width: 330px; /* Aumenta substancialmente o tamanho máximo do logo (era 290px no BP de 768px) para desktops. */
-    /* Todos os estilos 3D (transform, box-shadow, border, border-radius),
-       display: block e height: auto são herdados do mobile-first e breakpoints anteriores.
-       O posicionamento centralizado é garantido pelo flexbox do pai e pela ausência de
-       propriedades de posicionamento absoluto (left, top) aqui. */
+  .hero__logo {
+    max-width: 330px;
   }
 }
 
-/* 
-==========================================================================
-Breakpoint: @media (min-width: 1600px) (hero-banner) (Faixa: 1600+px)
-==========================================================================
-*/
-
+/* ==========================================================================
+   Breakpoint: @media (min-width: 1600px)
+   ========================================================================== */
 @media (min-width: 1600px) {
-  /* --- Título --- */
-  .hero-banner__title {
-    font-size: 5rem; /* Define um tamanho de fonte ainda maior para o título (era 3.5rem ou 4rem no BP de 992px, dependendo da sua última versão lá), 
-                             para assegurar proeminência máxima em telas muito grandes. */
-    line-height: 1.15; /* Mantém o ajuste de altura da linha para a fonte grande (era 1.3 herdado). */
-    margin-bottom: 1.5rem; /* Mantém o espaçamento abaixo do título para acomodar o tamanho e dar respiro ao ECG (era 0.9375rem herdado). */
+  .hero__title {
+    font-size: 5rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
   }
 
-  /* --- Animação ECG --- */
   .ecg-line-animation {
-    max-width: 400px; /* Mantém o aumento da largura máxima da animação ECG (era 360px no BP de 992px) 
-                             para proporção com o título. */
-    /* O background-image com stroke-width='4' é herdado do BP de 992px. */
+    max-width: 400px;
   }
 
-  /* --- Logo --- */
-  .hero-banner__logo {
-    max-width: 450px; /* Aumenta o tamanho máximo do logo (era 380px no BP de 992px) 
-                             para equilibrar visualmente com o título muito maior e manter 
-                             a presença do logo em telas ultra-largas. */
-    /* Todos os estilos 3D (transform, box-shadow, border, border-radius),
-       display: block e height: auto são herdados dos breakpoints anteriores / mobile-first. */
+  .hero__logo {
+    max-width: 450px;
   }
 }
 
-/* 
-==========================================================================
-Mobile First: QUEM SOMOS
-==========================================================================
-*/
+/* ==========================================================================
+   Estilos da Seção Quem Somos - MOBILE FIRST
+   ========================================================================== */
 
-.quem-somos__container {
+/* A section agora controla o fundo e o espaçamento vertical principal */
+.quem-somos {
   background-color: #004bae;
+  padding: 2.5rem 0; /* Espaçamento vertical, sem padding horizontal */
+}
+
+/* O container agora só limita a largura e centraliza o conteúdo */
+.quem-somos__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 1.5rem;
+  
+  /* Controle de largura e centralização */
+  width: 90%; /* Garante um espaçamento lateral em telas pequenas */
+  max-width: 500px; /* Limita a largura do conteúdo no mobile */
+  margin: 0 auto; /* Centraliza o container */
 }
 
 .quem-somos__conteudo-texto {
-  order: -1;
-  width: 90%;
-  max-width: 500px;
   text-align: center;
 }
 
@@ -515,8 +482,7 @@ Mobile First: QUEM SOMOS
 }
 
 .quem-somos__imagem-wrapper {
-  width: 90%;
-  max-width: 380px;
+  width: 100%; /* Ocupa a largura total do seu pai, o container */
 }
 
 .quem-somos__foto {
@@ -526,53 +492,81 @@ Mobile First: QUEM SOMOS
   border-radius: 20px;
 }
 
-/* 
-==========================================================================
-Mobile First: QUEM SOMOS (Faixa 600px - 767px)
-==========================================================================
-*/
-
+/* ==========================================================================
+   Breakpoint: @media (min-width: 600px)
+   ========================================================================== */
 @media (min-width: 600px) {
-  /* --- Container da Seção --- */
   .quem-somos__container {
-    /* O layout (display: flex; flex-direction: column; etc.) é herdado do mobile. */
-    gap: 2.6rem; /* Aumenta o espaçamento vertical entre o bloco de texto e o da imagem 
-                   (era 2rem no mobile) para um respiro maior. */
+    gap: 2.6rem;
+    max-width: 550px;
   }
-
-  /* --- Título da Seção --- */
   .quem-somos__titulo {
-    font-size: 2.6rem; /* Aumenta o tamanho da fonte do título (era 2.1rem no mobile) 
-                         para maior hierarquia visual. */
+    font-size: 2.6rem;
   }
-
-  /* --- Parágrafos da Seção --- */
   .quem-somos__paragrafo {
-    font-size: 1.3rem; /* Aumenta o tamanho da fonte dos parágrafos (era 1rem no mobile)
-                         para garantir excelente legibilidade em telas um pouco maiores. */
-  }
-
-  /* --- Container da Imagem --- */
-  .quem-somos__imagem-wrapper {
-    max-width: 450px; /* Permite que a imagem dos fundadores fique um pouco maior
-                         (era max-width de 380px no mobile). */
+    font-size: 1.1rem; /* Ajuste fino */
   }
 }
 
-/* 
-==========================================================================
-Mobile First: QUEM SOMOS (Faixa 768px)
-==========================================================================
-*/
-
+/* ==========================================================================
+   Breakpoint: @media (min-width: 768px)
+   ========================================================================== */
 @media (min-width: 768px) {
+  .quem-somos {
+    padding: 4rem 0; /* Mais respiro vertical em telas maiores */
+  }
+
   .quem-somos__container {
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
     gap: 3rem;
     max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 90%; /* Mantém o espaçamento antes de atingir o max-width */
   }
+
+  .quem-somos__imagem-wrapper {
+    flex-basis: 45%;
+    order: 1;
+  }
+
+
+  .quem-somos__conteudo-texto {
+    flex-basis: 50%;
+    text-align: left;
+    order: 2; 
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Breakpoint: @media (min-width: 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .quem-somos {
+    padding: 5rem 0;
+  }
+  .quem-somos__container {
+    gap: 5rem;
+  }
+  .quem-somos__titulo {
+    font-size: 3.2rem;
+  }
+  .quem-somos__paragrafo {
+    font-size: 1.2rem;
+    max-width: 60ch;
+  }
+}
+
+/* ==========================================================================
+   Breakpoint: @media (min-width: 1600px) - Telas Grandes
+   ========================================================================== */
+@media (min-width: 1600px) {
+    .quem-somos__container {
+        max-width: 1400px; /* Aumenta um pouco o container em telas muito largas */
+    }
 }

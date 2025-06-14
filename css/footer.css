@@ -181,22 +181,23 @@ footer {
 
   /* --- Aumenta o 'respiro' lateral --- */
   footer {
+    padding-top: 10px;
     padding-left: 80px;
     padding-right: 80px;
   }
 
   /* --- Ajustes de Escala para Visibilidade --- */
   .footer__logo-img {
-    max-width: 200px;
+    max-width: 160px;
   }
 
   .footer__social-icons img {
-    height: 50px;
+    height: 47px;
   }
 
   /* Ajuste na fonte usando as variáveis já existentes */
   .footer__contato-titulo {
-    font-size: 1.5em; 
+    font-size: 1.2em; 
   }
 
   .footer__contato-lista {
