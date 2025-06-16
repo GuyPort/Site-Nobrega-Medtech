@@ -113,7 +113,7 @@
       </div>
     </header>
     <main>
-      <h1>Main</h1>
+      <!-- Formulário de contato será implementado aqui -->
     </main>
     <footer>
       <div class="logo__footer">
@@ -200,8 +200,8 @@
       <div class="footer__contato-info">
         <h2 class="footer__contato-titulo">CONTATO</h2>
         <address class="footer__contato-lista">
-          <a href="tel:+5524998539136">(24) 99853-9136</a>
-          <a href="mailto:contato@nobregamedtech.com.br"
+          <a target="_blank" href="tel:+5524998539136">(24) 99853-9136</a>
+          <a target="_blank" href="mailto:contato@nobregamedtech.com.br"
             >contato@nobregamedtech.com.br</a
           >
         </address>
@@ -211,5 +211,33 @@
         <small>© 2025 Nobrega Medtech. Todos os direitos reservados.</small>
       </div>
     </footer>
+    <div class="suporte-flutuante">
+      <button class="suporte-flutuante__botao" aria-label="Abrir opções de suporte">
+        <img src="../../assets/imagens/icones/suporte.png" alt="Ícone de suporte" class="suporte-flutuante__icone">
+      </button>
+      <div class="suporte-flutuante__popup">
+        <div class="suporte-popup__topo">
+          <img src="../../assets/imagens/logo-nobrega-medtech.svg" alt="Logo Nobrega Medtech" class="suporte-popup__logo">
+        </div>
+        <div class="suporte-popup__conteudo">
+          <h3 class="suporte-popup__titulo">Atendimento Nobrega Medtech</h3>
+          <p class="suporte-popup__mensagem">Bem-vindo(a)! Estamos aqui para te ajudar.</p>
+          <div class="suporte-popup__caixa">
+            <span class="suporte-popup__caixa-titulo">Iniciar uma conversa</span>
+            <a href="/pages/contato/index.html" class="suporte-popup__botao-mensagem">&#9654; Envie-nos uma mensagem</a>
+          </div>
+          <div class="suporte-popup__icones">
+            <a href="https://wa.me/24998539136" class="suporte-popup__icone-link" id="suporte-whatsapp-link" target="_blank" rel="noopener noreferrer">
+              <img src="../../assets/imagens/icones/whatsapp_sem_fundo.png" alt="WhatsApp" class="suporte-popup__icone-img">
+            </a>
+            <a href="mailto:contato@nobregamedtech.com.br" class="suporte-popup__icone-link" id="suporte-email-link">
+              <img src="../../assets/imagens/icones/email.svg" alt="Email" class="suporte-popup__icone-img">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <link rel="stylesheet" href="../../css/suporte-flutuante.css" />
+    <script src="../../js/suporte-flutuante.js"></script>
   </body>
 </html>

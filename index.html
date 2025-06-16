@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/header.css" />
   <link rel="stylesheet" href="pages/home/home.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/suporte-flutuante.css" />
   <script src="js/header.js" defer></script>
   <script src="js/index.js" defer></script>
   <!--Final CSS/js Links-->
@@ -80,11 +81,11 @@
         <div class="banner__slide is-active" role="group" aria-label="Slide 1 de 2: Inteligência Artificial">
           <div class="banner__conteudo">
             <h2 class="banner__titulo">
-              Respostas rápidas e confiáveis para profissionais da saúde.
+              IA para Saúde: Respostas rápidas e baseadas em evidências.
             </h2>
             <p class="banner__texto">
-              A Nobra é uma inteligência artificial treinada com milhões de publicações médicas de alto impacto,
-              projetada para auxiliar profissionais da saúde com respostas rápidas, confiáveis e baseadas em evidências.
+              A Nobra é uma IA treinada com as principais publicações médicas globais para fornecer respostas rápidas,
+              confiáveis e baseadas em evidências aos profissionais de saúde, otimizando o acesso a informações seguras.
             </p>
             <a target="_blank" rel="noopener noreferrer" href="https://nobregamedtech.com" class="banner__botao">
               Saiba mais
@@ -95,11 +96,11 @@
         <div class="banner__slide" role="group" aria-label="Slide 2 de 2: Nobracast">
           <div class="banner__conteudo">
             <h2 class="banner__titulo">
-              Nobracast: Sua dose semanal de inovação em saúde.
+              Nobracast: A sua dose semanal de inovação em saúde.
             </h2>
             <p class="banner__texto">
-              Ouça especialistas discutindo o futuro da medicina, tecnologia e IA. Disponível nas principais plataformas
-              de podcast.
+              Em nosso podcast, mergulhe em conversas com especialistas sobre o futuro da medicina e da tecnologia. Uma
+              análise profunda sobre a nova era da saúde, disponível nas principais plataformas de áudio.
             </p>
             <a target="_blank" rel="noopener noreferrer"
               href="https://open.spotify.com/show/0ybuk2mnM2mQREZPFyk8sN?si=9cab5da9486f4c5b" class="banner__botao">
@@ -193,16 +194,61 @@
     <div class="footer__contato-info">
       <h2 class="footer__contato-titulo">CONTATO</h2>
       <address class="footer__contato-lista">
-        <a href="tel:+5524998539136">(24) 99853-9136</a>
-        <a href="mailto:contato@nobregamedtech.com.br">contato@nobregamedtech.com.br</a>
-      </address>
+        <a target="_blank" href="tel:+5524998539136">(24) 99853-9136</a>
+        <a target="_blank" href="mailto:contato@nobregamedtech.com.br">contato@nobregamedtech.com.br</a>
+      </addres>
     </div>
     <div class="footer__direitos">
       <p>NOBREGA TECH LTDA. CNPJ: 57.232.111/0001-40</p>
       <small>© 2025 Nobrega Medtech. Todos os direitos reservados.</small>
     </div>
   </footer>
+  <div class="suporte-flutuante">
+    <button class="suporte-flutuante__botao" aria-label="Abrir opções de suporte">
+      <img src="assets/imagens/icones/suporte.png" alt="Ícone de suporte" class="suporte-flutuante__icone">
+    </button>
+    <div class="suporte-flutuante__popup">
+      <div class="suporte-popup__topo">
+        <img src="assets/imagens/logo-nobrega-medtech.svg" alt="Logo Nobrega Medtech" class="suporte-popup__logo">
+      </div>
+      <div class="suporte-popup__conteudo">
+        <h3 class="suporte-popup__titulo">Atendimento Nobrega Medtech</h3>
+        <p class="suporte-popup__mensagem">Bem-vindo(a)! Estamos aqui para te ajudar.</p>
+        <div class="suporte-popup__caixa">
+          <span class="suporte-popup__caixa-titulo">Iniciar uma conversa</span>
+          <a href="/pages/contato/index.html" class="suporte-popup__botao-mensagem">&#9654; Envie-nos uma mensagem</a>
+        </div>
+        <div class="suporte-popup__icones">
+          <a href="https://wa.me/24998539136" class="suporte-popup__icone-link" id="suporte-whatsapp-link" target="_blank" rel="noopener noreferrer">
+            <img src="assets/imagens/icones/whatsapp_sem_fundo.png" alt="WhatsApp" class="suporte-popup__icone-img">
+          </a>
+          <a href="mailto:contato@nobregamedtech.com.br" class="suporte-popup__icone-link" id="suporte-email-link">
+            <img src="assets/imagens/icones/email.svg" alt="Email" class="suporte-popup__icone-img">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const suporteBotao = document.querySelector('.suporte-flutuante__botao');
+      const suportePopup = document.querySelector('.suporte-flutuante__popup');
+      function isMobileOuTablet() { return window.innerWidth < 1024; }
+      function abrirPopup() { suportePopup.classList.add('ativo'); }
+      function fecharPopup() { suportePopup.classList.remove('ativo'); }
+      if (isMobileOuTablet()) {
+        suporteBotao.addEventListener('click', function(e) { e.stopPropagation(); suportePopup.classList.toggle('ativo'); });
+        document.addEventListener('click', function(event) { if (!suportePopup.contains(event.target) && !suporteBotao.contains(event.target)) { fecharPopup(); } });
+      } else {
+        let hoverTimeout;
+        suporteBotao.addEventListener('mouseenter', abrirPopup);
+        suporteBotao.addEventListener('mouseleave', () => { hoverTimeout = setTimeout(fecharPopup, 200); });
+        suportePopup.addEventListener('mouseenter', () => { clearTimeout(hoverTimeout); });
+        suportePopup.addEventListener('mouseleave', fecharPopup);
+      }
+    });
+  </script>
   <script src="path/para/seu/animacoes.js"></script>
+  <script src="js/suporte-flutuante.js"></script>
 </body>
-
 </html>
