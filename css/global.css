@@ -2,66 +2,137 @@
    CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
    ========================================================================== */
 
-  html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
-
 :root {
+  /* Tipografia */
   --fonte-principal: "Roboto", sans-serif;
   --fonte-secundaria: "Montserrat", sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
 
+  /* Cores */
   --cor-primaria: #004bae;
+  --cor-secundaria: #2563c9;
   --cor-texto: #333333;
+  --cor-texto-claro: #666666;
+  --cor-fundo: #ffffff;
+  --cor-borda: #e0e0e0;
+
+  /* Espaçamentos */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Layout */
   --header-height: 80px;
+  --container-max-width: 1200px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+
+  /* Sombras */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+
+  /* Transições */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
 }
 
 /* ==========================================================================
-   ESTILOS GLOBAIS (Reset e Sticky Footer)
+   RESET E CONFIGURAÇÕES BASE
    ========================================================================== */
 
-/*
-  Melhorias de box-sizing para um layout mais intuitivo.
-  Todos os elementos passarão a incluir padding e border no seu tamanho total.
-*/
 html {
   box-sizing: border-box;
-  height: 100%; /* Pré-requisito para o sticky footer em alguns cenários */
+  height: 100%;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
-/* Configuração do Sticky Footer e padrões do body.
-*/
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 0; /* O margin: 0; já vem do normalize */
   font-family: var(--fonte-principal);
   color: var(--cor-texto);
+  background-color: var(--cor-fundo);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Garante que o conteúdo principal ocupe o espaço vazio, empurrando o footer.
-*/
+/* ==========================================================================
+   LAYOUT BASE
+   ========================================================================== */
+
 main {
   flex-grow: 1;
+  width: 100%;
 }
 
-/* Impede que o footer encolha.
-*/
 footer {
   flex-shrink: 0;
 }
 
-  .body-no-scroll {
-    overflow: hidden;
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   UTILIDADES
+   ========================================================================== */
+
+.body-no-scroll {
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--spacing-md);
+  padding-left: var(--spacing-md);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 14px;
+    --spacing-md: 12px;
+    --spacing-lg: 20px;
+    --spacing-xl: 28px;
   }
+}

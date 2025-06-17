@@ -3,9 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- LÓGICA PARA O MENU HAMBÚRGUER ---
   const hamburgerButton = document.querySelector(".header__hamburger-button");
   const navContainer = document.querySelector(".header__navegar");
+  const navigationMenu = document.querySelector(".header__nav");
+
+  // Cache do body para melhor performance
+  const body = document.body;
 
   if (hamburgerButton && navContainer) {
-    hamburgerButton.addEventListener("click", function () {
+    const toggleMenu = function() {
       // Alterna as classes para o estado ativo/inativo.
       hamburgerButton.classList.toggle("menu-ativo");
       navContainer.classList.toggle("menu-aberto");
@@ -14,32 +18,51 @@ document.addEventListener("DOMContentLoaded", function () {
       const isExpanded = hamburgerButton.classList.contains("menu-ativo");
       hamburgerButton.setAttribute("aria-expanded", isExpanded);
 
-      // ADICIONADO: Alterna a classe no <body> para travar/liberar o scroll da página.
-      document.body.classList.toggle("body-no-scroll");
+      // Alterna o scroll da página
+      body.classList.toggle("body-no-scroll");
+    };
+
+    // Usa event delegation para melhor performance
+    hamburgerButton.addEventListener("click", toggleMenu);
+
+    // Fecha o menu ao pressionar ESC
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && hamburgerButton.classList.contains("menu-ativo")) {
+        toggleMenu();
+      }
     });
   } else {
-    if (!hamburgerButton)
-      console.error("Botão hamburger (.header__hamburger-button) não encontrado.");
-    if (!navigationMenu)
-      console.error("Menu de navegação (.header__navegar) não encontrado.");
+    console.warn("Elementos do menu não encontrados:", {
+      hamburgerButton: !!hamburgerButton,
+      navContainer: !!navContainer
+    });
   }
 
   // --- LÓGICA PARA O DROPDOWN ---
-  const dropdownItems = document.querySelectorAll(
-    ".header__nav-item--has-dropdown"
-  );
+  const dropdownItems = document.querySelectorAll(".header__nav-item--has-dropdown");
 
   dropdownItems.forEach((item) => {
     const toggleLink = item.querySelector("a");
+    if (!toggleLink) return;
 
-    toggleLink.addEventListener("click", function (event) {
-      const isMobileView = getComputedStyle(hamburgerButton).display !== "none";
+    const handleDropdown = function(event) {
+      const isMobileView = window.innerWidth < 1024;
 
       if (isMobileView) {
         event.preventDefault();
         item.classList.toggle("dropdown-aberto");
         const isDropdownExpanded = item.classList.contains("dropdown-aberto");
         item.setAttribute("aria-expanded", isDropdownExpanded);
+      }
+    };
+
+    toggleLink.addEventListener("click", handleDropdown);
+
+    // Fecha dropdown ao clicar fora
+    document.addEventListener("click", function(event) {
+      if (!item.contains(event.target) && item.classList.contains("dropdown-aberto")) {
+        item.classList.remove("dropdown-aberto");
+        item.setAttribute("aria-expanded", "false");
       }
     });
   });

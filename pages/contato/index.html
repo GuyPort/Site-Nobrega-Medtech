@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Entre em contato com a Nobrega Medtech. Estamos transformando a saúde através da tecnologia. Fale conosco por email, telefone ou WhatsApp." />
+    <meta name="keywords" content="contato, nobrega medtech, saúde, tecnologia médica, suporte" />
+    <meta property="og:title" content="Contato - Nobrega Medtech" />
+    <meta property="og:description" content="Entre em contato com a Nobrega Medtech. Estamos transformando a saúde através da tecnologia." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nobregamedtech.com.br/pages/contato/" />
     <title>Contato - Nobrega Medtech</title>
 
     <!--Começo CSS/js Links-->
@@ -10,7 +16,12 @@
     <link rel="stylesheet" href="../../css/header.css" />
     <link rel="stylesheet" href="contato.css" />
     <link rel="stylesheet" href="../../css/footer.css" />
-    <script src="../../js/header.js" defer></script>
+    <link rel="stylesheet" href="../../css/suporte-flutuante.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!--Final CSS/js Links-->
 
     <!--Começo Favicon e ícons-->
@@ -113,7 +124,44 @@
       </div>
     </header>
     <main>
-      <!-- Formulário de contato será implementado aqui -->
+      <section class="contato__container">
+        <h1 class="contato__titulo">Fale com quem está transformando a Saúde</h1>
+        <form class="contato__form" action="https://formspree.io/f/xrbklbbo" method="POST">
+          <label for="nome" class="sr-only">Nome completo</label>
+          <input type="text" id="nome" name="nome" class="contato__input" placeholder="Nome completo" required aria-required="true">
+          
+          <label for="email" class="sr-only">E-mail</label>
+          <input type="email" id="email" name="email" class="contato__input" placeholder="E-mail" required aria-required="true">
+          
+          <label for="profissao" class="sr-only">Profissão</label>
+          <select id="profissao" name="profissao" class="contato__input" required aria-required="true">
+            <option value="" disabled selected>Profissão</option>
+            <option value="Médico">Médico</option>
+            <option value="Estudante">Estudante</option>
+            <option value="Profissional da saúde">Profissional da saúde</option>
+            <option value="Outro">Outro</option>
+          </select>
+          
+          <label for="mensagem" class="sr-only">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" class="contato__input" placeholder="Mensagem" rows="4" required aria-required="true"></textarea>
+          
+          <button type="submit" class="contato__botao">ENVIAR MENSAGEM</button>
+        </form>
+        <div class="contato__balao">
+          <img src="../../assets/imagens/icones/suporte.png" alt="Atendente" class="contato__balao-icone">
+          <div class="contato__balao-info">
+            <a href="mailto:contato@nobregamedtech.com.br" class="contato__balao-link">
+              <img src="../../assets/imagens/icones/email.svg" alt="Email" class="contato__balao-link-icone"> contato@nobregamedtech.com.br
+            </a><br> 
+            <a href="tel:+5524998539136" class="contato__balao-link"> 
+              <img src="../../assets/imagens/icones/telefone.svg" alt="Telefone" class="contato__balao-link-icone"> (24) 99853-9136
+            </a><br>
+            <a href="https://wa.me/5524998539136" class="contato__balao-link" target="_blank" rel="noopener noreferrer">
+              <img src="../../assets/imagens/icones/whatsapp_sem_fundo.png" alt="WhatsApp" class="contato__balao-link-icone"> Suporte via WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
     <footer>
       <div class="logo__footer">
@@ -224,10 +272,10 @@
           <p class="suporte-popup__mensagem">Bem-vindo(a)! Estamos aqui para te ajudar.</p>
           <div class="suporte-popup__caixa">
             <span class="suporte-popup__caixa-titulo">Iniciar uma conversa</span>
-            <a href="/pages/contato/index.html" class="suporte-popup__botao-mensagem">&#9654; Envie-nos uma mensagem</a>
+            <a href="../contato/index.html" class="suporte-popup__botao-mensagem">&#9654; Envie-nos uma mensagem</a>
           </div>
           <div class="suporte-popup__icones">
-            <a href="https://wa.me/24998539136" class="suporte-popup__icone-link" id="suporte-whatsapp-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/5524998539136" class="suporte-popup__icone-link" id="suporte-whatsapp-link" target="_blank" rel="noopener noreferrer">
               <img src="../../assets/imagens/icones/whatsapp_sem_fundo.png" alt="WhatsApp" class="suporte-popup__icone-img">
             </a>
             <a href="mailto:contato@nobregamedtech.com.br" class="suporte-popup__icone-link" id="suporte-email-link">
@@ -237,7 +285,8 @@
         </div>
       </div>
     </div>
-    <link rel="stylesheet" href="../../css/suporte-flutuante.css" />
-    <script src="../../js/suporte-flutuante.js"></script>
+    <script src="../../js/header.js" defer></script>
+    <script src="../../js/suporte-flutuante.js" defer></script>
+    <script src="../../js/contato-form.js" defer></script>
   </body>
 </html>
