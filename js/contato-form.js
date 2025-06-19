@@ -4,6 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     
+    // Validação básica de e-mail
+    const emailInput = form.querySelector('input[type="email"]');
+    const emailValue = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailValue)) {
+      emailInput.focus();
+      emailInput.setCustomValidity('Por favor, insira um e-mail válido.');
+      emailInput.reportValidity();
+      setTimeout(() => emailInput.setCustomValidity(''), 2000);
+      return;
+    }
+    
     const data = new FormData(form);
     const action = form.getAttribute('action');
     

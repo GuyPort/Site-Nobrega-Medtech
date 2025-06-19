@@ -4,20 +4,20 @@
 
 :root {
   /* Paleta de Cores e Estilos Globais do Rodapé */
-  --footer-bg-color: #ffffff;
-  --footer-text-color: #004bae;
-  --footer-border-color: rgba(0, 0, 0, 0.1); /* Borda sutil preta/cinza */
+  --footer-bg-color: var(--cor-fundo, #ffffff); /* herda do global, fallback para branco */
+  --footer-text-color: var(--cor-primaria, #004bae); /* herda do global, fallback para azul */
+  --footer-border-color: rgba(0, 0, 0, 0.1); /* valor fixo, pois não há global para borda sutil */
 
   /* Unidades de Espaçamento Consistentes */
-  --spacing-xs: 0px;
-  /* --spacing-sm: 10px; */
-  --spacing-md: 2px;
-  --spacing-lg: 4px;
+  --footer-spacing-xs: 0px;
+  /* --footer-spacing-sm: 10px; */
+  --footer-spacing-md: 2px;
+  --footer-spacing-lg: 4px;
 
   /* Escala Tipográfica */
-  --font-size-sm: 0.85em;
-  --font-size-md: 1em;
-  --font-size-lg: 1.2em;
+  --footer-font-size-sm: 0.85em;
+  --footer-font-size-md: 1em;
+  --footer-font-size-lg: 1.2em;
 }
 
 /* ==========================================================================
@@ -27,10 +27,10 @@
 footer {
   background-color: var(--footer-bg-color);
   color: var(--footer-text-color);
-  padding: var(--spacing-xs) var(--spacing-md);
+  padding: var(--footer-spacing-xs) var(--footer-spacing-md);
   display: flex;
   flex-direction: column; /* Layout empilhado como padrão */
-  gap: var(--spacing-xs);
+  gap: var(--footer-spacing-xs);
   flex-shrink: 0; /* Justificativa: Essencial para o sticky footer em 'global.css'. */
 }
 
@@ -49,7 +49,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--spacing-xs);
+  gap: var(--footer-spacing-xs);
   width: 100%;
   margin-top: -10px;
 }
@@ -58,7 +58,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: var(--font-size-md);
+  font-size: var(--footer-font-size-md);
   line-height: 1.6;
 }
 
@@ -68,7 +68,7 @@ footer {
   flex-direction: column;
   gap: 0;
   text-align: center;
-  font-size: var(--font-size-sm);
+  font-size: var(--footer-font-size-sm);
   line-height: 1.5;
   border-top: 1px solid var(--footer-border-color);
   padding-top: 0;
@@ -97,7 +97,7 @@ footer {
 }
 
 .footer__contato-titulo {
-  font-size: var(--font-size-lg);
+  font-size: var(--footer-font-size-lg);
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 14px;
@@ -107,7 +107,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  font-size: var(--font-size-md);
+  font-size: var(--footer-font-size-md);
   line-height: 1.6;
 }
 
@@ -150,7 +150,7 @@ footer {
     flex-wrap: wrap;
     justify-content: space-evenly; /* Distribui as colunas com espaço igual nas bordas e no centro. */
     align-items: center; /* Garante o balanço vertical entre a coluna do logo e a de contato. */
-    padding: var(--spacing-md) 2px; 
+    padding: var(--footer-spacing-md) 2px; 
     gap: 0;
   }
 
