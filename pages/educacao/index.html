@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Educação - Nobrega Medtech</title>
+    <meta name="description" content="Educação médica com curadoria, cursos, mentorias e ferramentas recomendadas pela Nobrega Medtech para sua formação e atualização profissional." />
 
     <!--Começo CSS/js Links-->
     <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/components/utilities.css" />
     <link rel="stylesheet" href="../../css/header.css" />
     <link rel="stylesheet" href="educacao.css" />
     <link rel="stylesheet" href="../../css/footer.css" />
+    <link rel="stylesheet" href="../../css/suporte-flutuante.css" />
     <script src="../../js/header.js" defer></script>
     <script src="../../js/index.js" defer></script>
+    <script src="../../js/suporte-flutuante.js" defer></script>
     <!--Final CSS/js Links-->
 
     <!--Começo Favicon e ícons-->
@@ -77,7 +81,6 @@
                 Nossas soluções
                 <span class="dropdown-arrow">▼</span>
               </a>
-
               <ul class="header__sub-nav">
                 <li class="header__sub-nav-item">
                   <a
@@ -108,33 +111,33 @@
       </div>
     </header>
     <main>
-      <section class="educacao-intro">
-        <h1>Educação médica com curadoria</h1>
-        <p>Descubra os melhores cursos do mercado, escolhidos por quem entende de medicina e tecnologia. Ao se inscrever por aqui, você apoia nosso trabalho e ainda ganha acesso aos conteúdos mais relevantes para sua formação.</p>
+o      <section class="educacao-intro animar-entrada">
+        <h1 class="animar-entrada">Educação médica com curadoria</h1>
+        <p class="animar-entrada">Descubra os melhores cursos do mercado, escolhidos por quem entende de medicina e tecnologia. Ao se inscrever por aqui, você apoia nosso trabalho e ainda ganha acesso aos conteúdos mais relevantes para sua formação.</p>
       </section>
       <section class="educacao-categorias">
         <div class="educacao-categorias__grid">
-          <a class="educacao-categoria-card" href="residencia.html">
+          <a class="educacao-categoria-card animar-entrada" href="residencia.html">
             <span class="educacao-categoria-card__icon">📚</span>
             <span class="educacao-categoria-card__title">Residência Médica</span>
           </a>
-          <a class="educacao-categoria-card" href="preparatorios.html">
+          <a class="educacao-categoria-card animar-entrada" href="preparatorios.html">
             <span class="educacao-categoria-card__icon">🧪</span>
             <span class="educacao-categoria-card__title">Preparatórios para Título</span>
           </a>
-          <a class="educacao-categoria-card" href="especialidades.html">
+          <a class="educacao-categoria-card animar-entrada" href="especialidades.html">
             <span class="educacao-categoria-card__icon">🧠</span>
             <span class="educacao-categoria-card__title">Por Especialidade</span>
           </a>
-          <a class="educacao-categoria-card" href="atualizacoes.html">
+          <a class="educacao-categoria-card animar-entrada" href="atualizacoes.html">
             <span class="educacao-categoria-card__icon">🎯</span>
             <span class="educacao-categoria-card__title">Atualizações Médicas</span>
           </a>
-          <a class="educacao-categoria-card" href="ferramentas.html">
+          <a class="educacao-categoria-card animar-entrada" href="ferramentas.html">
             <span class="educacao-categoria-card__icon">💻</span>
             <span class="educacao-categoria-card__title">Ferramentas de Estudo</span>
           </a>
-          <a class="educacao-categoria-card" href="mentorias.html">
+          <a class="educacao-categoria-card animar-entrada" href="mentorias.html">
             <span class="educacao-categoria-card__icon">🧑‍🏫</span>
             <span class="educacao-categoria-card__title">Mentorias/Imersões</span>
           </a>
@@ -150,75 +153,33 @@
         />
         <ul class="footer__social-icons">
           <li>
-            <a
-              href="https://www.facebook.com/NobregaMedtechbr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/facebook.svg"
-                alt="Logo Facebook"
-              />
+            <a href="https://www.facebook.com/NobregaMedtechbr" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/facebook.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://www.instagram.com/nobregamedtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/instagram.svg"
-                alt="Logo Instagram"
-              />
+            <a href="https://www.instagram.com/nobregamedtech" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/instagram.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://wa.me/24998539136"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/whatsapp.svg"
-                alt="Logo WhatsApp"
-              />
+            <a href="https://wa.me/24998539136" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/whatsapp.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://linkedin.com/company/nobrega-medtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/linkedin.svg"
-                alt="Logo LinkedIn"
-              />
+            <a href="https://linkedin.com/company/nobrega-medtech" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/linkedin.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://www.youtube.com/@NobregaMedtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/youtube.svg"
-                alt="Logo YouTube"
-              />
+            <a href="https://www.youtube.com/@NobregaMedtech" target="_blank" rel="noopener noreferrer" aria-label="YouTube da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/youtube.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://www.tiktok.com/@nobregamedtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/tiktok.svg"
-                alt="Logo TikTok"
-              />
+            <a href="https://www.tiktok.com/@nobregamedtech" target="_blank" rel="noopener noreferrer" aria-label="TikTok da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/tiktok.svg" alt="" />
             </a>
           </li>
         </ul>
@@ -244,6 +205,7 @@
       <div class="suporte-flutuante__popup">
         <div class="suporte-popup__topo">
           <img src="../../assets/imagens/logo-nobrega-medtech.svg" alt="Logo Nobrega Medtech" class="suporte-popup__logo">
+          <button class="suporte-popup__fechar" aria-label="Fechar suporte" type="button">&times;</button>
         </div>
         <div class="suporte-popup__conteudo">
           <h3 class="suporte-popup__titulo">Atendimento Nobrega Medtech</h3>
@@ -263,7 +225,5 @@
         </div>
       </div>
     </div>
-    <link rel="stylesheet" href="../../css/suporte-flutuante.css" />
-    <script src="../../js/suporte-flutuante.js"></script>
   </body>
 </html>

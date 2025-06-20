@@ -123,6 +123,12 @@ footer {
   text-decoration: underline;
 }
 
+/* Foco visível para acessibilidade */
+.footer__contato-lista a:focus, .footer__social-icons a:focus {
+  outline: 2px solid var(--footer-text-color);
+  outline-offset: 2px;
+}
+
 /* --- Ajustes Finos para Telas Mínimas --- */
 @media (max-width: 399px) {
   .footer__social-icons img {

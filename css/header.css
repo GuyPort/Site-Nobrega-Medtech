@@ -374,3 +374,14 @@ header {
     background-color: rgba(0, 75, 174, 0.05);
   }
 }
+
+/* Garante foco visível para acessibilidade */
+.header__nav-link:focus, .header__sub-nav-link:focus, .header__hamburger-button:focus {
+  outline: 2px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+/* Remove seletores redundantes de seta se o HTML já possui o ícone */
+/* .header__nav-item--has-dropdown > .header__nav-link::after, .header__nav-item--has-dropdown:hover > .header__nav-link::after { display: none; } */
+
+/* Removido reset robusto para button.header__nav-link. Volta ao estado anterior, mantendo apenas o foco visível customizado. */

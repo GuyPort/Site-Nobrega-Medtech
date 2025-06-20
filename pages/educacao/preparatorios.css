@@ -90,6 +90,11 @@ body {
   color: #fff;
   box-shadow: 0 4px 16px rgba(0,75,174,0.13);
 }
+/* Foco visível para acessibilidade nos botões de inscrição */
+.curso-card__btn:focus {
+  outline: 2px solid var(--cor-primaria, #004bae);
+  outline-offset: 2px;
+}
 
 @media (max-width: 600px) {
   .categoria-educacao-intro {

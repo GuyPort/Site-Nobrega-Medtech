@@ -136,3 +136,14 @@ img {
     --spacing-xl: 28px;
   }
 }
+
+.animar-entrada {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform;
+}
+.animar-entrada.animado {
+  opacity: 1;
+  transform: translateY(0);
+}

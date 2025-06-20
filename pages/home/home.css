@@ -593,3 +593,13 @@
     max-width: 1400px; /* Aumenta um pouco o container em telas muito largas */
   }
 }
+
+/* ===== Correção do fundo cinza no menu de navegação do header ===== */
+.header__nav-link,
+.header__nav-item--has-dropdown > .header__nav-link {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}

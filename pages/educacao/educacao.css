@@ -56,6 +56,12 @@ body {
   text-align: center;
 }
 
+/* Foco visível para acessibilidade nos cards */
+.educacao-categoria-card:focus {
+  outline: 2px solid var(--cor-primaria, #004bae);
+  outline-offset: 2px;
+}
+
 @media (max-width: 600px) {
   .educacao-intro {
     margin: 24px auto 18px auto;

@@ -13,6 +13,7 @@
 
     <!--Começo CSS/js Links-->
     <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/components/utilities.css" />
     <link rel="stylesheet" href="../../css/header.css" />
     <link rel="stylesheet" href="contato.css" />
     <link rel="stylesheet" href="../../css/footer.css" />
@@ -87,7 +88,6 @@
                 Nossas soluções
                 <span class="dropdown-arrow">▼</span>
               </a>
-
               <ul class="header__sub-nav">
                 <li class="header__sub-nav-item">
                   <a
@@ -121,13 +121,13 @@
       <section class="contato__container">
         <h1 class="contato__titulo">Fale com quem está transformando a Saúde</h1>
         <form class="contato__form" action="https://formspree.io/f/xrbklbbo" method="POST">
-          <label for="nome" class="sr-only">Nome completo</label>
+          <label for="nome" class="visually-hidden">Nome completo</label>
           <input type="text" id="nome" name="nome" class="contato__input" placeholder="Nome completo" required aria-required="true">
           
-          <label for="email" class="sr-only">E-mail</label>
+          <label for="email" class="visually-hidden">E-mail</label>
           <input type="email" id="email" name="email" class="contato__input" placeholder="E-mail" required aria-required="true">
           
-          <label for="profissao" class="sr-only">Profissão</label>
+          <label for="profissao" class="visually-hidden">Profissão</label>
           <select id="profissao" name="profissao" class="contato__input" required aria-required="true">
             <option value="" disabled selected>Profissão</option>
             <option value="Médico">Médico(a)</option>
@@ -136,7 +136,7 @@
             <option value="Outro">Outro(a)</option> 
           </select>
           
-          <label for="mensagem" class="sr-only">Mensagem</label>
+          <label for="mensagem" class="visually-hidden">Mensagem</label>
           <textarea id="mensagem" name="mensagem" class="contato__input" placeholder="Mensagem" rows="4" required aria-required="true"></textarea>
           
           <button type="submit" class="contato__botao">ENVIAR MENSAGEM</button>
@@ -166,75 +166,33 @@
         />
         <ul class="footer__social-icons">
           <li>
-            <a
-              href="https://www.facebook.com/NobregaMedtechbr"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/facebook.svg"
-                alt="Logo Facebook"
-              />
+            <a href="https://www.facebook.com/NobregaMedtechbr" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/facebook.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://www.instagram.com/nobregamedtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/instagram.svg"
-                alt="Logo Instagram"
-              />
+            <a href="https://www.instagram.com/nobregamedtech" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/instagram.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://wa.me/24998539136"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/whatsapp.svg"
-                alt="Logo WhatsApp"
-              />
+            <a href="https://wa.me/24998539136" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/whatsapp.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://linkedin.com/company/nobrega-medtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/linkedin.svg"
-                alt="Logo LinkedIn"
-              />
+            <a href="https://linkedin.com/company/nobrega-medtech" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/linkedin.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://www.youtube.com/@NobregaMedtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/youtube.svg"
-                alt="Logo YouTube"
-              />
+            <a href="https://www.youtube.com/@NobregaMedtech" target="_blank" rel="noopener noreferrer" aria-label="YouTube da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/youtube.svg" alt="" />
             </a>
           </li>
           <li>
-            <a
-              href="https://www.tiktok.com/@nobregamedtech"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="../../assets/imagens/icones/tiktok.svg"
-                alt="Logo TikTok"
-              />
+            <a href="https://www.tiktok.com/@nobregamedtech" target="_blank" rel="noopener noreferrer" aria-label="TikTok da Nobrega Medtech">
+              <img src="../../assets/imagens/icones/tiktok.svg" alt="" />
             </a>
           </li>
         </ul>
@@ -260,6 +218,7 @@
       <div class="suporte-flutuante__popup">
         <div class="suporte-popup__topo">
           <img src="../../assets/imagens/logo-nobrega-medtech.svg" alt="Logo Nobrega Medtech" class="suporte-popup__logo">
+          <button class="suporte-popup__fechar" aria-label="Fechar suporte" type="button">&times;</button>
         </div>
         <div class="suporte-popup__conteudo">
           <h3 class="suporte-popup__titulo">Atendimento Nobrega Medtech</h3>
@@ -281,6 +240,6 @@
     </div>
     <script src="../../js/header.js" defer></script>
     <script src="../../js/suporte-flutuante.js" defer></script>
-    <script src="../../js/contato-form.js" defer></script>
+    <script src="../../js/contato-form.js" type="module"></script>
   </body>
 </html>

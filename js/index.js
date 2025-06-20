@@ -5,133 +5,138 @@
  * @version 4.1 - Sincronização Final do Carrossel
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+// Classes CSS usadas
+const CLS_BANNER_ACTIVE = 'is-active';
+const CLS_BANNER_VISIBLE = 'is-visible';
+const CLS_BANNER_EXITING = 'is-exiting';
+const CLS_BANNER_ANIMADO = 'animado';
 
-  // --- MÓDULO: CARROSSEL (.banner) ---
+// Carrossel principal
+const initCarrossel = () => {
   const banner = document.querySelector('.banner');
-  if (banner) {
-    const slides = banner.querySelectorAll('.banner__slide');
-    const dots = banner.querySelectorAll('.banner__dot');
-    const slideIntervalTime = 7000;
-    let currentSlide = 0;
-    let slideInterval;
-
-    // Lógica para quando há apenas um slide ou nenhum.
-    if (slides.length <= 1) {
-      if (slides.length === 1) {
-        const firstSlide = slides[0];
-        firstSlide.classList.add('is-active');
-        const titulo = firstSlide.querySelector('.banner__titulo');
-        const texto = firstSlide.querySelector('.banner__texto');
-        const botao = firstSlide.querySelector('.banner__botao');
-        // Anima todos os elementos
-        if (titulo && texto && botao) {
-          setTimeout(() => {
-            titulo.classList.add('is-visible');
-            texto.classList.add('is-visible');
-            botao.classList.add('is-visible');
-          }, 200);
-        }
-      }
-      const navDots = banner.querySelector('.banner__nav-dots');
-      if (navDots) navDots.remove();
-      return; // Interrompe a execução do carrossel
-    }
-
-    // ==================================================================
-    // FUNÇÃO DE TRANSIÇÃO DE SLIDE CORRETA
-    // ==================================================================
-    /**
-     * Move o carrossel para um slide específico com animação de fluxo contínuo.
-     * @param {number} slideIndex - O índice do slide para o qual navegar.
-     */
-    const goToSlide = (slideIndex) => {
-      // Proteção para evitar erros se os elementos não existirem
-      if (!slides[currentSlide]) return;
-
-      const oldSlide = slides[currentSlide];
-      const oldTitulo = oldSlide.querySelector('.banner__titulo');
-      const oldTexto = oldSlide.querySelector('.banner__texto');
-      const oldBotao = oldSlide.querySelector('.banner__botao');
-
-      // 1. Inicia a animação de SAÍDA do slide antigo
-      if (oldTitulo) oldTitulo.classList.add('is-exiting');
-      if (oldTexto) oldTexto.classList.add('is-exiting');
-      if (oldBotao) oldBotao.classList.add('is-exiting');
-
-      if (oldTitulo) oldTitulo.classList.remove('is-visible');
-      if (oldTexto) oldTexto.classList.remove('is-visible');
-      if (oldBotao) oldBotao.classList.remove('is-visible');
-      
-      oldSlide.classList.remove('is-active');
-      if (dots[currentSlide]) dots[currentSlide].classList.remove('is-active');
-
-      // Define o novo slide
-      currentSlide = slideIndex;
-      const newSlide = slides[currentSlide];
-      const newTitulo = newSlide.querySelector('.banner__titulo');
-      const newTexto = newSlide.querySelector('.banner__texto');
-      const newBotao = newSlide.querySelector('.banner__botao');
-      
-      // 2. Reseta o estado do slide antigo para futuras animações
-      setTimeout(() => {
-        if (oldTitulo) oldTitulo.classList.remove('is-exiting');
-        if (oldTexto) oldTexto.classList.remove('is-exiting');
-        if (oldBotao) oldBotao.classList.remove('is-exiting');
-      }, 600); // Duração igual à transição do CSS
-
-      // 3. Ativa o novo slide e inicia a animação de ENTRADA
-      newSlide.classList.add('is-active');
-      if (dots[currentSlide]) dots[currentSlide].classList.add('is-active');
-      
-      setTimeout(() => {
-        if (newTitulo) newTitulo.classList.add('is-visible');
-        if (newTexto) newTexto.classList.add('is-visible');
-        if (newBotao) newBotao.classList.add('is-visible');
-      }, 50);
-    };
-
-    const startSlideTimer = () => {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(() => {
-        const nextSlideIndex = (currentSlide + 1) % slides.length;
-        goToSlide(nextSlideIndex);
-      }, slideIntervalTime);
-    };
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        if (index === currentSlide) return;
-        goToSlide(index);
-        startSlideTimer(); 
-      });
-    });
-
-    // Animação inicial do primeiro slide
-    if (slides.length > 0) {
-        slides[0].classList.add('is-active');
+  if (!banner) return;
+  const slides = banner.querySelectorAll('.banner__slide');
+  const dots = banner.querySelectorAll('.banner__dot');
+  const slideIntervalTime = 7000;
+  let currentSlide = 0;
+  let slideInterval;
+  if (slides.length <= 1) {
+    if (slides.length === 1) {
+      const firstSlide = slides[0];
+      firstSlide.classList.add(CLS_BANNER_ACTIVE);
+      const titulo = firstSlide.querySelector('.banner__titulo');
+      const texto = firstSlide.querySelector('.banner__texto');
+      const botao = firstSlide.querySelector('.banner__botao');
+      if (titulo && texto && botao) {
         setTimeout(() => {
-            const firstTitulo = slides[0].querySelector('.banner__titulo');
-            const firstTexto = slides[0].querySelector('.banner__texto');
-            const firstBotao = slides[0].querySelector('.banner__botao');
-            if (firstTitulo) firstTitulo.classList.add('is-visible');
-            if (firstTexto) firstTexto.classList.add('is-visible');
-            if (firstBotao) firstBotao.classList.add('is-visible');
+          titulo.classList.add(CLS_BANNER_VISIBLE);
+          texto.classList.add(CLS_BANNER_VISIBLE);
+          botao.classList.add(CLS_BANNER_VISIBLE);
         }, 200);
+      }
     }
-    
-    startSlideTimer();
-
-    banner.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    banner.addEventListener('mouseleave', startSlideTimer);
+    const navDots = banner.querySelector('.banner__nav-dots');
+    if (navDots) navDots.remove();
+    return;
   }
+  const goToSlide = (slideIndex) => {
+    if (!slides[currentSlide]) return;
+    const oldSlide = slides[currentSlide];
+    const oldTitulo = oldSlide.querySelector('.banner__titulo');
+    const oldTexto = oldSlide.querySelector('.banner__texto');
+    const oldBotao = oldSlide.querySelector('.banner__botao');
+    [oldTitulo, oldTexto, oldBotao].forEach(el => {
+      if (el) el.classList.add(CLS_BANNER_EXITING);
+      if (el) el.classList.remove(CLS_BANNER_VISIBLE);
+    });
+    oldSlide.classList.remove(CLS_BANNER_ACTIVE);
+    if (dots[currentSlide]) dots[currentSlide].classList.remove(CLS_BANNER_ACTIVE);
+    currentSlide = slideIndex;
+    const newSlide = slides[currentSlide];
+    const newTitulo = newSlide.querySelector('.banner__titulo');
+    const newTexto = newSlide.querySelector('.banner__texto');
+    const newBotao = newSlide.querySelector('.banner__botao');
+    setTimeout(() => {
+      [oldTitulo, oldTexto, oldBotao].forEach(el => { if (el) el.classList.remove(CLS_BANNER_EXITING); });
+    }, 600);
+    newSlide.classList.add(CLS_BANNER_ACTIVE);
+    if (dots[currentSlide]) dots[currentSlide].classList.add(CLS_BANNER_ACTIVE);
+    setTimeout(() => {
+      [newTitulo, newTexto, newBotao].forEach(el => { if (el) el.classList.add(CLS_BANNER_VISIBLE); });
+    }, 50);
+  };
+  const startSlideTimer = () => {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(() => {
+      const nextSlideIndex = (currentSlide + 1) % slides.length;
+      goToSlide(nextSlideIndex);
+    }, slideIntervalTime);
+  };
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      if (index === currentSlide) return;
+      goToSlide(index);
+      startSlideTimer();
+    });
+  });
+  if (slides.length > 0) {
+    slides[0].classList.add(CLS_BANNER_ACTIVE);
+    setTimeout(() => {
+      const firstTitulo = slides[0].querySelector('.banner__titulo');
+      const firstTexto = slides[0].querySelector('.banner__texto');
+      const firstBotao = slides[0].querySelector('.banner__botao');
+      [firstTitulo, firstTexto, firstBotao].forEach(el => { if (el) el.classList.add(CLS_BANNER_VISIBLE); });
+    }, 200);
+  }
+  startSlideTimer();
+  banner.addEventListener('mouseenter', () => clearInterval(slideInterval));
+  banner.addEventListener('mouseleave', startSlideTimer);
+};
 
-  // --- MÓDULO: HERO (.hero) ---
+// Animação do hero
+const animarHero = () => {
   const hero = document.querySelector('.hero');
   if (hero) {
     setTimeout(() => {
       hero.classList.add('is-visible');
     }, 100);
   }
+};
 
-});
+// Scroll suave para âncoras
+const scrollSuave = () => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+};
+
+// Animação de entrada para elementos
+const animarEntrada = () => {
+  const elementos = document.querySelectorAll('.animar-entrada');
+  if ('IntersectionObserver' in window && elementos.length) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(CLS_BANNER_ANIMADO);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    elementos.forEach(el => observer.observe(el));
+  } else {
+    elementos.forEach(el => el.classList.add(CLS_BANNER_ANIMADO));
+  }
+};
+
+// Inicialização
+initCarrossel();
+animarHero();
+scrollSuave();
+animarEntrada();

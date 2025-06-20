@@ -1,69 +1,68 @@
-// Garante que o código só rode após o carregamento completo do HTML.
-document.addEventListener("DOMContentLoaded", function () {
-  // --- LÓGICA PARA O MENU HAMBÚRGUER ---
-  const hamburgerButton = document.querySelector(".header__hamburger-button");
-  const navContainer = document.querySelector(".header__navegar");
-  const navigationMenu = document.querySelector(".header__nav");
+// Classes CSS usadas
+const CLS_HAMBURGER_ATIVO = "menu-ativo";
+const CLS_NAV_ABERTO = "menu-aberto";
+const CLS_BODY_NO_SCROLL = "body-no-scroll";
+const CLS_DROPDOWN_ABERTO = "dropdown-aberto";
 
-  // Cache do body para melhor performance
-  const body = document.body;
+// Elementos principais
+const hamburgerButton = document.querySelector(".header__hamburger-button");
+const navContainer = document.querySelector(".header__navegar");
+const navigationMenu = document.querySelector(".header__nav");
+const body = document.body;
 
-  if (hamburgerButton && navContainer) {
-    const toggleMenu = function() {
-      // Alterna as classes para o estado ativo/inativo.
-      hamburgerButton.classList.toggle("menu-ativo");
-      navContainer.classList.toggle("menu-aberto");
+// Alterna menu mobile
+const toggleMenu = () => {
+  hamburgerButton.classList.toggle(CLS_HAMBURGER_ATIVO);
+  navContainer.classList.toggle(CLS_NAV_ABERTO);
+  const isExpanded = hamburgerButton.classList.contains(CLS_HAMBURGER_ATIVO);
+  hamburgerButton.setAttribute("aria-expanded", isExpanded);
+  body.classList.toggle(CLS_BODY_NO_SCROLL);
+};
 
-      // Atualiza o atributo aria-expanded para acessibilidade.
-      const isExpanded = hamburgerButton.classList.contains("menu-ativo");
-      hamburgerButton.setAttribute("aria-expanded", isExpanded);
+if (hamburgerButton && navContainer) {
+  hamburgerButton.addEventListener("click", toggleMenu);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && hamburgerButton.classList.contains(CLS_HAMBURGER_ATIVO)) {
+      toggleMenu();
+    }
+  });
+}
 
-      // Alterna o scroll da página
-      body.classList.toggle("body-no-scroll");
-    };
+// Dropdown do menu
+const dropdownItems = document.querySelectorAll(".header__nav-item--has-dropdown");
 
-    // Usa event delegation para melhor performance
-    hamburgerButton.addEventListener("click", toggleMenu);
-
-    // Fecha o menu ao pressionar ESC
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape" && hamburgerButton.classList.contains("menu-ativo")) {
-        toggleMenu();
-      }
-    });
-  } else {
-    console.warn("Elementos do menu não encontrados:", {
-      hamburgerButton: !!hamburgerButton,
-      navContainer: !!navContainer
-    });
-  }
-
-  // --- LÓGICA PARA O DROPDOWN ---
-  const dropdownItems = document.querySelectorAll(".header__nav-item--has-dropdown");
-
+const closeAllDropdowns = (exceptItem) => {
   dropdownItems.forEach((item) => {
-    const toggleLink = item.querySelector("a");
-    if (!toggleLink) return;
+    if (item !== exceptItem) {
+      item.classList.remove(CLS_DROPDOWN_ABERTO);
+      item.setAttribute("aria-expanded", "false");
+    }
+  });
+};
 
-    const handleDropdown = function(event) {
-      const isMobileView = window.innerWidth < 1024;
+dropdownItems.forEach((item) => {
+  const toggleButton = item.querySelector(".header__nav-link");
+  if (!toggleButton) return;
 
-      if (isMobileView) {
-        event.preventDefault();
-        item.classList.toggle("dropdown-aberto");
-        const isDropdownExpanded = item.classList.contains("dropdown-aberto");
-        item.setAttribute("aria-expanded", isDropdownExpanded);
-      }
-    };
+  const handleDropdown = (event) => {
+    const isMobileView = window.innerWidth < 1024;
+    if (isMobileView) {
+      event.preventDefault();
+      const isOpen = item.classList.toggle(CLS_DROPDOWN_ABERTO);
+      item.setAttribute("aria-expanded", isOpen);
+      if (isOpen) closeAllDropdowns(item);
+    }
+  };
 
-    toggleLink.addEventListener("click", handleDropdown);
+  toggleButton.addEventListener("click", handleDropdown);
+});
 
-    // Fecha dropdown ao clicar fora
-    document.addEventListener("click", function(event) {
-      if (!item.contains(event.target) && item.classList.contains("dropdown-aberto")) {
-        item.classList.remove("dropdown-aberto");
-        item.setAttribute("aria-expanded", "false");
-      }
-    });
+// Fecha dropdown ao clicar fora
+document.addEventListener("click", (event) => {
+  dropdownItems.forEach((item) => {
+    if (!item.contains(event.target) && item.classList.contains(CLS_DROPDOWN_ABERTO)) {
+      item.classList.remove(CLS_DROPDOWN_ABERTO);
+      item.setAttribute("aria-expanded", "false");
+    }
   });
 });

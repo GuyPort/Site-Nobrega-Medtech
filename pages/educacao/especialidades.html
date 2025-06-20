@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Por Especialidade - Educação | Nobrega Medtech</title>
     <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/components/utilities.css" />
     <link rel="stylesheet" href="../../css/header.css" />
     <link rel="stylesheet" href="especialidades.css" />
     <link rel="stylesheet" href="../../css/footer.css" />
+    <link rel="stylesheet" href="../../css/suporte-flutuante.css" />
     <link rel="icon" href="/assets/favicons/favicon.svg" type="image/svg+xml" />
     <link rel="alternate icon" href="/assets/favicons/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
@@ -15,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <script src="../../js/header.js" defer></script>
+    <script src="../../js/suporte-flutuante.js" defer></script>
   </head>
   <body>
     <header>
@@ -64,7 +67,7 @@
         <div class="categoria-educacao-cursos__grid">
           <!-- Exemplo de card de curso -->
           <div class="curso-card">
-            <img class="curso-card__img" src="../../assets/imagens/fundadores/fundadores.jpg" alt="Curso de Especialidade do Dr. Luiz" />
+            <img class="curso-card__img" src="../../assets/imagens/fundadores/fundadores.jpg" alt="Curso de Especialidade do Dr. Luiz" loading="lazy" />
             <div class="curso-card__info">
               <h2 class="curso-card__title">Especialidade em Clínica Médica</h2>
               <div class="curso-card__prof">com Dr. Luiz Souza</div>
@@ -73,7 +76,7 @@
             </div>
           </div>
           <div class="curso-card">
-            <img class="curso-card__img" src="../../assets/imagens/fundadores/fundadores.jpg" alt="Curso de Especialidade da Dra. Ana" />
+            <img class="curso-card__img" src="../../assets/imagens/fundadores/fundadores.jpg" alt="Curso de Especialidade da Dra. Ana" loading="lazy" />
             <div class="curso-card__info">
               <h2 class="curso-card__title">Especialidade em Cirurgia Geral</h2>
               <div class="curso-card__prof">com Dra. Ana Lima</div>
@@ -133,5 +136,32 @@
         <small>© 2025 Nobrega Medtech. Todos os direitos reservados.</small>
       </div>
     </footer>
+    <div class="suporte-flutuante">
+      <button class="suporte-flutuante__botao" aria-label="Abrir opções de suporte">
+        <img src="../../assets/imagens/icones/suporte.png" alt="Ícone de suporte" class="suporte-flutuante__icone">
+      </button>
+      <div class="suporte-flutuante__popup">
+        <div class="suporte-popup__topo">
+          <img src="../../assets/imagens/logo-nobrega-medtech.svg" alt="Logo Nobrega Medtech" class="suporte-popup__logo">
+          <button class="suporte-popup__fechar" aria-label="Fechar suporte" type="button">&times;</button>
+        </div>
+        <div class="suporte-popup__conteudo">
+          <h3 class="suporte-popup__titulo">Atendimento Nobrega Medtech</h3>
+          <p class="suporte-popup__mensagem">Bem-vindo(a)! Estamos aqui para te ajudar.</p>
+          <div class="suporte-popup__caixa">
+            <span class="suporte-popup__caixa-titulo">Iniciar uma conversa</span>
+            <a href="../contato/index.html" class="suporte-popup__botao-mensagem">&#9654; Envie-nos uma mensagem</a>
+          </div>
+          <div class="suporte-popup__icones">
+            <a href="https://wa.me/24998539136" class="suporte-popup__icone-link" id="suporte-whatsapp-link" target="_blank" rel="noopener noreferrer">
+              <img src="../../assets/imagens/icones/whatsapp_sem_fundo.png" alt="WhatsApp" class="suporte-popup__icone-img">
+            </a>
+            <a href="mailto:contato@nobregamedtech.com.br" class="suporte-popup__icone-link" id="suporte-email-link">
+              <img src="../../assets/imagens/icones/email.svg" alt="Email" class="suporte-popup__icone-img">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html> 
