@@ -2,7 +2,8 @@
  * Scripts Principais - Nobrega Medtech
  * - Gerenciador de Carrossel
  * - Animação de Entrada do Hero
- * @version 4.1 - Sincronização Final do Carrossel
+ * - Otimização de Performance de Imagens
+ * @version 5.0 - Otimização de Performance
  */
 
 // Classes CSS usadas
@@ -10,6 +11,47 @@ const CLS_BANNER_ACTIVE = 'is-active';
 const CLS_BANNER_VISIBLE = 'is-visible';
 const CLS_BANNER_EXITING = 'is-exiting';
 const CLS_BANNER_ANIMADO = 'animado';
+
+// Otimização de carregamento de imagens
+const otimizarImagens = () => {
+  // Preload de imagens críticas (acima da dobra)
+  const imagensCriticas = [
+    'assets/imagens/logo-nobrega-medtech.svg'
+  ];
+  
+  imagensCriticas.forEach(src => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = src;
+    document.head.appendChild(link);
+  });
+
+  // Lazy loading avançado para imagens não críticas
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            img.classList.add('loaded');
+          }
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.01
+    });
+
+    // Observar imagens com data-src
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+};
 
 // Carrossel principal
 const initCarrossel = () => {
@@ -136,6 +178,7 @@ const animarEntrada = () => {
 };
 
 // Inicialização
+otimizarImagens();
 initCarrossel();
 animarHero();
 scrollSuave();
