@@ -1,5 +1,6 @@
 /* ==========================================================================
    HEADER COMPONENT
+   Componente de cabeçalho responsivo com navegação mobile e desktop
    ========================================================================== */
 
 /* --- Configuração Base do Header --- */
@@ -8,11 +9,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: sticky; /* Header fixo no topo durante scroll */
   top: 0;
   /* Garante que o header fique acima da maioria dos outros conteúdos da página. */
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil para separação visual */
   height: var(--header-height);
   padding: 0 20px;
 }
@@ -34,7 +35,7 @@ header {
 .header__logo-imagem {
   height: 100%; 
   display: block;
-  width: auto;
+  width: auto; /* Mantém proporção da imagem */
 }
 
 /* --- Botão Hamburger (Mobile) --- */
@@ -58,18 +59,18 @@ header {
   height: 3px;
   background-color: var(--cor-primaria);
   border-radius: 3px;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Animação suave */
 }
 
 /* --- Animação do Hamburger para 'X' --- */
 .header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg); /* Primeira barra vira diagonal */
 }
 .header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(2) {
-  opacity: 0;
+  opacity: 0; /* Barra do meio desaparece */
 }
 .header__hamburger-button.menu-ativo .header__hamburger-bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg); /* Terceira barra vira diagonal oposta */
 }
 
 /* --- Navegação (Padrão Mobile: Overlay) --- */
@@ -82,7 +83,7 @@ header {
   background-color: #ffffff;
   padding: 40px;
   box-sizing: border-box;
-  box-shadow: inset 0 6px 8px -8px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 6px 8px -8px rgba(0, 0, 0, 0.1); /* Sombra interna */
 
   /* Escondido por padrão fora da tela e invisível */
   opacity: 0;
@@ -114,7 +115,7 @@ header {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Layout vertical no mobile */
 }
 
 /* Estilos base para os links de navegação */
@@ -143,6 +144,7 @@ header {
   transform: translateX(0);
 }
 
+/* Animação de entrada escalonada para os links do menu */
 .header__navegar.menu-aberto .header__nav-item:nth-child(1) .header__nav-link {
   transition-delay: 0.1s;
 }
@@ -156,6 +158,7 @@ header {
   transition-delay: 0.25s;
 }
 
+/* Seta do dropdown com animação de rotação */
 .dropdown-arrow {
   display: inline-block;
   margin-left: 8px;
@@ -164,20 +167,21 @@ header {
 }
 
 .header__nav-item--has-dropdown.dropdown-aberto .dropdown-arrow {
-  transform: rotate(180deg);
+  transform: rotate(180deg); /* Rotaciona a seta quando dropdown está aberto */
 }
 
+/* Submenu dropdown */
 .header__sub-nav {
   list-style: none;
   padding-left: 20px;
   margin: 0;
   overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.4s ease-in-out;
+  max-height: 0; /* Começa fechado */
+  transition: max-height 0.4s ease-in-out; /* Animação de abertura/fechamento */
 }
 
 .header__nav-item--has-dropdown.dropdown-aberto > .header__sub-nav {
-  max-height: 200px;
+  max-height: 200px; /* Altura máxima quando aberto */
   margin-top: 10px;
 }
 

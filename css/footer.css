@@ -1,5 +1,6 @@
 /* ==========================================================================
    RODAPÉ | Arquitetura Base
+   Componente de rodapé responsivo com logo, redes sociais e informações de contato
    ========================================================================== */
 
 :root {
@@ -43,6 +44,7 @@ footer {
   margin-bottom: 0;
 }
 
+/* Lista de ícones de redes sociais */
 .footer__social-icons {
   list-style-type: none; /* Reset: Remove marcadores de lista padrão do navegador. */
   padding-left: 0; /* Reset: Remove recuo padrão de lista. */
@@ -54,6 +56,7 @@ footer {
   margin-top: -10px;
 }
 
+/* Lista de informações de contato */
 .footer__contato-lista {
   display: flex;
   flex-direction: column;
@@ -86,6 +89,7 @@ footer {
   height: 45px;
 }
 
+/* Efeito hover nos ícones sociais */
 .footer__social-icons a:hover {
   opacity: 0.8;
 }
@@ -111,6 +115,7 @@ footer {
   line-height: 1.6;
 }
 
+/* Links de contato */
 .footer__contato-lista a {
   color: inherit;
   text-decoration: none;
@@ -132,7 +137,7 @@ footer {
 /* --- Ajustes Finos para Telas Mínimas --- */
 @media (max-width: 399px) {
   .footer__social-icons img {
-    height: 38px;
+    height: 38px; /* Ícones menores em telas muito pequenas */
   }
 
   .footer__social-icons {
@@ -140,7 +145,7 @@ footer {
   }
 
   .footer__direitos {
-    font-size: 0.69em; 
+    font-size: 0.69em; /* Texto menor em telas muito pequenas */
   }
 }
 
@@ -176,11 +181,11 @@ footer {
   }
 
   .footer__social-icons img {
-    height: 47px;
+    height: 47px; /* Ícones ligeiramente maiores em desktop */
   }
 
   .footer__logo-img {
-    max-width: 180px;
+    max-width: 180px; /* Logo maior em desktop */
     margin-bottom: -14px;
   }
 
@@ -195,47 +200,6 @@ footer {
   /* --- Linha Inferior: Direitos Autorais --- */
   .footer__direitos {
     flex-basis: 100%; /* Força a quebra de linha, criando a fileira inferior. */
-    margin-top: 0;
-    padding-top: 0;
-  }
-
-  .footer__contato-lista {
-    gap: 4px;
-  }
-}
-
-/* ==========================================================================
-   LAYOUT DESKTOPS LARGOS (>= 1200px)
-   ========================================================================== */
-
-@media (min-width: 1200px) {
-
-  /* --- Aumenta o 'respiro' lateral --- */
-  footer {
-    padding-top: 0;
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-
-  /* --- Ajustes de Escala para Visibilidade --- */
-  .footer__logo-img {
-    max-width: 160px;
-  }
-
-  .footer__social-icons img {
-    height: 47px;
-  }
-
-  /* Ajuste na fonte usando as variáveis já existentes */
-  .footer__contato-titulo {
-    font-size: 1.2em; 
-  }
-
-  .footer__contato-lista {
-    font-size: 1.2em; 
-  }
-
-  .footer__direitos {
     margin-top: 0;
     padding-top: 0;
   }

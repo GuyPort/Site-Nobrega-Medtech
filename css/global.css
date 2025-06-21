@@ -1,62 +1,64 @@
 /* ==========================================================================
-   CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
+   CONFIGURAÇÕES GLOBAIS E VARIÁVEIS CSS
    ========================================================================== */
 
 :root {
-  /* Tipografia */
+  /* Tipografia - Fontes principais e secundárias do projeto */
   --fonte-principal: "Roboto", sans-serif;
   --fonte-secundaria: "Montserrat", sans-serif;
   --font-size-base: 16px;
   --line-height-base: 1.5;
 
-  /* Cores */
-  --cor-primaria: #004bae;
-  --cor-secundaria: #2563c9;
-  --cor-texto: #333333;
-  --cor-texto-claro: #666666;
-  --cor-fundo: #ffffff;
-  --cor-borda: #e0e0e0;
+  /* Cores - Paleta de cores principal da marca */
+  --cor-primaria: #004bae;      /* Azul principal da Nobrega Medtech */
+  --cor-secundaria: #2563c9;    /* Azul secundário para hover/estados */
+  --cor-texto: #333333;         /* Cor principal do texto */
+  --cor-texto-claro: #666666;   /* Cor secundária para textos menos importantes */
+  --cor-fundo: #ffffff;         /* Cor de fundo principal */
+  --cor-borda: #e0e0e0;         /* Cor para bordas e divisores */
 
-  /* Espaçamentos */
-  --spacing-xxs: 4px;
-  --spacing-xs: 8px;
-  --spacing-sm: 12px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-xxl: 48px;
+  /* Espaçamentos - Sistema de espaçamento consistente */
+  --spacing-xxs: 4px;   /* Espaçamento extra pequeno */
+  --spacing-xs: 8px;    /* Espaçamento pequeno */
+  --spacing-sm: 12px;   /* Espaçamento médio pequeno */
+  --spacing-md: 16px;   /* Espaçamento médio */
+  --spacing-lg: 24px;   /* Espaçamento grande */
+  --spacing-xl: 32px;   /* Espaçamento extra grande */
+  --spacing-xxl: 48px;  /* Espaçamento máximo */
 
-  /* Layout */
-  --header-height: 80px;
-  --container-max-width: 1200px;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 16px;
+  /* Layout - Dimensões principais do layout */
+  --header-height: 80px;        /* Altura fixa do cabeçalho */
+  --container-max-width: 1200px; /* Largura máxima do container principal */
+  --border-radius-sm: 4px;      /* Border radius pequeno */
+  --border-radius-md: 8px;      /* Border radius médio */
+  --border-radius-lg: 16px;     /* Border radius grande */
 
-  /* Sombras */
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+  /* Sombras - Sistema de sombras para profundidade visual */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);   /* Sombra sutil */
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);    /* Sombra média */
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);  /* Sombra forte */
 
-  /* Transições */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  /* Transições - Durações padronizadas para animações */
+  --transition-fast: 0.2s ease;   /* Transição rápida */
+  --transition-normal: 0.3s ease; /* Transição normal */
+  --transition-slow: 0.5s ease;   /* Transição lenta */
 }
 
 /* ==========================================================================
    RESET E CONFIGURAÇÕES BASE
    ========================================================================== */
 
+/* Configurações base do HTML */
 html {
   box-sizing: border-box;
   height: 100%;
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: 100%; /* Previne zoom em iOS */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Remove highlight de toque */
 }
 
+/* Reset universal - aplica box-sizing a todos os elementos */
 *,
 *::before,
 *::after {
@@ -65,46 +67,52 @@ html {
   padding: 0;
 }
 
+/* Configurações base do body */
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Garante altura mínima de 100% da viewport */
   font-family: var(--fonte-principal);
   color: var(--cor-texto);
   background-color: var(--cor-fundo);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; /* Suavização de fontes no WebKit */
+  -moz-osx-font-smoothing: grayscale;  /* Suavização de fontes no Firefox */
 }
 
 /* ==========================================================================
    LAYOUT BASE
    ========================================================================== */
 
+/* Main ocupa todo o espaço disponível */
 main {
   flex-grow: 1;
   width: 100%;
 }
 
+/* Footer fica fixo na parte inferior */
 footer {
   flex-shrink: 0;
 }
 
+/* Configurações base para imagens */
 img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
   will-change: auto;
-  aspect-ratio: attr(width) / attr(height);
+  aspect-ratio: attr(width) / attr(height); /* Mantém proporção das imagens */
 }
 
 /* ==========================================================================
    UTILIDADES
    ========================================================================== */
 
+/* Classe para prevenir scroll do body (usado no menu mobile) */
 .body-no-scroll {
   overflow: hidden;
 }
 
+/* Container principal com largura máxima e padding responsivo */
 .container {
   width: 100%;
   max-width: var(--container-max-width);
@@ -114,6 +122,7 @@ img {
   padding-left: var(--spacing-md);
 }
 
+/* Classe para esconder elementos visualmente mas mantê-los acessíveis */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -130,45 +139,54 @@ img {
    OTIMIZAÇÕES DE PERFORMANCE
    ========================================================================== */
 
-/* Transição suave para lazy loading */
+/* Transição suave para lazy loading de imagens */
 img[loading="lazy"] {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
 
+/* Mostra imagem quando carregada */
 img[loading="lazy"].loaded,
 img[loading="lazy"][src] {
   opacity: 1;
 }
 
-/* Otimização para imagens de fundo */
+/* Otimização para animação de linha ECG */
 .ecg-line-animation {
   background-size: 100px 30px;
   background-repeat: repeat-x;
   background-position: 0 center;
-  will-change: background-position;
-  transform: translateZ(0);
+  will-change: background-position; /* Otimiza performance da animação */
+  transform: translateZ(0); /* Força aceleração de hardware */
 }
 
 /* ==========================================================================
    MEDIA QUERIES
    ========================================================================== */
 
+/* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
   :root {
-    --font-size-base: 14px;
-    --spacing-md: 12px;
-    --spacing-lg: 20px;
-    --spacing-xl: 28px;
+    --font-size-base: 14px;    /* Fonte menor em mobile */
+    --spacing-md: 12px;        /* Espaçamento reduzido */
+    --spacing-lg: 20px;        /* Espaçamento grande reduzido */
+    --spacing-xl: 28px;        /* Espaçamento extra grande reduzido */
   }
 }
 
+/* ==========================================================================
+   ANIMAÇÕES DE ENTRADA
+   ========================================================================== */
+
+/* Classe base para elementos que devem animar ao entrar na viewport */
 .animar-entrada {
   opacity: 0;
   transform: translateY(32px);
   transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
-  will-change: opacity, transform;
+  will-change: opacity, transform; /* Otimiza performance da animação */
 }
+
+/* Estado ativo da animação */
 .animar-entrada.animado {
   opacity: 1;
   transform: translateY(0);

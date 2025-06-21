@@ -1,3 +1,8 @@
+/* ==========================================================================
+   ANIMAÇÃO DE LINHA ECG
+   Animação contínua da linha de eletrocardiograma no hero
+   ========================================================================== */
+
 @keyframes scrollEcg {
   /* Define a animação chamada 'scrollEcg' */
   0% {
@@ -20,8 +25,10 @@
 
 /* ==========================================================================
    BANNER - GERAL E CARROSSEL
+   Seção principal com carrossel de slides e navegação
    ========================================================================== */
 
+/* Container principal do banner com gradiente de fundo */
 .banner {
   background: linear-gradient(90deg, #05050c 0%, #16135d 100%);
   color: #ffffff;
@@ -34,6 +41,7 @@
   overflow: hidden;
 }
 
+/* Container dos slides usando CSS Grid para sobreposição */
 .banner__slides-container {
   display: grid;
   width: 100%; /* Garante que o container ocupe todo o espaço */
@@ -42,10 +50,10 @@
 /* Regra UNIFICADA para .banner__slide */
 .banner__slide {
   /* Mecânica do carrossel */
-  grid-area: 1 / 1 / 2 / 2;
+  grid-area: 1 / 1 / 2 / 2; /* Todos os slides ocupam a mesma área do grid */
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
-  pointer-events: none;
+  pointer-events: none; /* Desabilita interação quando não ativo */
 
   /* Layout interno do slide (mobile-first) */
   display: flex;
@@ -63,8 +71,10 @@
 
 /* ==========================================================================
    CONTEÚDO INTERNO DO BANNER
+   Elementos de texto e botões dentro dos slides
    ========================================================================== */
 
+/* Título principal do banner */
 .banner__titulo {
   font-family: var(--fonte-secundaria);
   font-size: 2.2rem;
@@ -72,14 +82,16 @@
   margin: 0 0 16px 0;
 }
 
+/* Texto descritivo do banner */
 .banner__texto {
   font-family: var(--fonte-principal);
   font-size: 0.9rem;
   line-height: 1.6;
-  max-width: 55ch;
+  max-width: 55ch; /* Limita largura para melhor legibilidade */
   margin: 0 0 20px 0;
 }
 
+/* Botão de call-to-action do banner */
 .banner__botao {
   display: inline-block;
   background-color: var(--cor-primaria);
@@ -89,7 +101,7 @@
   font-size: 1rem;
   text-decoration: none;
   padding: 14px 32px;
-  border-radius: 50px;
+  border-radius: 50px; /* Formato arredondado */
   border: none;
       cursor: pointer;
     margin: 0 0 24px 0;
@@ -97,12 +109,14 @@
     transition: background-color 0.2s ease-out;
 }
 
+/* Efeito hover no botão */
 .banner__botao:hover {
   background-color: #005fdb;
 }
 
 /* ==========================================================================
   LÓGICA DE ANIMAÇÃO DE CONTEÚDO (SISTEMA DE 3 ESTADOS)
+  Sistema de animação para entrada e saída dos elementos do banner
 ==========================================================================
 */
 
@@ -142,12 +156,14 @@
 
 /* ========================================================================== */
 
+/* Logo do banner */
 .banner__logo {
   display: block;
   max-width: 180px;
   height: auto;
 }
 
+/* Navegação por pontos do carrossel */
 .banner__nav-dots {
   position: absolute;
   bottom: 20px;
@@ -157,6 +173,7 @@
   gap: 12px;
 }
 
+/* Pontos individuais da navegação */
 .banner__dot {
   width: 12px;
   height: 12px;
@@ -168,10 +185,12 @@
   transition: background-color 0.3s ease;
 }
 
+/* Efeito hover nos pontos */
 .banner__dot:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+/* Estado ativo do ponto (slide atual) */
 .banner__dot.is-active {
   background-color: #ffffff;
 }
@@ -186,7 +205,7 @@
   }
 
   .banner__slide {
-    flex-direction: row;
+    flex-direction: row; /* Layout horizontal em desktop */
     justify-content: space-between;
     align-items: center;
     text-align: left;

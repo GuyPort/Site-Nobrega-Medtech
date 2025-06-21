@@ -1,4 +1,10 @@
+# Robots.txt da Nobrega Medtech
+# Instruções para crawlers e motores de busca
+
+# Permite acesso a todos os crawlers
 User-agent: *
+# Permite indexação de todas as páginas do site
 Allow: /
 
+# Localização do sitemap XML para facilitar indexação
 Sitemap: https://www.nobregamedtech.com.br/sitemap.xml 

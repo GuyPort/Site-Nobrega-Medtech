@@ -1,5 +1,9 @@
-/* UTILITÁRIOS GLOBAIS */
+/* ==========================================================================
+   UTILITÁRIOS GLOBAIS
+   Classes utilitárias reutilizáveis em todo o projeto
+   ========================================================================== */
 
+/* Container principal responsivo com largura máxima */
 .container {
   width: 100%;
   max-width: var(--container-max-width);
@@ -9,6 +13,7 @@
   padding-left: var(--spacing-md);
 }
 
+/* Classe para esconder elementos visualmente mas mantê-los acessíveis para screen readers */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -21,6 +26,7 @@
   border: 0;
 }
 
+/* Classe para prevenir scroll do body (usado principalmente no menu mobile) */
 .body-no-scroll {
   overflow: hidden;
 } 

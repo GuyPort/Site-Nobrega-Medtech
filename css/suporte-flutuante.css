@@ -1,34 +1,44 @@
+/* ==========================================================================
+   WIDGET DE SUPORTE FLUTUANTE
+   Componente de suporte que flutua na tela com popup de contato
+   ========================================================================== */
+
+/* Container principal do widget de suporte */
 .suporte-flutuante {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  z-index: 1000;
+  z-index: 1000; /* Garante que fique acima de outros elementos */
 }
 
+/* Botão principal do widget (ícone flutuante) */
 .suporte-flutuante__botao {
   width: 70px;
   height: 70px;
-  border-radius: 50%;
+  border-radius: 50%; /* Formato circular */
   background-color: #0066CC;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra para profundidade */
+  transition: transform 0.3s ease; /* Animação suave no hover */
 }
 
+/* Efeito de escala no hover do botão */
 .suporte-flutuante__botao:hover {
   transform: scale(1.1);
 }
 
+/* Ícone dentro do botão (WhatsApp) */
 .suporte-flutuante__icone {
   width: 40px;
   height: 40px;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1); /* Converte para branco */
 }
 
+/* Popup de suporte que aparece ao interagir com o botão */
 .suporte-flutuante__popup {
   position: absolute;
   bottom: 90px;
@@ -36,19 +46,21 @@
   width: 340px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18); /* Sombra forte para destaque */
   display: none;
   flex-direction: column;
   padding: 0;
   overflow: hidden;
-  animation: fadeIn 0.3s;
+  animation: fadeIn 0.3s; /* Animação de entrada */
 }
 
+/* Animação de entrada do popup */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Estados de exibição do popup */
 .suporte-flutuante:hover .suporte-flutuante__popup,
 .suporte-flutuante__popup.ativo {
   display: flex;
@@ -58,6 +70,7 @@
   display: none !important;
 }
 
+/* Cabeçalho do popup com logo e botão de fechar */
 .suporte-popup__topo {
   background: #004bae;
   color: #fff;
@@ -67,10 +80,12 @@
   padding: 1.2rem 1.2rem 0.7rem 1.2rem;
 }
 
+/* Logo da empresa no cabeçalho */
 .suporte-popup__logo {
   height: 44px;
 }
 
+/* Botão de fechar o popup */
 .suporte-popup__fechar {
   background: transparent;
   border: none;
@@ -79,9 +94,10 @@
   cursor: pointer;
   line-height: 1;
   margin-left: 1rem;
-  display: none;
+  display: none; /* Oculto por padrão, visível apenas em mobile */
 }
 
+/* Conteúdo principal do popup */
 .suporte-popup__conteudo {
   padding: 1.2rem;
   background: #fff;
@@ -90,6 +106,7 @@
   gap: 1rem;
 }
 
+/* Título principal do popup */
 .suporte-popup__titulo {
   font-size: 1.2rem;
   font-weight: 700;
@@ -97,16 +114,18 @@
   margin: 0 0 0.2rem 0;
 }
 
+/* Mensagem descritiva do popup */
 .suporte-popup__mensagem {
   font-size: 1rem;
   color: #333;
   margin: 0 0 0.7rem 0;
 }
 
+/* Caixa de conteúdo com fundo e sombra */
 .suporte-popup__caixa {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Sombra sutil */
   padding: 1rem;
   margin-bottom: 0.5rem;
   display: flex;
@@ -114,12 +133,14 @@
   gap: 0.7rem;
 }
 
+/* Título da caixa de conteúdo */
 .suporte-popup__caixa-titulo {
   font-size: 1rem;
   color: #222;
   margin-bottom: 0.5rem;
 }
 
+/* Botão principal de mensagem */
 .suporte-popup__botao-mensagem {
   display: inline-block;
   background: #004bae;
@@ -131,14 +152,17 @@
   font-size: 1.08rem;
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(0,75,174,0.08);
-  transition: background 0.2s, color 0.2s, border 0.2s;
+  transition: background 0.2s, color 0.2s, border 0.2s; /* Transições suaves */
 }
+
+/* Efeito hover no botão de mensagem */
 .suporte-popup__botao-mensagem:hover {
   background: #fff;
   color: #004bae;
   border: 2px solid #004bae;
 }
 
+/* Container dos ícones de redes sociais */
 .suporte-popup__icones {
   display: flex;
   justify-content: flex-end;
@@ -146,26 +170,35 @@
   margin-top: 0.5rem;
 }
 
+/* Links dos ícones sociais */
 .suporte-popup__icone-link {
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f5f5f5;
-  border-radius: 50%;
+  border-radius: 50%; /* Formato circular */
   width: 48px;
   height: 48px;
-  transition: background 0.2s;
+  transition: background 0.2s; /* Transição suave */
 }
+
+/* Efeito hover nos ícones sociais */
 .suporte-popup__icone-link:hover {
   background: #e0e0e0;
 }
 
+/* Imagens dos ícones sociais */
 .suporte-popup__icone-img {
   width: 28px;
   height: 28px;
 }
 
+/* ==========================================================================
+   RESPONSIVIDADE - MOBILE PEQUENO
+   ========================================================================== */
+
 @media (max-width: 480px) {
+  /* Popup ocupa toda a largura disponível em mobile pequeno */
   .suporte-flutuante__popup {
     position: fixed;
     left: 2vw;
@@ -175,27 +208,38 @@
     min-width: unset;
     max-width: 96vw;
     margin: 0 auto;
-    z-index: 1100;
+    z-index: 1100; /* Z-index maior para garantir visibilidade */
   }
+  
+  /* Logo menor em mobile */
   .suporte-popup__logo {
     height: 32px;
   }
+  
+  /* Ícones sociais menores em mobile */
   .suporte-popup__icone-link {
     width: 40px;
     height: 40px;
   }
+  
   .suporte-popup__icone-img {
     width: 22px;
     height: 22px;
   }
 }
 
+/* ==========================================================================
+   RESPONSIVIDADE - MOBILE GERAL
+   ========================================================================== */
+
 /* Estilos para dispositivos móveis */
 @media (max-width: 768px) {
+  /* Popup oculto por padrão em mobile */
   .suporte-flutuante__popup {
     display: none;
   }
 
+  /* Popup visível apenas quando ativo via JavaScript */
   .suporte-flutuante__popup.ativo {
     display: flex;
   }

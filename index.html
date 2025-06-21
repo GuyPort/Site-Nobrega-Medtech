@@ -2,19 +2,20 @@
 <html lang="pt-br">
 
 <head>
+  <!-- Meta tags essenciais para SEO e responsividade -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Nobrega Medtech: IA para saúde, educação médica e inovação. Transformando a medicina no Brasil com tecnologia e informação de qualidade." />
   <title>Nobrega Medtech - A Nova Era da Medicina</title>
 
-  <!-- Preload de recursos críticos -->
+  <!-- Preload de recursos críticos para otimização de performance -->
   <link rel="preload" href="assets/imagens/logo-nobrega-medtech.svg" as="image" type="image/svg+xml">
   <link rel="preload" href="css/global.css" as="style">
   <link rel="preload" href="css/header.css" as="style">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
-  <!--Começo CSS/js Links-->
+  <!-- CSS e JavaScript - Carregamento otimizado -->
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/components/utilities.css" />
   <link rel="stylesheet" href="css/header.css" />
@@ -23,44 +24,49 @@
   <link rel="stylesheet" href="css/suporte-flutuante.css" />
   <script src="js/header.js" defer></script>
   <script src="js/index.js" defer></script>
-  <!--Final CSS/js Links-->
 
-  <!--Começo Favicon e ícons-->
+  <!-- Favicon e ícones para diferentes dispositivos -->
   <link rel="icon" href="assets/favicons/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="assets/favicons/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png" />
   <link rel="manifest" href="manifest.json" />
-  <!--Final Favicon e ícons-->
 
-  <!--Começo Fontes-->
+  <!-- Fontes Google - Roboto e Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet" />
-  <!--Final Fontes-->
 </head>
 
 <body>
+  <!-- Cabeçalho com navegação principal -->
   <header>
+    <!-- Logo da empresa -->
     <div class="header__imagem">
       <a href="index.html">
         <img class="header__logo-imagem" src="assets/imagens/logo-nobrega-medtech.svg"
           alt="Logo Nobrega Medtech azul sem slogan" />
       </a>
     </div>
+    
+    <!-- Botão hamburger para menu mobile -->
     <button class="header__hamburger-button" aria-label="Abrir menu de navegação" aria-expanded="false"
       aria-controls="menu-principal-nav">
       <span class="header__hamburger-bar"></span>
       <span class="header__hamburger-bar"></span>
       <span class="header__hamburger-bar"></span>
     </button>
+    
+    <!-- Navegação principal -->
     <div class="header__navegar">
       <nav class="header__nav" aria-label="Menu principal" id="menu-principal-nav">
         <ul class="header__nav-list">
+          <!-- Página inicial -->
           <li class="header__nav-item">
             <a href="index.html" class="header__nav-link header__nav-link--active" aria-current="page">Nobrega
               Medtech</a>
           </li>
 
+          <!-- Menu dropdown com soluções -->
           <li class="header__nav-item header__nav-item--has-dropdown" aria-haspopup="true" aria-expanded="false">
             <a href="#" class="header__nav-link">
               Nossas soluções
@@ -73,6 +79,8 @@
               </li>
             </ul>
           </li>
+          
+          <!-- Links de navegação -->
           <li class="header__nav-item">
             <a class="header__nav-link" href="pages/educacao/index.html">Educação</a>
           </li>
@@ -83,10 +91,16 @@
       </nav>
     </div>
   </header>
+  
+  <!-- Conteúdo principal da página -->
   <main>
+    <!-- Título principal oculto para acessibilidade -->
     <h1 class="visually-hidden">Nobrega Medtech - A Nova Era da Medicina</h1>
+    
+    <!-- Seção banner com carrossel de destaque -->
     <section class="banner" aria-roledescription="carousel" aria-label="Destaques da Nobrega Medtech">
       <div class="banner__slides-container">
+        <!-- Slide 1: Inteligência Artificial -->
         <div class="banner__slide is-active" role="group" aria-label="Slide 1 de 2: Inteligência Artificial">
           <div class="banner__conteudo">
             <h2 class="banner__titulo">
@@ -102,6 +116,8 @@
           </div>
           <img class="banner__logo" src="assets/imagens/logo-nobra.svg" alt="Logotipo da Nobra Medtech" loading="lazy">
         </div>
+        
+        <!-- Slide 2: Nobracast -->
         <div class="banner__slide" role="group" aria-label="Slide 2 de 2: Nobracast">
           <div class="banner__conteudo">
             <h2 class="banner__titulo">
@@ -119,11 +135,15 @@
           <img class="banner__logo" src="assets/imagens/nobracast.png" alt="Logotipo do Nobracast" loading="lazy">
         </div>
       </div>
+      
+      <!-- Navegação por pontos do carrossel -->
       <div class="banner__nav-dots">
         <button class="banner__dot is-active" data-slide="0" aria-label="Ir para o slide 1"></button>
         <button class="banner__dot" data-slide="1" aria-label="Ir para o slide 2"></button>
       </div>
     </section>
+    
+    <!-- Seção hero com título principal e animação -->
     <section class="hero">
       <div class="hero__content-left">
         <h2 class="hero__title">
@@ -138,6 +158,8 @@
         </div>
       </div>
     </section>
+    
+    <!-- Seção "Quem Somos" com informações da empresa -->
     <section class="quem-somos">
       <div class="quem-somos__container">
         <div class="quem-somos__conteudo-texto">
@@ -153,7 +175,7 @@
             Acreditamos que a colaboração entre a inteligência humana e a
             artificial é fundamental para construir um futuro da saúde mais
             eficiente, acessível e humanizado. Fazemos parte da nova
-            era da medicina.
+            era da medicina.
           </p>
         </div>
         <div class="quem-somos__imagem-wrapper">
@@ -163,11 +185,14 @@
       </div>
     </section>
   </main>
+  
+  <!-- Rodapé com informações de contato e redes sociais -->
   <footer>
     <div class="logo__footer">
       <img class="footer__logo-img" src="assets/imagens/logo-nobrega-medtech.svg"
         alt="Logo Nobrega Medtech com Slogan" />
       <ul class="footer__social-icons">
+        <!-- Links para redes sociais -->
         <li>
           <a href="https://www.facebook.com/NobregaMedtechbr" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Nobrega Medtech">
             <img src="assets/imagens/icones/facebook.svg" alt="" loading="lazy" />

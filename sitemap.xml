@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap XML da Nobrega Medtech -->
+<!-- Mapeia todas as páginas do site para indexação pelos motores de busca -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página inicial -->
   <url>
     <loc>https://www.nobregamedtech.com.br/</loc>
   </url>
+  
+  <!-- Página de contato -->
   <url>
     <loc>https://www.nobregamedtech.com.br/pages/contato/</loc>
   </url>
+  
+  <!-- Página principal de educação -->
   <url>
     <loc>https://www.nobregamedtech.com.br/pages/educacao/</loc>
   </url>
+  
+  <!-- Páginas específicas de educação médica -->
   <url>
     <loc>https://www.nobregamedtech.com.br/pages/educacao/residencia.html</loc>
   </url>

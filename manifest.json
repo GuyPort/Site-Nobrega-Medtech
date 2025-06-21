@@ -1,18 +1,38 @@
 {
+  // Manifesto da aplicação web progressiva (PWA) da Nobrega Medtech
+  // Configurações para instalação como app nativo em dispositivos móveis
+  
+  // Nome completo da aplicação
   "name": "Nobrega Medtech",
+  
+  // Nome curto usado na tela inicial do dispositivo
   "short_name": "Nobrega",
+  
+  // Descrição da aplicação para lojas de apps
   "description": "Desenvolvimento de soluções tecnológicas para a área da saúde.",
+  
+  // URL de início da aplicação (página inicial)
   "start_url": ".",
+  
+  // Modo de exibição: standalone remove a barra de navegação do navegador
   "display": "standalone",
+  
+  // Cor de fundo durante o carregamento inicial
   "background_color": "#FFFFFF",
+  
+  // Cor do tema para a barra de status (Android) e Safari
   "theme_color": "#004BAE",
+  
+  // Ícones em diferentes tamanhos para diferentes dispositivos
   "icons": [
     {
+      // Ícone para dispositivos Android e iOS (192x192px)
       "src": "/assets/favicons/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
+      // Ícone de alta resolução para dispositivos modernos (512x512px)
       "src": "/assets/favicons/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
