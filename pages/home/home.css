@@ -242,10 +242,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 77vh; /* Altura mínima de 77% da altura da viewport */
+  min-height: 45h; /* Altura mínima reduzida para diminuir o espaço inferior */
   justify-content: flex-start;
   text-align: center;
-  padding: 0.625rem 0.625rem 0; /* 10px topo, 10px laterais, 0 fundo */
+  padding: 4rem 0.625rem 0; /* Aumentado padding do topo para 4rem (64px) */
   /* padding-bottom é omitido intencionalmente */
   position: relative; /* Necessário para o posicionamento de elementos filhos com 'position: absolute' */
   overflow: hidden;
